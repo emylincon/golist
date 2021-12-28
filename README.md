@@ -102,5 +102,10 @@ fmt.Println(list)  // {1,2,3}
 ## list.reverse() #TODO
 Reverse the elements of the list in place.
 
-## list.copy()   #TODO
-Return a shallow copy of the list. Equivalent to a[:].
+## list.copy()
+Return a shallow copy of the list.
+```golang
+list := NewList([]int{3,2,1})
+copy := list.Copy()
+fmt.Println(copy)  // {3,2,1}
+```
