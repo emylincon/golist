@@ -65,3 +65,12 @@ func InsertString(list *[]string, element string, index int) *[]string {
 	newList := append((*list)[:index], postpend...)
 	return &newList
 }
+
+func RemoveString(list *[]string, element string) (*[]string, error) {
+	index := IndexOfString(list, element)
+	if index == -1 {
+		return nil, errors.New("element not in list")
+	}
+	newList, _ := PopString(list, index)
+	return &newList, nil
+}

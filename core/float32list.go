@@ -66,3 +66,12 @@ func InsertFloat32(list *[]float32, element float32, index int) *[]float32 {
 	newList := append((*list)[:index], postpend...)
 	return &newList
 }
+
+func RemoveFloat32(list *[]float32, element float32) (*[]float32, error) {
+	index := IndexOfFloat32(list, element)
+	if index == -1 {
+		return nil, errors.New("element not in list")
+	}
+	newList, _ := PopFloat32(list, index)
+	return &newList, nil
+}

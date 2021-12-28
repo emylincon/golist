@@ -65,3 +65,12 @@ func InsertInt64(list *[]int64, element int64, index int) *[]int64 {
 	newList := append((*list)[:index], postpend...)
 	return &newList
 }
+
+func RemoveInt64(list *[]int64, element int64) (*[]int64, error) {
+	index := IndexOfInt64(list, element)
+	if index == -1 {
+		return nil, errors.New("element not in list")
+	}
+	newList, _ := PopInt64(list, index)
+	return &newList, nil
+}

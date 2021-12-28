@@ -53,8 +53,13 @@ fmt.Println(list)  // {1,2,3,4}
 ```
 * The above inserts item 4 to position 3 which is the end of the list
 
-## list.Remove(x) #TODO
+## list.Remove(x) (error)
 Remove the first item from the list whose value is equal to x. It raises a ValueError if there is no such item.
+```golang
+list := NewList([]int{1,2,3})
+err := list.Remove(2)
+fmt.Println(list)  // {2,3}
+```
 
 ## list.Pop(i)
 Remove the item at the given position in the list, and return it. i is the index of the element to be popped.

@@ -65,3 +65,12 @@ func InsertInt(list *[]int, element int, index int) *[]int {
 	newList := append((*list)[:index], postpend...)
 	return &newList
 }
+
+func RemoveInt(list *[]int, element int) (*[]int, error) {
+	index := IndexOfInt(list, element)
+	if index == -1 {
+		return nil, errors.New("element not in list")
+	}
+	newList, _ := PopInt(list, index)
+	return &newList, nil
+}
