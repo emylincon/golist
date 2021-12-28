@@ -188,3 +188,35 @@ func TestLength(t *testing.T) {
 
 	}
 }
+
+func TestGet(t *testing.T) {
+	testCases := []struct {
+		Obj      List
+		expected int
+		index    int
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: 2,
+			index:    0,
+		},
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: 3,
+			index:    1,
+		},
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: 4,
+			index:    2,
+		},
+	}
+	for _, tC := range testCases {
+		gott, _ := tC.Obj.Get(tC.index)
+		got := gott.(int)
+		if got != tC.expected {
+			t.Errorf("Error [TestGet], Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}
