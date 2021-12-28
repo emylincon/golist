@@ -59,3 +59,9 @@ func CountInt(list *[]int, element int) int {
 func ExtendInt(list *[]int, another []int) []int {
 	return append((*list), another...)
 }
+
+func InsertInt(list *[]int, element int, index int) *[]int {
+	postpend := append([]int{element}, (*list)[index:]...)
+	newList := append((*list)[:index], postpend...)
+	return &newList
+}

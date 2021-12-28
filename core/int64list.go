@@ -59,3 +59,9 @@ func CountInt64(list *[]int64, element int64) int {
 func ExtendInt64(list *[]int64, another []int64) []int64 {
 	return append((*list), another...)
 }
+
+func InsertInt64(list *[]int64, element int64, index int) *[]int64 {
+	postpend := append([]int64{element}, (*list)[index:]...)
+	newList := append((*list)[:index], postpend...)
+	return &newList
+}

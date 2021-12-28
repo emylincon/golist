@@ -42,8 +42,8 @@ func SortFloat64(list *[]float64, reverse bool) *[]float64 {
 func PopFloat64(list *[]float64, index int) ([]float64, float64) {
 	listD := *list
 	popped := listD[index]
-	newArray := append(listD[:index], listD[index+1:]...)
-	return newArray, popped
+	newList := append(listD[:index], listD[index+1:]...)
+	return newList, popped
 }
 
 func CountFloat64(list *[]float64, element float64) int {
@@ -58,4 +58,10 @@ func CountFloat64(list *[]float64, element float64) int {
 
 func ExtendFloat64(list *[]float64, another []float64) []float64 {
 	return append((*list), another...)
+}
+
+func InsertFloat64(list *[]float64, element float64, index int) *[]float64 {
+	postpend := append([]float64{element}, (*list)[index:]...)
+	newList := append((*list)[:index], postpend...)
+	return &newList
 }

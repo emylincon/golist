@@ -59,3 +59,9 @@ func CountInt32(list *[]int32, element int32) int {
 func ExtendInt32(list *[]int32, another []int32) []int32 {
 	return append((*list), another...)
 }
+
+func InsertInt32(list *[]int32, element int32, index int) *[]int32 {
+	postpend := append([]int32{element}, (*list)[index:]...)
+	newList := append((*list)[:index], postpend...)
+	return &newList
+}

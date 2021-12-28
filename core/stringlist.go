@@ -59,3 +59,9 @@ func CountString(list *[]string, element string) int {
 func ExtendString(list *[]string, another []string) []string {
 	return append((*list), another...)
 }
+
+func InsertString(list *[]string, element string, index int) *[]string {
+	postpend := append([]string{element}, (*list)[index:]...)
+	newList := append((*list)[:index], postpend...)
+	return &newList
+}

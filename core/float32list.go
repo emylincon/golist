@@ -60,3 +60,9 @@ func CountFloat32(list *[]float32, element float32) int {
 func ExtendFloat32(list *[]float32, another []float32) []float32 {
 	return append((*list), another...)
 }
+
+func InsertFloat32(list *[]float32, element float32, index int) *[]float32 {
+	postpend := append([]float32{element}, (*list)[index:]...)
+	newList := append((*list)[:index], postpend...)
+	return &newList
+}
