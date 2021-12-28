@@ -1,3 +1,6 @@
+![status](https://github.com/emylincon/golist/workflows/Go/badge.svg)
+
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge)
 # golist
 A customized go list with index, sort, append, pop, count, clear and last item methods
 
