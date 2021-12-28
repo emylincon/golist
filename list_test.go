@@ -75,7 +75,7 @@ func TestSortInt32(t *testing.T) {
 	expected := []int32{1, 2, 4}
 	for i, v := range *sortObj {
 		if v != expected[i] {
-			t.Errorf("Error [TestSortInt32], Got: %v, Expected: %v.\n", sortObj, expected)
+			t.Errorf("Error [TestSortInt32 ], Got: %v, Expected: %v.\n", sortObj, expected)
 		}
 	}
 
