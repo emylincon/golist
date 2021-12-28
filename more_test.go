@@ -113,3 +113,49 @@ func TestRemove(t *testing.T) {
 
 	}
 }
+
+func TestCopy(t *testing.T) {
+	testCases := []struct {
+		Obj      List
+		expected List
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: *NewList([]int{2, 3, 4}),
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 4}),
+			expected: *NewList([]int32{2, 3, 4}),
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 4}),
+			expected: *NewList([]int64{2, 3, 4}),
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 4}),
+			expected: *NewList([]float32{2, 3, 4}),
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 4}),
+			expected: *NewList([]float64{2, 3, 4}),
+		},
+		{
+			Obj:      *NewList([]string{"2", "3", "4"}),
+			expected: *NewList([]string{"2", "3", "4"}),
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.Copy()
+		if err != nil {
+			t.Errorf("Error [TestCopy] %v.\n", err)
+		}
+		for i := 0; i < got.Len(); i++ {
+			Gotitem, _ := got.Get(i)
+			Expecteditem, _ := tC.expected.Get(i)
+			if Gotitem != Expecteditem {
+				t.Errorf("Error [TestCopy] Got: %v Expected: %v \n.", got, tC.expected)
+			}
+		}
+
+	}
+}
