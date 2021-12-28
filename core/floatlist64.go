@@ -65,3 +65,12 @@ func InsertFloat64(list *[]float64, element float64, index int) *[]float64 {
 	newList := append((*list)[:index], postpend...)
 	return &newList
 }
+
+func RemoveFloat64(list *[]float64, element float64) (*[]float64, error) {
+	index := IndexOfFloat64(list, element)
+	if index == -1 {
+		return nil, errors.New("element not in list")
+	}
+	newList, _ := PopFloat64(list, index)
+	return &newList, nil
+}

@@ -65,3 +65,12 @@ func InsertInt32(list *[]int32, element int32, index int) *[]int32 {
 	newList := append((*list)[:index], postpend...)
 	return &newList
 }
+
+func RemoveInt32(list *[]int32, element int32) (*[]int32, error) {
+	index := IndexOfInt32(list, element)
+	if index == -1 {
+		return nil, errors.New("element not in list")
+	}
+	newList, _ := PopInt32(list, index)
+	return &newList, nil
+}
