@@ -26,10 +26,17 @@ func LastFloat32(list []float32) (float32, error) {
 	return list[len(list)-1], nil
 }
 
-func SortFloat32(list *[]float32) *[]float32 {
-	sort.SliceStable(*list, func(i, j int) bool {
-		return (*list)[i] < (*list)[j]
-	})
+func SortFloat32(list *[]float32, reverse bool) *[]float32 {
+	if reverse {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] > (*list)[j]
+		})
+	} else {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] < (*list)[j]
+		})
+	}
+
 	return list
 }
 

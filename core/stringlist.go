@@ -26,10 +26,17 @@ func LastString(array []string) (string, error) {
 	return array[len(array)-1], nil
 }
 
-func SortString(list *[]string) *[]string {
-	ref_list := *list
-	sort.Strings(ref_list)
-	return &ref_list
+func SortString(list *[]string, reverse bool) *[]string {
+	if reverse {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] > (*list)[j]
+		})
+	} else {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] < (*list)[j]
+		})
+	}
+	return list
 }
 
 func PopString(list *[]string, index int) ([]string, string) {

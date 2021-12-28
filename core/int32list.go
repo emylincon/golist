@@ -26,10 +26,16 @@ func LastInt32(list []int32) (int32, error) {
 	return list[len(list)-1], nil
 }
 
-func SortInt32(list *[]int32) *[]int32 {
-	sort.SliceStable(*list, func(i, j int) bool {
-		return (*list)[i] < (*list)[j]
-	})
+func SortInt32(list *[]int32, reverse bool) *[]int32 {
+	if reverse {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] > (*list)[j]
+		})
+	} else {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] < (*list)[j]
+		})
+	}
 	return list
 }
 
