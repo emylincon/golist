@@ -97,3 +97,42 @@ func TestPop(t *testing.T) {
 	}
 
 }
+
+func TestLength(t *testing.T) {
+	testCases := []struct {
+		Obj      List
+		expected int
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: 3,
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 4}),
+			expected: 3,
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 4}),
+			expected: 3,
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 4}),
+			expected: 3,
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 4}),
+			expected: 3,
+		},
+		{
+			Obj:      *NewList([]string{"2", "3", "4"}),
+			expected: 3,
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.Len()
+		if got != tC.expected {
+			t.Errorf("Error [TestLength], Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}
