@@ -1,6 +1,8 @@
 package golist
 
-import "testing"
+import (
+	"testing"
+)
 
 var obj = NewList([]int{1, 2})
 
@@ -57,10 +59,11 @@ func TestClear(t *testing.T) {
 
 func TestSortInt(t *testing.T) {
 	obj := NewList([]int{2, 1, 4})
-	sorted := obj.Sort()
-	sortObj := sorted.(*[]int)
+	reverse := false
+	sorted := obj.Sort(reverse)
+	sortObj := sorted.([]int)
 	expected := []int{1, 2, 4}
-	for i, v := range *sortObj {
+	for i, v := range sortObj {
 		if v != expected[i] {
 			t.Errorf("Error [TestSortInt], Got: %v, Expected: %v.\n", sortObj, expected)
 		}
@@ -70,15 +73,64 @@ func TestSortInt(t *testing.T) {
 
 func TestSortInt32(t *testing.T) {
 	obj := NewList([]int32{2, 1, 4})
-	sorted := obj.Sort()
-	sortObj := sorted.(*[]int32)
+	reverse := false
+	sorted := obj.Sort(reverse)
+	sortObj := sorted.([]int32)
 	expected := []int32{1, 2, 4}
-	for i, v := range *sortObj {
+	for i, v := range sortObj {
 		if v != expected[i] {
 			t.Errorf("Error [TestSortInt32 ], Got: %v, Expected: %v.\n", sortObj, expected)
 		}
 	}
 
+}
+
+func TestReverseSort(t *testing.T) {
+	reverse := true
+	testCases := []struct {
+		Obj      List
+		expected interface{}
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: []int{4, 3, 2},
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 4}),
+			expected: []int32{4, 3, 2},
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 4}),
+			expected: []int64{4, 3, 2},
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 4}),
+			expected: []float32{4, 3, 2},
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 4}),
+			expected: []float64{4, 3, 2},
+		},
+		{
+			Obj:      *NewList([]string{"2", "3", "4"}),
+			expected: []string{"4", "3", "2"},
+		},
+	}
+	for _, tC := range testCases {
+		tC.Obj.Sort(reverse)
+		got, err := tC.Obj.Last()
+		if err != nil {
+			t.Errorf("[Getting Last Error] %v", err)
+		}
+		expected, err := NewList(tC.expected).Last()
+		if err != nil {
+			t.Errorf("[Getting Last Error] %v", err)
+		}
+		if got != expected {
+			t.Errorf("Error [TestReverseSort], Got: %v, Expected: %v | %v, %v.\n", got, expected, tC.Obj.list, tC.expected)
+		}
+
+	}
 }
 
 func TestPop(t *testing.T) {

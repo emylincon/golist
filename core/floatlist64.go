@@ -26,10 +26,17 @@ func LastFloat64(list []float64) (float64, error) {
 	return list[len(list)-1], nil
 }
 
-func SortFloat64(list *[]float64) *[]float64 {
-	ref_list := *list
-	sort.Float64s(ref_list)
-	return &ref_list
+func SortFloat64(list *[]float64, reverse bool) *[]float64 {
+	if reverse {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] > (*list)[j]
+		})
+	} else {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] < (*list)[j]
+		})
+	}
+	return list
 }
 
 func PopFloat64(list *[]float64, index int) ([]float64, float64) {

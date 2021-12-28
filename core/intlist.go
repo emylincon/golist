@@ -26,10 +26,17 @@ func LastInt(array []int) (int, error) {
 	return array[len(array)-1], nil
 }
 
-func SortInt(list *[]int) *[]int {
-	ref_list := *list
-	sort.Ints(ref_list)
-	return &ref_list
+func SortInt(list *[]int, reverse bool) *[]int {
+	if reverse {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] > (*list)[j]
+		})
+	} else {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] < (*list)[j]
+		})
+	}
+	return list
 }
 
 func PopInt(list *[]int, index int) ([]int, int) {

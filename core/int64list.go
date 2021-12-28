@@ -26,10 +26,16 @@ func LastInt64(list []int64) (int64, error) {
 	return list[len(list)-1], nil
 }
 
-func SortInt64(list *[]int64) *[]int64 {
-	sort.SliceStable(*list, func(i, j int) bool {
-		return (*list)[i] < (*list)[j]
-	})
+func SortInt64(list *[]int64, reverse bool) *[]int64 {
+	if reverse {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] > (*list)[j]
+		})
+	} else {
+		sort.SliceStable(*list, func(i, j int) bool {
+			return (*list)[i] < (*list)[j]
+		})
+	}
 	return list
 }
 
