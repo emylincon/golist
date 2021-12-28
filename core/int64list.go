@@ -1,6 +1,9 @@
 package core
 
-import "errors"
+import (
+	"errors"
+	"sort"
+)
 
 func AppendInt64(list *[]int64, element int64) *[]int64 {
 	newArray := append(*list, element)
@@ -23,10 +26,10 @@ func LastInt64(list []int64) (int64, error) {
 	return list[len(list)-1], nil
 }
 
-// TODO
 func SortInt64(list *[]int64) *[]int64 {
-	//ref_list := *list
-	//sort.Ints(ref_list)
+	sort.SliceStable(*list, func(i, j int) bool {
+		return (*list)[i] < (*list)[j]
+	})
 	return list
 }
 

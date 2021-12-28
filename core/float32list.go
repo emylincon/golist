@@ -1,6 +1,9 @@
 package core
 
-import "errors"
+import (
+	"errors"
+	"sort"
+)
 
 func AppendFloat32(array *[]float32, element float32) *[]float32 {
 	newArray := append(*array, element)
@@ -23,10 +26,10 @@ func LastFloat32(list []float32) (float32, error) {
 	return list[len(list)-1], nil
 }
 
-// TODO
 func SortFloat32(list *[]float32) *[]float32 {
-	// ref_list := *list
-	// sort.Float32s(ref_list)
+	sort.SliceStable(*list, func(i, j int) bool {
+		return (*list)[i] < (*list)[j]
+	})
 	return list
 }
 
