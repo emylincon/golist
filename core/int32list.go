@@ -1,6 +1,9 @@
 package core
 
-import "errors"
+import (
+	"errors"
+	"sort"
+)
 
 func AppendInt32(array *[]int32, element int32) *[]int32 {
 	newArray := append(*array, element)
@@ -23,10 +26,10 @@ func LastInt32(list []int32) (int32, error) {
 	return list[len(list)-1], nil
 }
 
-// TODO
 func SortInt32(list *[]int32) *[]int32 {
-	// ref_list := *list
-	// sort.Int32s(ref_list)
+	sort.SliceStable(*list, func(i, j int) bool {
+		return (*list)[i] < (*list)[j]
+	})
 	return list
 }
 
