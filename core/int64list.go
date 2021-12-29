@@ -74,3 +74,12 @@ func RemoveInt64(list *[]int64, element int64) (*[]int64, error) {
 	newList, _ := PopInt64(list, index)
 	return &newList, nil
 }
+
+func ReverseInt64(list *[]int64) *[]int64 {
+	newList := []int64{}
+	for i := len(*list) - 1; i >= 0; i-- {
+		newList = append(newList, (*list)[i])
+	}
+
+	return &newList
+}

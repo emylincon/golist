@@ -74,3 +74,12 @@ func RemoveString(list *[]string, element string) (*[]string, error) {
 	newList, _ := PopString(list, index)
 	return &newList, nil
 }
+
+func ReverseString(list *[]string) *[]string {
+	newList := []string{}
+	for i := len(*list) - 1; i >= 0; i-- {
+		newList = append(newList, (*list)[i])
+	}
+
+	return &newList
+}

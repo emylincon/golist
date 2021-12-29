@@ -74,3 +74,12 @@ func RemoveInt32(list *[]int32, element int32) (*[]int32, error) {
 	newList, _ := PopInt32(list, index)
 	return &newList, nil
 }
+
+func ReverseInt32(list *[]int32) *[]int32 {
+	newList := []int32{}
+	for i := len(*list) - 1; i >= 0; i-- {
+		newList = append(newList, (*list)[i])
+	}
+
+	return &newList
+}
