@@ -74,3 +74,12 @@ func RemoveFloat64(list *[]float64, element float64) (*[]float64, error) {
 	newList, _ := PopFloat64(list, index)
 	return &newList, nil
 }
+
+func ReverseFloat64(list *[]float64) *[]float64 {
+	newList := []float64{}
+	for i := len(*list) - 1; i >= 0; i-- {
+		newList = append(newList, (*list)[i])
+	}
+
+	return &newList
+}

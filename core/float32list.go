@@ -75,3 +75,12 @@ func RemoveFloat32(list *[]float32, element float32) (*[]float32, error) {
 	newList, _ := PopFloat32(list, index)
 	return &newList, nil
 }
+
+func ReverseFloat32(list *[]float32) *[]float32 {
+	newList := []float32{}
+	for i := len(*list) - 1; i >= 0; i-- {
+		newList = append(newList, (*list)[i])
+	}
+
+	return &newList
+}

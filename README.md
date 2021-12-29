@@ -2,9 +2,8 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge)
 # golist
-A customized go list with index, sort, append, pop, count, clear and last item methods. The list data type has some more methods. 
-
-It supports the following data structure:
+A customized go list with index, sort, append, pop, count, clear and last item methods. 
+It supports all of the following data structure although only `int` is used in the example:
 * `int`
 * `int32`
 * `int64`
@@ -103,8 +102,13 @@ list.Sort(reverse=false)
 fmt.Println(list)  // {1,2,3}
 ```
 
-## list.reverse() #TODO
+## list.reverse() 
 Reverse the elements of the list in place.
+```golang
+list := NewList([]int{5,2,7,1})
+list.Sort(reverse=false)
+fmt.Println(list)  // {1,7,2,5}
+```
 
 ## list.copy()
 Return a shallow copy of the list.

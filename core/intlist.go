@@ -74,3 +74,12 @@ func RemoveInt(list *[]int, element int) (*[]int, error) {
 	newList, _ := PopInt(list, index)
 	return &newList, nil
 }
+
+func ReverseInt(list *[]int) *[]int {
+	newList := []int{}
+	for i := len(*list) - 1; i >= 0; i-- {
+		newList = append(newList, (*list)[i])
+	}
+
+	return &newList
+}

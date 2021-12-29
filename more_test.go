@@ -219,3 +219,47 @@ func TestSlice(t *testing.T) {
 
 	}
 }
+
+func TestReverse(t *testing.T) {
+	testCases := []struct {
+		Obj      List
+		expected List
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: *NewList([]int{4, 3, 2}),
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 4}),
+			expected: *NewList([]int32{4, 3, 2}),
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 4}),
+			expected: *NewList([]int64{4, 3, 2}),
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 4}),
+			expected: *NewList([]float32{4, 3, 2}),
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 4}),
+			expected: *NewList([]float64{4, 3, 2}),
+		},
+		{
+			Obj:      *NewList([]string{"2", "3", "4"}),
+			expected: *NewList([]string{"4", "3", "2"}),
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.Reverse()
+
+		for i := 0; i < got.Len(); i++ {
+			Gotitem, _ := got.Get(i)
+			Expecteditem, _ := tC.expected.Get(i)
+			if Gotitem != Expecteditem {
+				t.Errorf("Error [TestReverse] Got: %v Expected: %v \n.", got, tC.expected)
+			}
+		}
+
+	}
+}
