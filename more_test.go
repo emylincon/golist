@@ -159,3 +159,63 @@ func TestCopy(t *testing.T) {
 
 	}
 }
+
+func TestSlice(t *testing.T) {
+	testCases := []struct {
+		Obj      List
+		expected List
+		start    int
+		stop     int
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: *NewList([]int{2, 3}),
+			start:    0,
+			stop:     2,
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 4}),
+			expected: *NewList([]int32{2}),
+			start:    0,
+			stop:     1,
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 4}),
+			expected: *NewList([]int64{2, 3, 4}),
+			start:    0,
+			stop:     -1,
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 4}),
+			expected: *NewList([]float32{}),
+			start:    0,
+			stop:     0,
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 4}),
+			expected: *NewList([]float64{2, 3, 4}),
+			start:    0,
+			stop:     -1,
+		},
+		{
+			Obj:      *NewList([]string{"2", "3", "4"}),
+			expected: *NewList([]string{"2", "3", "4"}),
+			start:    0,
+			stop:     -1,
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.Slice(tC.start, tC.stop)
+		if err != nil {
+			t.Errorf("Error [TestSlice] %v.\n", err)
+		}
+		for i := 0; i < got.Len(); i++ {
+			Gotitem, _ := got.Get(i)
+			Expecteditem, _ := tC.expected.Get(i)
+			if Gotitem != Expecteditem {
+				t.Errorf("Error [TestSlice] Got: %v Expected: %v \n.", got, tC.expected)
+			}
+		}
+
+	}
+}

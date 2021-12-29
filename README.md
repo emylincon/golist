@@ -78,10 +78,14 @@ list.Clear()
 fmt.Println(list)  // {}
 ```
 
-## list.Slice(start, step, end) #TODO
-Return zero-based index in the list of the first item whose value is equal to x. Raises a ValueError if there is no such item.
-
+## list.Slice(start, end)
 The optional arguments start and end are interpreted as in the slice notation and are used to limit the search to a particular subsequence of the list. The returned index is computed relative to the beginning of the full sequence rather than the start argument.
+```golang
+list := NewList([]int{1,2,3,2})
+start, stop := 0,2
+NewList := list.Slice(start,stop)
+fmt.Println(NewList)  // {1,2}
+```
 
 ## list.Count(x)
 Return the number of times x appears in the list.
