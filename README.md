@@ -66,6 +66,7 @@ fmt.Println(popped)  // 1
 fmt.Println(list)  // &{[2 3]}
 ```
 
+
 ## list.Clear()
 Remove all items from the list.
 ```golang
