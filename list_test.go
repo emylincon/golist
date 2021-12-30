@@ -212,7 +212,7 @@ func TestGet(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-		gott, _ := tC.Obj.Get(tC.index)
+		gott := tC.Obj.Get(tC.index)
 		got := gott.(int)
 		if got != tC.expected {
 			t.Errorf("Error [TestGet], Got: %v, Expected: %v.\n", got, tC.expected)

@@ -17,10 +17,7 @@ Here are all of the methods of the list objects:
 Get an item in the list by index. `i` represents the index. 
 ```golang
 list := NewList([]int{1,2,3})
-item, err := list.Get(0)
-if err != nil {
-    fmt.Println(err)  // handle error
-}
+item := list.Get(0)
 fmt.Println(item)  // 1
 ```
 

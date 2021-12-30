@@ -150,8 +150,8 @@ func TestCopy(t *testing.T) {
 			t.Errorf("Error [TestCopy] %v.\n", err)
 		}
 		for i := 0; i < got.Len(); i++ {
-			Gotitem, _ := got.Get(i)
-			Expecteditem, _ := tC.expected.Get(i)
+			Gotitem := got.Get(i)
+			Expecteditem := tC.expected.Get(i)
 			if Gotitem != Expecteditem {
 				t.Errorf("Error [TestCopy] Got: %v Expected: %v \n.", got, tC.expected)
 			}
@@ -210,8 +210,8 @@ func TestSlice(t *testing.T) {
 			t.Errorf("Error [TestSlice] %v.\n", err)
 		}
 		for i := 0; i < got.Len(); i++ {
-			Gotitem, _ := got.Get(i)
-			Expecteditem, _ := tC.expected.Get(i)
+			Gotitem := got.Get(i)
+			Expecteditem := tC.expected.Get(i)
 			if Gotitem != Expecteditem {
 				t.Errorf("Error [TestSlice] Got: %v Expected: %v \n.", got, tC.expected)
 			}
@@ -254,8 +254,8 @@ func TestReverse(t *testing.T) {
 		got := tC.Obj.Reverse()
 
 		for i := 0; i < got.Len(); i++ {
-			Gotitem, _ := got.Get(i)
-			Expecteditem, _ := tC.expected.Get(i)
+			Gotitem := got.Get(i)
+			Expecteditem := tC.expected.Get(i)
 			if Gotitem != Expecteditem {
 				t.Errorf("Error [TestReverse] Got: %v Expected: %v \n.", got, tC.expected)
 			}
