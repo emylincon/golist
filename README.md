@@ -26,7 +26,7 @@ Add an item to the end of the list.
 ```golang
 list := NewList([]int{1,2,3})
 list.Append(7)
-fmt.Println(list)  // {1,2,3,7}
+fmt.Println(list)  // &{[1 2 3 7]}
 ```
 
 ## list.Extend(slice)
@@ -34,7 +34,7 @@ Extend the list by appending all the items from a slice or array.
 ```golang
 list := NewList([]int{1,2,3})
 list.Extend([]int{4,5})
-fmt.Println(list)  // {1,2,3,4,5}
+fmt.Println(list)  // &{[1 2 3 4 5]}
 ```
 
 ## list.Insert(x, i) error
@@ -45,7 +45,7 @@ err := list.Insert(4,3)
 if err {
     fmt.Println(err) // handle error
 }
-fmt.Println(list)  // {1,2,3,4}
+fmt.Println(list)  // &{[1 2 3 4]}
 ```
 * The above inserts item 4 to position 3 which is the end of the list
 
@@ -54,7 +54,7 @@ Remove the first item from the list whose value is equal to x. It raises a Value
 ```golang
 list := NewList([]int{1,2,3})
 err := list.Remove(2)
-fmt.Println(list)  // {2,3}
+fmt.Println(list)  // &{[2 3]}
 ```
 
 ## list.Pop(i)
@@ -63,7 +63,7 @@ Remove the item at the given position in the list, and return it. i is the index
 list := NewList([]int{1,2,3})
 popped := list.Pop(0)
 fmt.Println(popped)  // 1
-fmt.Println(list)  // {2,3}
+fmt.Println(list)  // &{[2 3]}
 ```
 
 ## list.Clear()
@@ -71,7 +71,7 @@ Remove all items from the list.
 ```golang
 list := NewList([]int{1,2,3})
 list.Clear()
-fmt.Println(list)  // {}
+fmt.Println(list)  // &{[]}
 ```
 
 ## list.Slice(start, end)
@@ -80,7 +80,7 @@ The optional arguments start and end are interpreted as in the slice notation an
 list := NewList([]int{1,2,3,2})
 start, stop := 0,2
 NewList := list.Slice(start,stop)
-fmt.Println(NewList)  // {1,2}
+fmt.Println(NewList)  // &{[1 2]}
 ```
 
 ## list.Count(x)
@@ -96,7 +96,7 @@ Sort the items of the list in place (the arguments can be used for sort customiz
 ```golang
 list := NewList([]int{3,2,1})
 list.Sort(reverse=false)
-fmt.Println(list)  // {1,2,3}
+fmt.Println(list)  // &{[1 2 3]}
 ```
 
 ## list.reverse() 
@@ -104,7 +104,7 @@ Reverse the elements of the list in place.
 ```golang
 list := NewList([]int{5,2,7,1})
 list.Sort(reverse=false)
-fmt.Println(list)  // {1,7,2,5}
+fmt.Println(list)  // &{[1 7 2 5}}
 ```
 
 ## list.copy()
@@ -112,5 +112,5 @@ Return a shallow copy of the list.
 ```golang
 list := NewList([]int{3,2,1})
 copy := list.Copy()
-fmt.Println(copy)  // {3,2,1}
+fmt.Println(copy)  // &{[3 2 1]}
 ```
