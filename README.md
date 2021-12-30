@@ -66,6 +66,7 @@ fmt.Println(popped)  // 1
 fmt.Println(list)  // &{[2 3]}
 ```
 
+
 ## list.Clear()
 Remove all items from the list.
 ```golang
@@ -112,5 +113,12 @@ Return a shallow copy of the list.
 ```golang
 list := NewList([]int{3,2,1})
 copy := list.Copy()
-fmt.Println(copy)  // &{[3 2 1]}
+fmt.Println(copy)  // {3,2,1}
+```
+
+## list.String()
+Returns a string representation of the object
+```golang
+list := NewList([]int{3,2,1})
+fmt.Println(list.String())  // [3, 2, 1]
 ```

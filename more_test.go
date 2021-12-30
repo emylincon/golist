@@ -263,3 +263,43 @@ func TestReverse(t *testing.T) {
 
 	}
 }
+
+func TestString(t *testing.T) {
+	testCases := []struct {
+		Obj      List
+		expected string
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: "[2, 3, 4]",
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 4}),
+			expected: "[2, 3, 4]",
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 4}),
+			expected: "[2, 3, 4]",
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 4}),
+			expected: "[2, 3, 4]",
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 4}),
+			expected: "[2, 3, 4]",
+		},
+		{
+			Obj:      *NewList([]string{"2", "3", "4"}),
+			expected: "[2, 3, 4]",
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.String()
+
+		if got != tC.expected {
+			t.Errorf("Error [TestString] Got: %v Expected: %v \n.", got, tC.expected)
+		}
+
+	}
+}
