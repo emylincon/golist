@@ -291,7 +291,7 @@ func TestString(t *testing.T) {
 		},
 		{
 			Obj:      *NewList([]string{"2", "3", "4"}),
-			expected: "[2, 3, 4]",
+			expected: "[\"2\", \"3\", \"4\"]",
 		},
 	}
 	for _, tC := range testCases {
