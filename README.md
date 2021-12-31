@@ -134,3 +134,10 @@ fmt.Println(list.Sum())  // 6
 list := NewList([]string{"Hello", "World"})
 fmt.Println(list.Sum())  // "Hello World"
 ```
+
+## list.List() interface{}
+This is a getter that returns underlying slice interface.
+```golang
+list := NewList([]int{3,2,1})
+fmt.Println(list.List())  // [3 2 1]
+```

@@ -17,6 +17,37 @@ func NewList(list interface{}) *List {
 	return newlist
 }
 
+func (arr *List) List() interface{} {
+	switch arr.list.(type) {
+	case []int:
+		list := arr.list.([]int)
+		return list
+
+	case []int32:
+		list := arr.list.([]int32)
+		return list
+
+	case []int64:
+		list := arr.list.([]int64)
+		return list
+
+	case []float32:
+		list := arr.list.([]float32)
+		return list
+
+	case []float64:
+		list := arr.list.([]float64)
+		return list
+
+	case []string:
+		list := arr.list.([]string)
+		return list
+
+	default:
+		return nil
+	}
+}
+
 func (arr *List) Append(element interface{}) {
 
 	switch arr.list.(type) {
