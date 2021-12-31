@@ -349,3 +349,47 @@ func TestSum(t *testing.T) {
 
 	}
 }
+
+func TestList(t *testing.T) {
+
+	testCases := []struct {
+		Obj      List
+		expected interface{}
+	}{
+		{
+			Obj:      *NewList([]int{2, 3}),
+			expected: []int{2, 3},
+		},
+		{
+			Obj:      *NewList([]int32{2, 3}),
+			expected: []int32{2, 3},
+		},
+		{
+			Obj:      *NewList([]int64{2, 3}),
+			expected: []int64{2, 3},
+		},
+		{
+			Obj:      *NewList([]float32{2, 3}),
+			expected: []float32{2, 3},
+		},
+		{
+			Obj:      *NewList([]float64{2, 3}),
+			expected: []float64{2, 3},
+		},
+		{
+			Obj:      *NewList([]string{"Hello", "world"}),
+			expected: []string{"Hello", "world"},
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.List()
+		gotObj := NewList(got)
+		expected := NewList(tC.expected)
+		for i := 0; i < expected.Len(); i++ {
+			if gotObj.Get(i) != expected.Get(i) {
+				t.Errorf("[Error TestList | not equal] : Got: %v, Expected: %v.\n", got, tC.expected)
+			}
+		}
+
+	}
+}
