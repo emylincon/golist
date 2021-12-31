@@ -96,7 +96,7 @@ fmt.Println(list) // []
 ```
 
 ## list.Slice(start, end) (*golist.List, error)
-The optional arguments start and end are interpreted as in the slice notation and are used to limit the search to a particular subsequence of the list. The returned index is computed relative to the beginning of the full sequence rather than the start argument.
+The arguments start and end are interpreted as in the slice notation and are used to return a particular subsequence of the list. The returned index is computed relative to the beginning of the full sequence rather than the start argument.
 ```golang
 list := golist.NewList([]int{1, 2, 3, 2})
 start, stop := 0, 2
