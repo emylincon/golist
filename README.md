@@ -40,7 +40,7 @@ fmt.Println(list.String())  // [3, 2, 1]
 ```
 
 ## list.Append(x)
-Add an item to the end of the list.
+Add an item to the end of the list. Items must be of the same type.
 ```golang
 list := golist.NewList([]int{1,2,3})
 list.Append(7)
@@ -56,7 +56,7 @@ fmt.Println(list)  // [1, 2, 3, 4, 5]
 ```
 
 ## list.Insert(x, i) error
-Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x) inserts at the front of the list, and a.Insert(x, len(a)) is equivalent to a.Append(x). Returns error is any
+Insert an item at a given position. The first argument is the element while the second is the index to insert the element, so `list.insert(x, 0)` inserts at the front of the list, and `list.Insert(x, len(a))` is equivalent to `list.Append(x)`. Returns error is any
 ```golang
 list := golist.NewList([]int{1, 2, 3})
 err := list.Insert(4, 3)
