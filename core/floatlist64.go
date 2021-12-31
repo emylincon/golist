@@ -83,3 +83,10 @@ func ReverseFloat64(list *[]float64) *[]float64 {
 
 	return &newList
 }
+
+func SumFloat64(list *[]float64) (sum float64) {
+	for _, value := range *list {
+		sum += value
+	}
+	return
+}

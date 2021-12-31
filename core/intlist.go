@@ -83,3 +83,10 @@ func ReverseInt(list *[]int) *[]int {
 
 	return &newList
 }
+
+func SumInt(list *[]int) (sum int) {
+	for _, value := range *list {
+		sum += value
+	}
+	return
+}

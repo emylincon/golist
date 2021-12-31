@@ -3,6 +3,7 @@ package core
 import (
 	"errors"
 	"sort"
+	"strings"
 )
 
 func AppendString(array *[]string, element string) *[]string {
@@ -82,4 +83,9 @@ func ReverseString(list *[]string) *[]string {
 	}
 
 	return &newList
+}
+
+func SumString(list *[]string) (sum string) {
+	sum = strings.Join(*list, " ")
+	return
 }

@@ -303,3 +303,49 @@ func TestString(t *testing.T) {
 
 	}
 }
+
+func TestSum(t *testing.T) {
+	var vint int = 5
+	var vint32 int32 = 5
+	var vint64 int64 = 5
+	var vfloat32 float32 = 5
+	var vfloat64 float64 = 5
+
+	testCases := []struct {
+		Obj      List
+		expected interface{}
+	}{
+		{
+			Obj:      *NewList([]int{2, 3}),
+			expected: vint,
+		},
+		{
+			Obj:      *NewList([]int32{2, 3}),
+			expected: vint32,
+		},
+		{
+			Obj:      *NewList([]int64{2, 3}),
+			expected: vint64,
+		},
+		{
+			Obj:      *NewList([]float32{2, 3}),
+			expected: vfloat32,
+		},
+		{
+			Obj:      *NewList([]float64{2, 3}),
+			expected: vfloat64,
+		},
+		{
+			Obj:      *NewList([]string{"Hello", "world"}),
+			expected: "Hello world",
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.Sum()
+
+		if got != tC.expected {
+			t.Errorf("[Error TestSum | not equal] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}
