@@ -83,3 +83,10 @@ func ReverseInt32(list *[]int32) *[]int32 {
 
 	return &newList
 }
+
+func SumInt32(list *[]int32) (sum int32) {
+	for _, value := range *list {
+		sum += value
+	}
+	return
+}

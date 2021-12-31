@@ -83,3 +83,10 @@ func ReverseInt64(list *[]int64) *[]int64 {
 
 	return &newList
 }
+
+func SumInt64(list *[]int64) (sum int64) {
+	for _, value := range *list {
+		sum += value
+	}
+	return
+}

@@ -92,7 +92,7 @@ count := list.Count(2)
 fmt.Println(count)  // 2
 ```
 
-## list.sort(reverse)
+## list.Sort(reverse)
 Sort the items of the list in place (the arguments can be used for sort customization. `reverse` is `bool` so can be `true` or `false`.
 ```golang
 list := NewList([]int{3,2,1})
@@ -100,7 +100,7 @@ list.Sort(reverse=false)
 fmt.Println(list)  // &{[1 2 3]}
 ```
 
-## list.reverse() 
+## list.Reverse() 
 Reverse the elements of the list in place.
 ```golang
 list := NewList([]int{5,2,7,1})
@@ -108,7 +108,7 @@ list.Sort(reverse=false)
 fmt.Println(list)  // &{[1 7 2 5}}
 ```
 
-## list.copy()
+## list.Copy()
 Return a shallow copy of the list.
 ```golang
 list := NewList([]int{3,2,1})
@@ -121,4 +121,16 @@ Returns a string representation of the object
 ```golang
 list := NewList([]int{3,2,1})
 fmt.Println(list.String())  // [3, 2, 1]
+```
+
+## list.Sum() interface{}
+Returns sum of the elements in the list. If it is list of string, it joins the strings with a space and returns it
+```golang
+list := NewList([]int{3,2,1})
+fmt.Println(list.Sum())  // 6
+```
+
+```golang
+list := NewList([]string{"Hello", "World"})
+fmt.Println(list.Sum())  // "Hello World"
 ```
