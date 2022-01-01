@@ -99,3 +99,12 @@ func MaxInt64(list *[]int64) (max int64) {
 	}
 	return
 }
+
+func MinInt64(list *[]int64) (min int64) {
+	for i, value := range *list {
+		if i == 0 || value < min {
+			min = value
+		}
+	}
+	return
+}

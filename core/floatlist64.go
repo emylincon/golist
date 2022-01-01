@@ -99,3 +99,12 @@ func MaxFloat64(list *[]float64) (max float64) {
 	}
 	return
 }
+
+func MinFloat64(list *[]float64) (min float64) {
+	for i, value := range *list {
+		if i == 0 || value < min {
+			min = value
+		}
+	}
+	return
+}
