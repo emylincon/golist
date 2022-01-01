@@ -177,3 +177,14 @@ This only works with string data types, panics otherwise. `joiner` is a string u
 list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Join("-"))  // "Hello-World"
 ```
+
+## list.Replace(x, i) error
+Replaces an element at index i with element x. returns error if index does not exist. index of `-1` is equivalent to last item. This method is equivalent to working with slice (`a`) `a[1] = 10`
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+err := list.Replace("golang", -1)
+if err != nil {
+    fmt.Println(err)  // handle error
+}
+fmt.Println(list)  // ["Hello", "golang"]
+```

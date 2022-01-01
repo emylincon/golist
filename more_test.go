@@ -428,3 +428,69 @@ func Test(t *testing.T) {
 		}
 	}
 }
+
+func TestReplace(t *testing.T) {
+	var vint int = 5
+	var vint32 int32 = 5
+	var vint64 int64 = 5
+	var vfloat32 float32 = 5
+	var vfloat64 float64 = 5
+
+	testCases := []struct {
+		Obj      *List
+		expected *List
+		replace  interface{}
+		index    int
+	}{
+		{
+			Obj:      NewList([]int{2, 3}),
+			expected: NewList([]int{vint, 3}),
+			replace:  vint,
+			index:    0,
+		},
+		{
+			Obj:      NewList([]int32{2, 3}),
+			expected: NewList([]int32{5, 3}),
+			replace:  vint32,
+			index:    0,
+		},
+		{
+			Obj:      NewList([]int64{2, 3}),
+			expected: NewList([]int64{2, 5}),
+			replace:  vint64,
+			index:    1,
+		},
+		{
+			Obj:      NewList([]float32{2, 3}),
+			expected: NewList([]float32{2, 5}),
+			replace:  vfloat32,
+			index:    -1,
+		},
+		{
+			Obj:      NewList([]float64{2, 3}),
+			expected: NewList([]float64{2, 5}),
+			replace:  vfloat64,
+			index:    1,
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			expected: NewList([]string{"Hello", "golang"}),
+			replace:  "golang",
+			index:    -1,
+		},
+	}
+	for _, tC := range testCases {
+		err := tC.Obj.Replace(tC.replace, tC.index)
+		if err != nil {
+			t.Errorf("[Error TestReplace] : %v\n", err)
+		}
+		got := tC.Obj
+
+		for i := 0; i < got.Len(); i++ {
+			if got.Get(i) != tC.expected.Get(i) {
+				t.Errorf("[Error TestReplace] : Got: %v, Expected: %v.\n", got, tC.expected)
+			}
+		}
+
+	}
+}
