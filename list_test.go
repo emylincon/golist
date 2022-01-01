@@ -339,3 +339,54 @@ func TestInsert(t *testing.T) {
 
 	}
 }
+
+func TestSorted(t *testing.T) {
+	testCases := []struct {
+		Obj      *List
+		expected *List
+		reverse  bool
+	}{
+		{
+			Obj:      NewList([]int{2, 3, 4}),
+			expected: NewList([]int{4, 3, 2}),
+			reverse:  true,
+		},
+		{
+			Obj:      NewList([]int32{2, 3, 4}),
+			expected: NewList([]int32{4, 3, 2}),
+			reverse:  true,
+		},
+		{
+			Obj:      NewList([]int64{2, 3, 4}),
+			expected: NewList([]int64{4, 3, 2}),
+			reverse:  true,
+		},
+		{
+			Obj:      NewList([]float32{2, 3, 4}),
+			expected: NewList([]float32{4, 3, 2}),
+			reverse:  true,
+		},
+		{
+			Obj:      NewList([]float64{4, 3, 2}),
+			expected: NewList([]float64{2, 3, 4}),
+			reverse:  false,
+		},
+		{
+			Obj:      NewList([]string{"2", "3", "4"}),
+			expected: NewList([]string{"4", "3", "2"}),
+			reverse:  true,
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.Sorted(tC.reverse)
+
+		for i := 0; i < got.Len(); i++ {
+			Gotitem := got.Get(i)
+			Expecteditem := tC.expected.Get(i)
+			if Gotitem != Expecteditem {
+				t.Errorf("Error [TestSorted] Got: %v Expected: %v \n.", got, tC.expected)
+			}
+		}
+
+	}
+}
