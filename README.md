@@ -12,13 +12,13 @@ It supports all of the following data structure although only `int` is used in t
 * `string`
 
 ## To use module
-* import
+* Import
 ```golang
 import (
     "github.com/emylincon/golist"
 )
 ```
-* download
+* Download
 ```cmd
 go get github.com/emylincon/golist
 ```
