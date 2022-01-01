@@ -90,3 +90,12 @@ func SumInt(list *[]int) (sum int) {
 	}
 	return
 }
+
+func MaxInt(list *[]int) (max int) {
+	for i, value := range *list {
+		if i == 0 || value > max {
+			max = value
+		}
+	}
+	return
+}

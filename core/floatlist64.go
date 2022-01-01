@@ -90,3 +90,12 @@ func SumFloat64(list *[]float64) (sum float64) {
 	}
 	return
 }
+
+func MaxFloat64(list *[]float64) (max float64) {
+	for i, value := range *list {
+		if i == 0 || value > max {
+			max = value
+		}
+	}
+	return
+}

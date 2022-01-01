@@ -394,7 +394,7 @@ func TestList(t *testing.T) {
 	}
 }
 
-func Test(t *testing.T) {
+func TestJoin(t *testing.T) {
 	testCases := []struct {
 		Obj      *List
 		expected string

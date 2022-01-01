@@ -90,3 +90,12 @@ func SumInt32(list *[]int32) (sum int32) {
 	}
 	return
 }
+
+func MaxInt32(list *[]int32) (max int32) {
+	for i, value := range *list {
+		if i == 0 || value > max {
+			max = value
+		}
+	}
+	return
+}
