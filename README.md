@@ -3,7 +3,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge)
 # golist
 A customized go list with index, sort, append, pop, count, clear and last item methods. 
-It supports all of the following data structure although only `int` is used in the example:
+It supports all of the following data structures although the examples below are mostly `int`:
 * `int`
 * `int32`
 * `int64`
@@ -225,4 +225,18 @@ if err != nil {
     fmt.Println(err)  // handles error
 }
 fmt.Println(min)  // 1
+```
+
+## Loop through List
+```golang
+list := golist.NewList([]int{3, 2, 1})
+for i := 0; i < list.Len(); i++ {
+    fmt.Println(list.Get(i))
+}
+```
+Output
+```
+3
+2
+1
 ```
