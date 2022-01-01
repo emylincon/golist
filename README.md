@@ -161,3 +161,10 @@ This is a getter that returns underlying slice interface.
 list := golist.NewList([]int{3, 2, 1})
 fmt.Println(list.List())  // [3 2 1]
 ```
+
+## list.Join(joiner) string
+This only works with string data types, panics otherwise. `joiner` is a string used to join the list.
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+fmt.Println(list.Join("-"))  // "Hello-World"
+```
