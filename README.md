@@ -207,3 +207,22 @@ if err != nil {
 }
 fmt.Println(max)  // 3
 ```
+
+## list.Min() (interface{}, error)
+Returns min item in list. returns err if list is empty
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+min, err := list.Min()
+if err != nil {
+    fmt.Println(err)  // handles error
+}
+fmt.Println(min)  // "Hello"
+```
+```golang
+list := golist.NewList([]int{3, 2, 1})
+min, err := list.Min()
+if err != nil {
+    fmt.Println(err)  // handles error
+}
+fmt.Println(min)  // 1
+```
