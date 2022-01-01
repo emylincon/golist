@@ -89,3 +89,12 @@ func SumString(list *[]string) (sum string) {
 	sum = strings.Join(*list, " ")
 	return
 }
+
+func MaxString(list *[]string) (max string) {
+	for i, value := range *list {
+		if i == 0 || value > max {
+			max = value
+		}
+	}
+	return
+}

@@ -91,3 +91,12 @@ func SumFloat32(list *[]float32) (sum float32) {
 	}
 	return
 }
+
+func MaxFloat32(list *[]float32) (max float32) {
+	for i, value := range *list {
+		if i == 0 || value > max {
+			max = value
+		}
+	}
+	return
+}

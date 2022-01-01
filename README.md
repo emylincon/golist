@@ -188,3 +188,22 @@ if err != nil {
 }
 fmt.Println(list)  // ["Hello", "golang"]
 ```
+
+## list.Max() (interface{}, error)
+Returns max item in list. returns err if list is empty
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+max, err := list.Max()
+if err != nil {
+    fmt.Println(err)  // handles error
+}
+fmt.Println(max)  // "World"
+```
+```golang
+list := golist.NewList([]int{3, 2, 1})
+max, err := list.Max()
+if err != nil {
+    fmt.Println(err)  // handles error
+}
+fmt.Println(max)  // 3
+```

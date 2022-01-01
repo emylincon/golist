@@ -390,3 +390,52 @@ func TestSorted(t *testing.T) {
 
 	}
 }
+
+func TestMax(t *testing.T) {
+	var vint int = 5
+	var vint32 int32 = 5
+	var vint64 int64 = 5
+	var vfloat32 float32 = 5
+	var vfloat64 float64 = 5
+
+	testCases := []struct {
+		Obj      List
+		expected interface{}
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 5}),
+			expected: vint,
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 5}),
+			expected: vint32,
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 5}),
+			expected: vint64,
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 5}),
+			expected: vfloat32,
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 5}),
+			expected: vfloat64,
+		},
+		{
+			Obj:      *NewList([]string{"Hello", "world"}),
+			expected: "world",
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.Max()
+		if err != nil {
+			t.Errorf("Error TextMax: %v", err)
+		}
+
+		if got != tC.expected {
+			t.Errorf("[Failed TestMax] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}

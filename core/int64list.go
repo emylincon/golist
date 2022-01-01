@@ -90,3 +90,12 @@ func SumInt64(list *[]int64) (sum int64) {
 	}
 	return
 }
+
+func MaxInt64(list *[]int64) (max int64) {
+	for i, value := range *list {
+		if i == 0 || value > max {
+			max = value
+		}
+	}
+	return
+}
