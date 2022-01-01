@@ -98,3 +98,12 @@ func MaxString(list *[]string) (max string) {
 	}
 	return
 }
+
+func MinString(list *[]string) (min string) {
+	for i, value := range *list {
+		if i == 0 || value < min {
+			min = value
+		}
+	}
+	return
+}

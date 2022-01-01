@@ -100,3 +100,12 @@ func MaxFloat32(list *[]float32) (max float32) {
 	}
 	return
 }
+
+func MinFloat32(list *[]float32) (min float32) {
+	for i, value := range *list {
+		if i == 0 || value < min {
+			min = value
+		}
+	}
+	return
+}

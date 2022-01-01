@@ -439,3 +439,52 @@ func TestMax(t *testing.T) {
 
 	}
 }
+
+func TestMin(t *testing.T) {
+	var vint int = 2
+	var vint32 int32 = 2
+	var vint64 int64 = 2
+	var vfloat32 float32 = 2
+	var vfloat64 float64 = 2
+
+	testCases := []struct {
+		Obj      List
+		expected interface{}
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 5}),
+			expected: vint,
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 5}),
+			expected: vint32,
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 5}),
+			expected: vint64,
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 5}),
+			expected: vfloat32,
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 5}),
+			expected: vfloat64,
+		},
+		{
+			Obj:      *NewList([]string{"Hello", "world"}),
+			expected: "Hello",
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.Min()
+		if err != nil {
+			t.Errorf("Error TextMin: %v", err)
+		}
+
+		if got != tC.expected {
+			t.Errorf("[Failed TestMin] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}

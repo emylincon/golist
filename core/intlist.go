@@ -99,3 +99,12 @@ func MaxInt(list *[]int) (max int) {
 	}
 	return
 }
+
+func MinInt(list *[]int) (min int) {
+	for i, value := range *list {
+		if i == 0 || value < min {
+			min = value
+		}
+	}
+	return
+}

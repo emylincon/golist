@@ -99,3 +99,12 @@ func MaxInt32(list *[]int32) (max int32) {
 	}
 	return
 }
+
+func MinInt32(list *[]int32) (min int32) {
+	for i, value := range *list {
+		if i == 0 || value < min {
+			min = value
+		}
+	}
+	return
+}
