@@ -116,12 +116,21 @@ fmt.Println(count) // 2
 ```
 
 ## list.Sort(reverse) interface{}
-Sort the items of the list in place (the arguments can be used for sort customization. `reverse` is `bool` so can be `true` or `false`.
+Sort the items of the list in place (the argument can be used for sort customization. `reverse` is `bool` so can be `true` or `false`.
 ```golang
 list := golist.NewList([]int{3, 2, 1})
 reverse := false
 list.Sort(reverse)
 fmt.Println(list) // [1, 2, 3]
+```
+
+## list.Sorted(reverse) *golist.List
+Returns a list of Sorted items (the argument can be used for sort customization. `reverse` is `bool` so can be `true` or `false`).
+```golang
+list := golist.NewList([]int{3, 2, 1})
+reverse := false
+Newlist := list.Sorted(reverse)
+fmt.Println(Newlist) // [1, 2, 3]
 ```
 
 ## list.Reverse() *golist.List
