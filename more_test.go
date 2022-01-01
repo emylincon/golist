@@ -393,3 +393,38 @@ func TestList(t *testing.T) {
 
 	}
 }
+
+func Test(t *testing.T) {
+	testCases := []struct {
+		Obj      *List
+		expected string
+		joiner   string
+	}{
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			joiner:   ",",
+			expected: "Hello,world",
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			joiner:   " ",
+			expected: "Hello world",
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			joiner:   "-",
+			expected: "Hello-world",
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			joiner:   "",
+			expected: "Helloworld",
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.Join(tC.joiner)
+		if got != tC.expected {
+			t.Errorf("[Error TestJoin] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+	}
+}
