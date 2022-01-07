@@ -1,6 +1,4 @@
-![status](https://github.com/emylincon/golist/workflows/Go/badge.svg)
-
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge) ![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square)  ![status](https://github.com/emylincon/golist/workflows/Go/badge.svg)
 # golist
 A customized go list with index, sort, append, pop, count, clear and last item methods. 
 It supports all of the following data structures although the examples below are mostly `int`:
