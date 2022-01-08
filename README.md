@@ -24,7 +24,7 @@ go get github.com/emylincon/golist
 Here are all of the methods of the list objects:
 
 ## list.Get(i) interface{}
-Get an item in the list by index. `i` represents the index. 
+Get an item in the list by index. `i` represents the index. Returns `nil` if index don't exist.
 ```golang
 list := golist.NewList([]int{1,2,3})
 item := list.Get(0)
