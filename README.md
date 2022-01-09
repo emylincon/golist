@@ -260,3 +260,10 @@ if err != nil {
 }
 fmt.Println(lcm)  // 30
 ```
+
+## list.Type() string
+returns the type of list
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+fmt.Println(list.Type())  // golist.List[]string
+```
