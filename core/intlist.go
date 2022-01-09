@@ -108,3 +108,44 @@ func MinInt(list *[]int) (min int) {
 	}
 	return
 }
+
+func _gcfInt(a, b int) int {
+	var h, l int
+	if a > b {
+		h, l = a, b
+	} else {
+		h, l = b, a
+	}
+
+	for {
+		r := h % l
+		if r == 0 {
+			return l
+		} else {
+			h = l
+			l = r
+		}
+	}
+
+}
+
+func GCFInt(list *[]int) (gcf int, err error) {
+	var count int
+	if len(*list) < 2 {
+		return (*list)[0], nil
+	}
+	count = len(*list)
+	gcf = (*list)[0]
+	for i := 1; i < count; i++ {
+		b := (*list)[i]
+		a := gcf
+		if a < 0 || b < 0 {
+			return 0, ErrNotZeroOrPositive
+		} else if a == 0 || b == 0 {
+			gcf = a + b
+		} else {
+			gcf = _gcfInt(a, b)
+		}
+	}
+	return gcf, nil
+}

@@ -109,3 +109,24 @@ func MinFloat32(list *[]float32) (min float32) {
 	}
 	return
 }
+
+func GCFfloat32(list *[]float32) (gcf float32, err error) {
+	var count int
+	if len(*list) < 2 {
+		return (*list)[0], nil
+	}
+	count = len(*list)
+	gcf = (*list)[0]
+	for i := 1; i < count; i++ {
+		b := float64((*list)[i])
+		a := float64(gcf)
+		if a < 0 || b < 0 {
+			return 0, ErrNotZeroOrPositive
+		} else if a == 0 || b == 0 {
+			gcf = float32(a + b)
+		} else {
+			gcf = float32(_gcfFloat64(a, b))
+		}
+	}
+	return gcf, nil
+}
