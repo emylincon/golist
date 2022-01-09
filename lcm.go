@@ -6,28 +6,28 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
-func (arr *List) GCF() (gcf interface{}, err error) {
+func (arr *List) LCM() (lcm interface{}, err error) {
 
 	switch arr.list.(type) {
 	case []int:
 		list := arr.list.([]int)
-		return core.GCFInt(&list)
+		return core.LCMInt(&list)
 
 	case []int32:
 		list := arr.list.([]int32)
-		return core.GCFInt32(&list)
+		return core.LCMInt32(&list)
 
 	case []int64:
 		list := arr.list.([]int64)
-		return core.GCFInt64(&list)
+		return core.LCMInt64(&list)
 
 	case []float32:
 		list := arr.list.([]float32)
-		return core.GCFFloat32(&list)
+		return core.LCMFloat32(&list)
 
 	case []float64:
 		list := arr.list.([]float64)
-		return core.GCFFloat64(&list)
+		return core.LCMFloat64(&list)
 
 	case []string:
 		return nil, errors.New("strings are not supported for this operation")
@@ -36,8 +36,4 @@ func (arr *List) GCF() (gcf interface{}, err error) {
 		return nil, ErrTypeNotsupported
 	}
 
-}
-
-func (arr *List) HCF() (gcf interface{}, err error) {
-	return arr.GCF()
 }

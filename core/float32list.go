@@ -110,23 +110,31 @@ func MinFloat32(list *[]float32) (min float32) {
 	return
 }
 
-func GCFfloat32(list *[]float32) (gcf float32, err error) {
+func LcmHcfFloat32(list *[]float32, get func(a, b float64) float64) (result float32, err error) {
 	var count int
 	if len(*list) < 2 {
 		return (*list)[0], nil
 	}
 	count = len(*list)
-	gcf = (*list)[0]
+	result = (*list)[0]
 	for i := 1; i < count; i++ {
 		b := float64((*list)[i])
-		a := float64(gcf)
+		a := float64(result)
 		if a < 0 || b < 0 {
 			return 0, ErrNotZeroOrPositive
 		} else if a == 0 || b == 0 {
-			gcf = float32(a + b)
+			result = float32(a + b)
 		} else {
-			gcf = float32(_gcfFloat64(a, b))
+			result = float32(get(a, b))
 		}
 	}
-	return gcf, nil
+	return result, nil
+}
+
+func GCFFloat32(list *[]float32) (gcf float32, err error) {
+	return LcmHcfFloat32(list, _gcfFloat64)
+}
+
+func LCMFloat32(list *[]float32) (lcm float32, err error) {
+	return LcmHcfFloat32(list, _lcmFloat64)
 }

@@ -109,6 +109,27 @@ func MinInt64(list *[]int64) (min int64) {
 	return
 }
 
+func LcmHcfInt64(list *[]int64, get func(a, b int64) int64) (result int64, err error) {
+	var count int
+	if len(*list) < 2 {
+		return (*list)[0], nil
+	}
+	count = len(*list)
+	result = (*list)[0]
+	for i := 1; i < count; i++ {
+		b := (*list)[i]
+		a := result
+		if a < 0 || b < 0 {
+			return 0, ErrNotZeroOrPositive
+		} else if a == 0 || b == 0 {
+			result = a + b
+		} else {
+			result = get(a, b)
+		}
+	}
+	return result, nil
+}
+
 func _gcfInt64(a, b int64) int64 {
 	var h, l int64
 	if a > b {
@@ -130,22 +151,16 @@ func _gcfInt64(a, b int64) int64 {
 }
 
 func GCFInt64(list *[]int64) (gcf int64, err error) {
-	var count int
-	if len(*list) < 2 {
-		return (*list)[0], nil
+	return LcmHcfInt64(list, _gcfInt64)
+}
+
+func _lcmInt64(a, b int64) int64 {
+	if a == 0 && b == 0 {
+		return 0
 	}
-	count = len(*list)
-	gcf = (*list)[0]
-	for i := 1; i < count; i++ {
-		b := (*list)[i]
-		a := gcf
-		if a < 0 || b < 0 {
-			return 0, ErrNotZeroOrPositive
-		} else if a == 0 || b == 0 {
-			gcf = a + b
-		} else {
-			gcf = _gcfInt64(a, b)
-		}
-	}
-	return gcf, nil
+	return (a * b) / _gcfInt64(a, b)
+}
+
+func LCMInt64(list *[]int64) (lcm int64, err error) {
+	return LcmHcfInt64(list, _lcmInt64)
 }

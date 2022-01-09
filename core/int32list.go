@@ -109,6 +109,27 @@ func MinInt32(list *[]int32) (min int32) {
 	return
 }
 
+func LcmHcfInt32(list *[]int32, get func(a, b int32) int32) (result int32, err error) {
+	var count int
+	if len(*list) < 2 {
+		return (*list)[0], nil
+	}
+	count = len(*list)
+	result = (*list)[0]
+	for i := 1; i < count; i++ {
+		b := (*list)[i]
+		a := result
+		if a < 0 || b < 0 {
+			return 0, ErrNotZeroOrPositive
+		} else if a == 0 || b == 0 {
+			result = a + b
+		} else {
+			result = get(a, b)
+		}
+	}
+	return result, nil
+}
+
 func _gcfInt32(a, b int32) int32 {
 	var h, l int32
 	if a > b {
@@ -130,22 +151,16 @@ func _gcfInt32(a, b int32) int32 {
 }
 
 func GCFInt32(list *[]int32) (gcf int32, err error) {
-	var count int
-	if len(*list) < 2 {
-		return (*list)[0], nil
+	return LcmHcfInt32(list, _gcfInt32)
+}
+
+func _lcmInt32(a, b int32) int32 {
+	if a == 0 && b == 0 {
+		return 0
 	}
-	count = len(*list)
-	gcf = (*list)[0]
-	for i := 1; i < count; i++ {
-		b := (*list)[i]
-		a := gcf
-		if a < 0 || b < 0 {
-			return 0, ErrNotZeroOrPositive
-		} else if a == 0 || b == 0 {
-			gcf = a + b
-		} else {
-			gcf = _gcfInt32(a, b)
-		}
-	}
-	return gcf, nil
+	return (a * b) / _gcfInt32(a, b)
+}
+
+func LCMInt32(list *[]int32) (lcm int32, err error) {
+	return LcmHcfInt32(list, _lcmInt32)
 }
