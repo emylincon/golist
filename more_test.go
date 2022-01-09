@@ -619,3 +619,43 @@ func TestLCM(t *testing.T) {
 
 	}
 }
+
+func TestType(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *List
+		expected string
+	}{
+		{
+			Obj:      NewList([]int{10, 5, 25, 200}),
+			expected: "golist.List[]int",
+		},
+		{
+			Obj:      NewList([]int32{10, 5, 25, 200}),
+			expected: "golist.List[]int32",
+		},
+		{
+			Obj:      NewList([]int64{10, 5, 25, 200}),
+			expected: "golist.List[]int64",
+		},
+		{
+			Obj:      NewList([]float32{10, 5, 25, 200}),
+			expected: "golist.List[]float32",
+		},
+		{
+			Obj:      NewList([]float64{10, 5, 25, 200}),
+			expected: "golist.List[]float64",
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			expected: "golist.List[]string",
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.Type()
+		if got != tC.expected {
+			t.Errorf("Type Error : %v != %v", tC.expected, got)
+		}
+
+	}
+}
