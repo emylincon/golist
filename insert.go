@@ -1,8 +1,6 @@
 package golist
 
 import (
-	"errors"
-
 	"github.com/emylincon/golist/core"
 )
 
@@ -13,7 +11,7 @@ func (arr *List) Insert(element interface{}, index int) error {
 		list := arr.list.([]int)
 		item := element.(int)
 		if index > arr.Len() {
-			return errors.New("index error: list index out of range")
+			return ErrIndexOutOfRange
 		}
 		arr.list = *core.InsertInt(&list, item, index)
 		return nil
@@ -22,7 +20,7 @@ func (arr *List) Insert(element interface{}, index int) error {
 		list := arr.list.([]int32)
 		item := element.(int32)
 		if index > arr.Len() {
-			return errors.New("index error: list index out of range")
+			return ErrIndexOutOfRange
 		}
 		arr.list = *core.InsertInt32(&list, item, index)
 		return nil
@@ -31,7 +29,7 @@ func (arr *List) Insert(element interface{}, index int) error {
 		list := arr.list.([]int64)
 		item := element.(int64)
 		if index > arr.Len() {
-			return errors.New("index error: list index out of range")
+			return ErrIndexOutOfRange
 		}
 		arr.list = *core.InsertInt64(&list, item, index)
 		return nil
@@ -40,7 +38,7 @@ func (arr *List) Insert(element interface{}, index int) error {
 		list := arr.list.([]float32)
 		item := element.(float32)
 		if index > arr.Len() {
-			return errors.New("index error: list index out of range")
+			return ErrIndexOutOfRange
 		}
 		arr.list = *core.InsertFloat32(&list, item, index)
 		return nil
@@ -49,7 +47,7 @@ func (arr *List) Insert(element interface{}, index int) error {
 		list := arr.list.([]float64)
 		item := element.(float64)
 		if index > arr.Len() {
-			return errors.New("index error: list index out of range")
+			return ErrIndexOutOfRange
 		}
 		arr.list = *core.InsertFloat64(&list, item, index)
 		return nil
@@ -58,13 +56,13 @@ func (arr *List) Insert(element interface{}, index int) error {
 		list := arr.list.([]string)
 		item := element.(string)
 		if index > arr.Len() {
-			return errors.New("index error: list index out of range")
+			return ErrIndexOutOfRange
 		}
 		arr.list = *core.InsertString(&list, item, index)
 		return nil
 
 	default:
-		return errors.New("interface type should be []float32, []float64, []int32, []int, []int64, or []string")
+		return ErrTypeNotsupported
 	}
 
 }

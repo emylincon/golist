@@ -1,7 +1,6 @@
 package core
 
 import (
-	"errors"
 	"sort"
 )
 
@@ -21,7 +20,7 @@ func IndexOfInt64(list *[]int64, element int64) int {
 
 func LastInt64(list []int64) (int64, error) {
 	if len(list) == 0 {
-		return 0, errors.New("list is empty")
+		return 0, ErrListEmpty
 	}
 	return list[len(list)-1], nil
 }
@@ -69,7 +68,7 @@ func InsertInt64(list *[]int64, element int64, index int) *[]int64 {
 func RemoveInt64(list *[]int64, element int64) (*[]int64, error) {
 	index := IndexOfInt64(list, element)
 	if index == -1 {
-		return nil, errors.New("element not in list")
+		return nil, ErrNotInList
 	}
 	newList, _ := PopInt64(list, index)
 	return &newList, nil

@@ -1,7 +1,6 @@
 package core
 
 import (
-	"errors"
 	"sort"
 )
 
@@ -21,7 +20,7 @@ func IndexOfFloat32(array *[]float32, element float32) int {
 
 func LastFloat32(list []float32) (float32, error) {
 	if len(list) == 0 {
-		return 0, errors.New("list is empty")
+		return 0, ErrListEmpty
 	}
 	return list[len(list)-1], nil
 }
@@ -70,7 +69,7 @@ func InsertFloat32(list *[]float32, element float32, index int) *[]float32 {
 func RemoveFloat32(list *[]float32, element float32) (*[]float32, error) {
 	index := IndexOfFloat32(list, element)
 	if index == -1 {
-		return nil, errors.New("element not in list")
+		return nil, ErrNotInList
 	}
 	newList, _ := PopFloat32(list, index)
 	return &newList, nil

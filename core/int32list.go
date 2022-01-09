@@ -1,7 +1,6 @@
 package core
 
 import (
-	"errors"
 	"sort"
 )
 
@@ -21,7 +20,7 @@ func IndexOfInt32(array *[]int32, element int32) int {
 
 func LastInt32(list []int32) (int32, error) {
 	if len(list) == 0 {
-		return 0, errors.New("list is empty")
+		return 0, ErrListEmpty
 	}
 	return list[len(list)-1], nil
 }
@@ -69,7 +68,7 @@ func InsertInt32(list *[]int32, element int32, index int) *[]int32 {
 func RemoveInt32(list *[]int32, element int32) (*[]int32, error) {
 	index := IndexOfInt32(list, element)
 	if index == -1 {
-		return nil, errors.New("element not in list")
+		return nil, ErrNotInList
 	}
 	newList, _ := PopInt32(list, index)
 	return &newList, nil

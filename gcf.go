@@ -1,8 +1,6 @@
 package golist
 
 import (
-	"errors"
-
 	"github.com/emylincon/golist/core"
 )
 
@@ -30,7 +28,7 @@ func (arr *List) GCF() (gcf interface{}, err error) {
 		return core.GCFFloat64(&list)
 
 	case []string:
-		return nil, errors.New("strings are not supported for this operation")
+		return nil, ErrStringsNotsupported
 
 	default:
 		return nil, ErrTypeNotsupported

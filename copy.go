@@ -1,7 +1,5 @@
 package golist
 
-import "errors"
-
 func (arr *List) Copy() (*List, error) {
 
 	switch arr.list.(type) {
@@ -30,7 +28,7 @@ func (arr *List) Copy() (*List, error) {
 		return NewList(list), nil
 
 	default:
-		return nil, errors.New("interface type should be []float32, []float64, []int32, []int, []int64, or []string")
+		return nil, ErrTypeNotsupported
 	}
 
 }

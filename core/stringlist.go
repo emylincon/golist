@@ -1,7 +1,6 @@
 package core
 
 import (
-	"errors"
 	"sort"
 	"strings"
 )
@@ -22,7 +21,7 @@ func IndexOfString(array *[]string, element string) int {
 
 func LastString(array []string) (string, error) {
 	if len(array) == 0 {
-		return "", errors.New("list is empty")
+		return "", ErrListEmpty
 	}
 	return array[len(array)-1], nil
 }
@@ -70,7 +69,7 @@ func InsertString(list *[]string, element string, index int) *[]string {
 func RemoveString(list *[]string, element string) (*[]string, error) {
 	index := IndexOfString(list, element)
 	if index == -1 {
-		return nil, errors.New("element not in list")
+		return nil, ErrNotInList
 	}
 	newList, _ := PopString(list, index)
 	return &newList, nil
