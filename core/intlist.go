@@ -109,6 +109,27 @@ func MinInt(list *[]int) (min int) {
 	return
 }
 
+func LcmHcfInt(list *[]int, get func(a, b int) int) (result int, err error) {
+	var count int
+	if len(*list) < 2 {
+		return (*list)[0], nil
+	}
+	count = len(*list)
+	result = (*list)[0]
+	for i := 1; i < count; i++ {
+		b := (*list)[i]
+		a := result
+		if a < 0 || b < 0 {
+			return 0, ErrNotZeroOrPositive
+		} else if a == 0 || b == 0 {
+			result = a + b
+		} else {
+			result = get(a, b)
+		}
+	}
+	return result, nil
+}
+
 func _gcfInt(a, b int) int {
 	var h, l int
 	if a > b {
@@ -130,22 +151,16 @@ func _gcfInt(a, b int) int {
 }
 
 func GCFInt(list *[]int) (gcf int, err error) {
-	var count int
-	if len(*list) < 2 {
-		return (*list)[0], nil
+	return LcmHcfInt(list, _gcfInt)
+}
+
+func _lcmInt(a, b int) int {
+	if a == 0 && b == 0 {
+		return 0
 	}
-	count = len(*list)
-	gcf = (*list)[0]
-	for i := 1; i < count; i++ {
-		b := (*list)[i]
-		a := gcf
-		if a < 0 || b < 0 {
-			return 0, ErrNotZeroOrPositive
-		} else if a == 0 || b == 0 {
-			gcf = a + b
-		} else {
-			gcf = _gcfInt(a, b)
-		}
-	}
-	return gcf, nil
+	return (a * b) / _gcfInt(a, b)
+}
+
+func LCMInt(list *[]int) (lcm int, err error) {
+	return LcmHcfInt(list, _lcmInt)
 }

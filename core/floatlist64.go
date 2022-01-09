@@ -139,23 +139,38 @@ func _gcfFloat64(a, b float64) float64 {
 
 }
 
-func GCFfloat64(list *[]float64) (gcf float64, err error) {
+func LcmHcfFloat64(list *[]float64, get func(a, b float64) float64) (result float64, err error) {
 	var count int
 	if len(*list) < 2 {
 		return (*list)[0], nil
 	}
 	count = len(*list)
-	gcf = (*list)[0]
+	result = (*list)[0]
 	for i := 1; i < count; i++ {
 		b := (*list)[i]
-		a := gcf
+		a := result
 		if a < 0 || b < 0 {
 			return 0, ErrNotZeroOrPositive
 		} else if a == 0 || b == 0 {
-			gcf = a + b
+			result = a + b
 		} else {
-			gcf = _gcfFloat64(a, b)
+			result = get(a, b)
 		}
 	}
-	return gcf, nil
+	return result, nil
+}
+
+func GCFFloat64(list *[]float64) (gcf float64, err error) {
+	return LcmHcfFloat64(list, _gcfFloat64)
+}
+
+func _lcmFloat64(a, b float64) float64 {
+	if a == 0 && b == 0 {
+		return 0
+	}
+	return (a * b) / _gcfFloat64(a, b)
+}
+
+func LCMFloat64(list *[]float64) (lcm float64, err error) {
+	return LcmHcfFloat64(list, _lcmFloat64)
 }

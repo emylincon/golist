@@ -242,10 +242,21 @@ Output
 ## list.GCF() (interface{}, error)
 Returns the Greatest Common Factor (GCF) or Highest Common Factor (HCF) of the numbers in the list. Only works with numbers. Returns error if called on list of strings. Uses [Euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm)
 ```golang
-list := golist.NewList([]string{10, 15, 5})
+list := golist.NewList([]int{10, 15, 5})
 gcf, err := list.GCF()
 if err != nil {
     fmt.Println(err)  // handle error
 }
 fmt.Println(gcf)  // 5
+```
+
+## list.LCM() (interface{}, error)
+Returns the [Least Common Multiple (LCM)](https://mathworld.wolfram.com/LeastCommonMultiple.html) of the numbers in the list. Only works with numbers. Returns error if called on list of strings. Uses [Euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm)
+```golang
+list := golist.NewList([]int{10, 15, 5})
+lcm, err := list.LCM()
+if err != nil {
+    fmt.Println(err)  // handle error
+}
+fmt.Println(lcm)  // 30
 ```
