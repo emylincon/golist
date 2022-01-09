@@ -1,8 +1,6 @@
 package golist
 
 import (
-	"errors"
-
 	"github.com/emylincon/golist/core"
 )
 
@@ -155,7 +153,7 @@ func (arr *List) Last() (interface{}, error) {
 		return core.LastString(list)
 
 	default:
-		return nil, errors.New("type not found")
+		return nil, ErrTypeNotsupported
 	}
 
 }

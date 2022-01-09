@@ -1,7 +1,6 @@
 package core
 
 import (
-	"errors"
 	"math"
 	"sort"
 )
@@ -22,7 +21,7 @@ func IndexOfFloat64(array *[]float64, element float64) int {
 
 func LastFloat64(list []float64) (float64, error) {
 	if len(list) == 0 {
-		return 0, errors.New("list is empty")
+		return 0, ErrListEmpty
 	}
 	return list[len(list)-1], nil
 }
@@ -70,7 +69,7 @@ func InsertFloat64(list *[]float64, element float64, index int) *[]float64 {
 func RemoveFloat64(list *[]float64, element float64) (*[]float64, error) {
 	index := IndexOfFloat64(list, element)
 	if index == -1 {
-		return nil, errors.New("element not in list")
+		return nil, ErrNotInList
 	}
 	newList, _ := PopFloat64(list, index)
 	return &newList, nil

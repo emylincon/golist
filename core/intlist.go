@@ -1,7 +1,6 @@
 package core
 
 import (
-	"errors"
 	"sort"
 )
 
@@ -21,7 +20,7 @@ func IndexOfInt(array *[]int, element int) int {
 
 func LastInt(array []int) (int, error) {
 	if len(array) == 0 {
-		return 0, errors.New("list is empty")
+		return 0, ErrListEmpty
 	}
 	return array[len(array)-1], nil
 }
@@ -69,7 +68,7 @@ func InsertInt(list *[]int, element int, index int) *[]int {
 func RemoveInt(list *[]int, element int) (*[]int, error) {
 	index := IndexOfInt(list, element)
 	if index == -1 {
-		return nil, errors.New("element not in list")
+		return nil, ErrNotInList
 	}
 	newList, _ := PopInt(list, index)
 	return &newList, nil

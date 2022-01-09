@@ -1,8 +1,6 @@
 package golist
 
 import (
-	"errors"
-
 	"github.com/emylincon/golist/core"
 )
 
@@ -58,7 +56,7 @@ func (arr *List) Remove(element interface{}) error {
 		return err
 
 	default:
-		return errors.New("interface type should be []float32, []float64, []int32, []int, []int64, or []string")
+		return ErrTypeNotsupported
 	}
 
 }

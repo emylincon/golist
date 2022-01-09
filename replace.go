@@ -1,14 +1,12 @@
 package golist
 
-import "errors"
-
 func (arr *List) Replace(element interface{}, index int) error {
 	switch arr.list.(type) {
 	case []int:
 		list := arr.list.([]int)
 		item := element.(int)
 		if index >= len(list) || index < -1 {
-			return errors.New("Index out of range")
+			return ErrIndexOutOfRange
 		} else if index == -1 {
 			index = len(list) - 1
 		}
@@ -19,7 +17,7 @@ func (arr *List) Replace(element interface{}, index int) error {
 		list := arr.list.([]int32)
 		item := element.(int32)
 		if index >= len(list) || index < -1 {
-			return errors.New("Index out of range")
+			return ErrIndexOutOfRange
 		} else if index == -1 {
 			index = len(list) - 1
 		}
@@ -30,7 +28,7 @@ func (arr *List) Replace(element interface{}, index int) error {
 		list := arr.list.([]int64)
 		item := element.(int64)
 		if index >= len(list) || index < -1 {
-			return errors.New("Index out of range")
+			return ErrIndexOutOfRange
 		} else if index == -1 {
 			index = len(list) - 1
 		}
@@ -41,7 +39,7 @@ func (arr *List) Replace(element interface{}, index int) error {
 		list := arr.list.([]float32)
 		item := element.(float32)
 		if index >= len(list) || index < -1 {
-			return errors.New("Index out of range")
+			return ErrIndexOutOfRange
 		} else if index == -1 {
 			index = len(list) - 1
 		}
@@ -52,7 +50,7 @@ func (arr *List) Replace(element interface{}, index int) error {
 		list := arr.list.([]float64)
 		item := element.(float64)
 		if index >= len(list) || index < -1 {
-			return errors.New("Index out of range")
+			return ErrIndexOutOfRange
 		} else if index == -1 {
 			index = len(list) - 1
 		}
@@ -63,7 +61,7 @@ func (arr *List) Replace(element interface{}, index int) error {
 		list := arr.list.([]string)
 		item := element.(string)
 		if index >= len(list) || index < -1 {
-			return errors.New("Index out of range")
+			return ErrIndexOutOfRange
 		} else if index == -1 {
 			index = len(list) - 1
 		}
@@ -71,6 +69,6 @@ func (arr *List) Replace(element interface{}, index int) error {
 		arr.list = list
 		return nil
 	default:
-		return errors.New("unknown type")
+		return ErrTypeNotsupported
 	}
 }
