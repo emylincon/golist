@@ -494,3 +494,59 @@ func TestReplace(t *testing.T) {
 
 	}
 }
+
+func TestGCF(t *testing.T) {
+	var vint int = 5
+	var vint32 int32 = 5
+	var vint64 int64 = 5
+	var vfloat32 float32 = 5
+	var vfloat64 float64 = 5
+	var edge float64 = 0.3
+
+	testCases := []struct {
+		Obj      *List
+		expected interface{}
+	}{
+		{
+			Obj:      NewList([]int{10, 5, 25, 200}),
+			expected: vint,
+		},
+		// edge case
+		{
+			Obj:      NewList([]int{10, 5, 0, 0}),
+			expected: vint,
+		},
+		{
+			Obj:      NewList([]int32{10, 5, 25, 200}),
+			expected: vint32,
+		},
+		{
+			Obj:      NewList([]int64{10, 5, 25, 200}),
+			expected: vint64,
+		},
+		{
+			Obj:      NewList([]float32{10, 5, 25, 200}),
+			expected: vfloat32,
+		},
+		{
+			Obj:      NewList([]float64{10, 5, 25, 200}),
+			expected: vfloat64,
+		},
+		// edge case
+		{
+			Obj:      NewList([]float64{6.3, 12}),
+			expected: edge,
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			expected: nil,
+		},
+	}
+	for _, tC := range testCases {
+		got, _ := tC.Obj.GCF()
+		if got != tC.expected {
+			t.Errorf("GCF Error : %v != %v", tC.expected, got)
+		}
+
+	}
+}
