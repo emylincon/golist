@@ -4,6 +4,10 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
+type Lists interface {
+	List() interface{}
+}
+
 type List struct {
 	list interface{}
 }

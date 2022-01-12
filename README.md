@@ -30,6 +30,15 @@ list := golist.NewList([]int{1,2,3})
 item := list.Get(0)
 fmt.Println(item)  // 1
 ```
+
+## list.Index(x) int
+Get an item's index in the list. works in reverse of `list.Get(i)`. `x` represents the item. Returns `-1` if item don't exist.
+```golang
+list := golist.NewList([]int{1,2,3})
+index := list.index(2)
+fmt.Println(index)  // 1
+```
+
 ## list.String()
 Returns a string representation of the object
 ```golang
@@ -266,4 +275,11 @@ returns the type of list
 ```golang
 list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Type())  // golist.List[]string
+```
+
+## list.Rand() interface{}
+Returns a random element from list.
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+fmt.Println(list.Rand())  // World
 ```
