@@ -290,3 +290,14 @@ returns true if element exists, returns false otherwise
 list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Exists("okay"))  // false
 ```
+
+## list.Combinations(int) *golist.List
+This is adapted from [Link](https://github.com/mxschmitt/golang-combinations). Combinations returns combinations of n number of elements for a given string array.e.g if `n=2` it will return only 2 combined elements.
+Futhermore `NewList([]string{"a", "b", "c"}).Combinations(2) = ["ab", "ac", "bc"]`.
+* For `n < 1`, it equals to All and returns all combinations.
+* For `n > len(list)` then `n = len(list)`
+```golang
+list := NewList([]string{"a", "b", "c"})
+combinedList := list.Combinations(2)
+fmt.Println(combinedList)  // ["ab", "ac", "bc"]
+```
