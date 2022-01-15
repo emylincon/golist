@@ -2,6 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
+// sums all element in the list
 func (arr *List) Sum() interface{} {
 	switch arr.list.(type) {
 	case []int:

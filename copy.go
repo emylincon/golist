@@ -1,5 +1,6 @@
 package golist
 
+// returns a copy of the list
 func (arr *List) Copy() (*List, error) {
 
 	switch arr.list.(type) {

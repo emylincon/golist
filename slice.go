@@ -1,5 +1,6 @@
 package golist
 
+// slice a list. similar to []int{1,2,3,4}[start:stop]
 func (arr *List) Slice(start int, stop int) (*List, error) {
 
 	switch arr.list.(type) {

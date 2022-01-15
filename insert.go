@@ -4,6 +4,7 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
+// inserts an element at a given location. returns error if index is out of range
 func (arr *List) Insert(element interface{}, index int) error {
 
 	switch arr.list.(type) {

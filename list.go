@@ -4,14 +4,42 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
+// List interface and all methods
 type Lists interface {
 	List() interface{}
+	Get(index int) interface{}
+	Append(element interface{})
+	Index(element interface{}) int
+	Last() (interface{}, error)
+	Max() (interface{}, error)
+	Min() (interface{}, error)
+	Type() string
+	Sum() interface{}
+	String() string
+	LCM() (interface{}, error)
+	GCF() (interface{}, error)
+	HCF() (interface{}, error) // same as GCF
+	Clear()
+	Copy() (*List, error)
+	Count(element interface{}) int
+	Extend(element interface{})
+	Pop(index int) interface{}
+	Insert(element interface{}, index int) error
+	Rand() interface{}
+	Remove(element interface{}) error
+	Replace(element interface{}, index int) error
+	Reverse() *List
+	Set() (*List, error)
+	Slice(start int, stop int) (*List, error)
+	Sort(reverse bool) interface{}
 }
 
+// list struct
 type List struct {
 	list interface{}
 }
 
+// list constructor
 func NewList(list interface{}) *List {
 	newlist := &List{
 		list: list,
@@ -19,6 +47,7 @@ func NewList(list interface{}) *List {
 	return newlist
 }
 
+// returns underlying slice or array
 func (arr *List) List() interface{} {
 	switch arr.list.(type) {
 	case []int:
@@ -50,6 +79,7 @@ func (arr *List) List() interface{} {
 	}
 }
 
+// append element to list
 func (arr *List) Append(element interface{}) {
 
 	switch arr.list.(type) {
@@ -89,6 +119,7 @@ func (arr *List) Append(element interface{}) {
 
 }
 
+// returns index of a given element. returns  -1 if element don't exist
 func (arr *List) Index(element interface{}) int {
 
 	switch arr.list.(type) {
@@ -128,6 +159,7 @@ func (arr *List) Index(element interface{}) int {
 
 }
 
+// returns last element in the list
 func (arr *List) Last() (interface{}, error) {
 
 	switch arr.list.(type) {
