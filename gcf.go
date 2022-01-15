@@ -4,6 +4,7 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
+// returns greatest common factor of the list. returns error if type of list is string or any of the unsupported types
 func (arr *List) GCF() (gcf interface{}, err error) {
 
 	switch arr.list.(type) {
@@ -36,6 +37,7 @@ func (arr *List) GCF() (gcf interface{}, err error) {
 
 }
 
+// returns greatest common factor of the list. returns error if type of list is string or any of the unsupported types
 func (arr *List) HCF() (gcf interface{}, err error) {
 	return arr.GCF()
 }

@@ -1,5 +1,6 @@
 package golist
 
+// returns string representation of the list.
 func (arr *List) Type() (ltype string) {
 	switch arr.list.(type) {
 	case []int:

@@ -1,5 +1,6 @@
 package golist
 
+// replaces an element in the lsit using the elements index. returns error if index do not exist.
 func (arr *List) Replace(element interface{}, index int) error {
 	switch arr.list.(type) {
 	case []int:

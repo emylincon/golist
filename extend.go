@@ -2,6 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
+// adds two list together. panics if both lists are not of the same type
 func (arr *List) Extend(element interface{}) {
 
 	switch arr.list.(type) {

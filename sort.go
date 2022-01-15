@@ -2,6 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
+// sorts elements in the list in ascending order or descending order in place.
 func (arr *List) Sort(reverse bool) interface{} {
 
 	switch arr.list.(type) {
@@ -47,6 +48,7 @@ func (arr *List) Sort(reverse bool) interface{} {
 
 }
 
+// sorts elements in the list in ascending order or descending order and returns list.
 func (arr *List) Sorted(reverse bool) *List {
 
 	switch arr.list.(type) {

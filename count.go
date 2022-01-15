@@ -2,6 +2,8 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
+// returns a count of how many times a given element appears in the list
+// panics if given element type does not match the type of list
 func (arr *List) Count(element interface{}) int {
 
 	switch arr.list.(type) {
