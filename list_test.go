@@ -538,7 +538,7 @@ func TestExists(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-		got := tC.Obj.Exists(tC.element)
+		got := tC.Obj.Contains(tC.element)
 
 		if got != tC.expected {
 			t.Errorf("[Failed TestExists] : Got: %v, Expected: %v.\n", got, tC.expected)
@@ -574,5 +574,52 @@ func TestCombinations(t *testing.T) {
 			}
 		}
 
+	}
+}
+
+func TestIsEqual(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *List
+		other    *List
+		expected bool
+	}{
+		{
+			Obj:      NewList([]int{2, 3}),
+			other:    NewList([]int{2, 3}),
+			expected: true,
+		},
+		{
+			Obj:      NewList([]int32{2, 3}),
+			other:    NewList([]int32{5, 3}),
+			expected: false,
+		},
+		{
+			Obj:      NewList([]int64{2, 3}),
+			other:    NewList([]int64{2, 5}),
+			expected: false,
+		},
+		{
+			Obj:      NewList([]float32{2, 3}),
+			other:    NewList([]float32{2, 3}),
+			expected: true,
+		},
+		{
+			Obj:      NewList([]float64{2, 3}),
+			other:    NewList([]float64{2, 5}),
+			expected: false,
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			other:    NewList([]string{"Hello", "world", "gang"}),
+			expected: false,
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.IsEqual(tC.other)
+
+		if got != tC.expected {
+			t.Errorf("[Error TestIsEqual] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
 	}
 }

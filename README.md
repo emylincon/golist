@@ -284,11 +284,11 @@ list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Rand())  // World
 ```
 
-## list.Exists(interface{}) bool
+## list.Contains(interface{}) bool
 returns true if element exists, returns false otherwise
 ```golang
 list := golist.NewList([]string{"Hello", "World"})
-fmt.Println(list.Exists("okay"))  // false
+fmt.Println(list.Contains("okay"))  // false
 ```
 
 ## list.Combinations(int) *golist.List
@@ -300,4 +300,11 @@ Futhermore `NewList([]string{"a", "b", "c"}).Combinations(2) = ["ab", "ac", "bc"
 list := NewList([]string{"a", "b", "c"})
 combinedList := list.Combinations(2)
 fmt.Println(combinedList)  // ["ab", "ac", "bc"]
+```
+
+## list.IsEqual(*golist.List) bool
+returns true if both lists are equal, returns false otherwise
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+fmt.Println(list.IsEqual([]string{"a", "b"}))  // false
 ```
