@@ -163,3 +163,14 @@ func _lcmInt(a, b int) int {
 func LCMInt(list *[]int) (lcm int, err error) {
 	return LcmHcfInt(list, _lcmInt)
 }
+
+func SetInt(list []int) (set []int) {
+	keys := map[int]bool{}
+	for _, key := range list {
+		if !keys[key] {
+			keys[key] = true
+			set = append(set, key)
+		}
+	}
+	return
+}

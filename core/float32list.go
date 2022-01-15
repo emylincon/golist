@@ -137,3 +137,14 @@ func GCFFloat32(list *[]float32) (gcf float32, err error) {
 func LCMFloat32(list *[]float32) (lcm float32, err error) {
 	return LcmHcfFloat32(list, _lcmFloat64)
 }
+
+func SetFloat32(list []float32) (set []float32) {
+	keys := map[float32]bool{}
+	for _, key := range list {
+		if !keys[key] {
+			keys[key] = true
+			set = append(set, key)
+		}
+	}
+	return
+}

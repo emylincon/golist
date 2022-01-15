@@ -623,3 +623,43 @@ func TestIsEqual(t *testing.T) {
 		}
 	}
 }
+
+func TestSet(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *List
+		expected *List
+	}{
+		{
+			Obj:      NewList([]int{2, 3, 2, 3}),
+			expected: NewList([]int{2, 3}),
+		},
+		{
+			Obj:      NewList([]int32{2, 3, 5, 5}),
+			expected: NewList([]int32{2, 3, 5}),
+		},
+		{
+			Obj:      NewList([]int64{2, 3}),
+			expected: NewList([]int64{2, 3}),
+		},
+		{
+			Obj:      NewList([]float32{2, 3, 1, 2, 3, 1}),
+			expected: NewList([]float32{2, 3, 1}),
+		},
+		{
+			Obj:      NewList([]float64{2, 3, 3}),
+			expected: NewList([]float64{2, 3}),
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world", "hello", "world"}),
+			expected: NewList([]string{"Hello", "world", "hello"}),
+		},
+	}
+	for _, tC := range testCases {
+		got, _ := tC.Obj.Set()
+
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error TestSet] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+	}
+}

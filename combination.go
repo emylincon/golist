@@ -16,7 +16,7 @@ func (arr *List) Combinations(n int) (*List, error) {
 
 	case []string:
 		list := arr.list.([]string)
-		set := set(list)
+		set := core.SetString(list)
 		list = core.CombinationsString(set, n)
 		return NewList(list), nil
 
@@ -24,16 +24,4 @@ func (arr *List) Combinations(n int) (*List, error) {
 		return nil, ErrTypeNotsupported
 	}
 
-}
-
-// converts list to set
-func set(list []string) (set []string) {
-	keys := map[string]bool{}
-	for _, key := range list {
-		if !keys[key] {
-			keys[key] = true
-			set = append(set, key)
-		}
-	}
-	return
 }

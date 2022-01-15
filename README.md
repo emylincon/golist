@@ -308,3 +308,11 @@ returns true if both lists are equal, returns false otherwise
 list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.IsEqual([]string{"a", "b"}))  // false
 ```
+
+## list.Set() (*golist.List, err)
+returns a new list with duplicates removed
+```golang
+list := golist.NewList([]int{1, 1, 1, 2, 3, 3, 4, 5, 6, 6})
+fmt.Println(list.Set()) // [1, 2, 3, 4, 5, 6]
+```
+
