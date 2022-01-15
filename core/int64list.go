@@ -163,3 +163,14 @@ func _lcmInt64(a, b int64) int64 {
 func LCMInt64(list *[]int64) (lcm int64, err error) {
 	return LcmHcfInt64(list, _lcmInt64)
 }
+
+func SetInt64(list []int64) (set []int64) {
+	keys := map[int64]bool{}
+	for _, key := range list {
+		if !keys[key] {
+			keys[key] = true
+			set = append(set, key)
+		}
+	}
+	return
+}

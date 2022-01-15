@@ -138,3 +138,14 @@ func CombinationsString(set []string, n int) (subsets []string) {
 	}
 	return subsets
 }
+
+func SetString(list []string) (set []string) {
+	keys := map[string]bool{}
+	for _, key := range list {
+		if !keys[key] {
+			keys[key] = true
+			set = append(set, key)
+		}
+	}
+	return
+}

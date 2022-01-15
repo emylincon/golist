@@ -173,3 +173,14 @@ func _lcmFloat64(a, b float64) float64 {
 func LCMFloat64(list *[]float64) (lcm float64, err error) {
 	return LcmHcfFloat64(list, _lcmFloat64)
 }
+
+func SetFloat64(list []float64) (set []float64) {
+	keys := map[float64]bool{}
+	for _, key := range list {
+		if !keys[key] {
+			keys[key] = true
+			set = append(set, key)
+		}
+	}
+	return
+}

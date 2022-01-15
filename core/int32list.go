@@ -163,3 +163,14 @@ func _lcmInt32(a, b int32) int32 {
 func LCMInt32(list *[]int32) (lcm int32, err error) {
 	return LcmHcfInt32(list, _lcmInt32)
 }
+
+func SetInt32(list []int32) (set []int32) {
+	keys := map[int32]bool{}
+	for _, key := range list {
+		if !keys[key] {
+			keys[key] = true
+			set = append(set, key)
+		}
+	}
+	return
+}
