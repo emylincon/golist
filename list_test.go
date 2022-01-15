@@ -488,3 +488,61 @@ func TestMin(t *testing.T) {
 
 	}
 }
+
+func TestExists(t *testing.T) {
+	var vint int = 2
+	var vint32 int32 = 2
+	var vint64 int64 = 2
+	var vfloat32 float32 = 2
+	var vfloat64 float64 = 2
+
+	testCases := []struct {
+		Obj      List
+		element  interface{}
+		expected bool
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 5}),
+			element:  vint,
+			expected: true,
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 5}),
+			element:  vint32,
+			expected: true,
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 5}),
+			element:  vint64,
+			expected: true,
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 5}),
+			element:  vfloat32,
+			expected: true,
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 5}),
+			element:  vfloat64,
+			expected: true,
+		},
+		{
+			Obj:      *NewList([]string{"Hello", "world"}),
+			element:  "Hello",
+			expected: true,
+		},
+		{
+			Obj:      *NewList([]string{"Hello", "world"}),
+			element:  "hell",
+			expected: false,
+		},
+	}
+	for _, tC := range testCases {
+		got := tC.Obj.Exists(tC.element)
+
+		if got != tC.expected {
+			t.Errorf("[Failed TestExists] : Got: %v, Expected: %v.\n", got, tC.element)
+		}
+
+	}
+}

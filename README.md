@@ -283,3 +283,10 @@ Returns a random element from list.
 list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Rand())  // World
 ```
+
+## list.Exists(interface{}) bool
+returns true if element exists, returns false otherwise
+```golang
+list := golist.NewList([]string{"Hello", "World"})
+fmt.Println(list.Exists("okay"))  // false
+```
