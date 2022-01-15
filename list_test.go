@@ -541,7 +541,37 @@ func TestExists(t *testing.T) {
 		got := tC.Obj.Exists(tC.element)
 
 		if got != tC.expected {
-			t.Errorf("[Failed TestExists] : Got: %v, Expected: %v.\n", got, tC.element)
+			t.Errorf("[Failed TestExists] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}
+
+func TestCombinations(t *testing.T) {
+
+	testCases := []struct {
+		Obj      List
+		no       int
+		expected List
+	}{
+		{
+			Obj:      *NewList([]string{"a", "b", "c"}),
+			no:       2,
+			expected: *NewList([]string{"ab", "ac", "bc"}),
+		},
+		{
+			Obj:      *NewList([]string{"a", "b", "c"}),
+			no:       3,
+			expected: *NewList([]string{"abc"}),
+		},
+	}
+	for _, tC := range testCases {
+		got, _ := tC.Obj.Combinations(tC.no)
+
+		for i := 0; i < got.Len(); i++ {
+			if got.Get(i) != tC.expected.Get(i) {
+				t.Errorf("[Failed TestCombinations] : Got: %v, Expected: %v.\n", got, &tC.expected)
+			}
 		}
 
 	}
