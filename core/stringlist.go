@@ -122,7 +122,7 @@ func MinString(list *[]string) (min string) {
 }
 
 // adapted from https://github.com/mxschmitt/golang-combinations
-func CombinationsString(set []string, n int) (subsets []string) {
+func CombinationsString(set []string, n int, joiner string) (subsets []string) {
 	length := uint(len(set))
 
 	if n > len(set) {
@@ -143,10 +143,13 @@ func CombinationsString(set []string, n int) (subsets []string) {
 			// by checking if bit 'object' is set in subsetBits
 			if (subsetBits>>object)&1 == 1 {
 				// add object to subset
-				subset += set[object]
+				subset += set[object] + joiner
 			}
 		}
-		// add subset to subsets
+		// remove unwanted joiner and add subset to subsets
+		if len(joiner) != 0 {
+			subset = subset[:len(subset)-1]
+		}
 		subsets = append(subsets, subset)
 	}
 	return subsets
