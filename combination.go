@@ -10,14 +10,14 @@ import (
 // futhermore NewList([]string{"a", "b", "c"}).Combinations(2) = ["ab", "ac", "bc"]
 // For n < 1, it equals to All and returns all combinations.
 // for n > len(list); n = len(list)
-func (arr *List) Combinations(n int) (*List, error) {
+func (arr *List) Combinations(n int, joiner string) (*List, error) {
 
 	switch arr.list.(type) {
 
 	case []string:
 		list := arr.list.([]string)
 		set := core.SetString(list)
-		list = core.CombinationsString(set, n)
+		list = core.CombinationsString(set, n, joiner)
 		return NewList(list), nil
 
 	default:

@@ -566,7 +566,7 @@ func TestCombinations(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-		got, _ := tC.Obj.Combinations(tC.no)
+		got, _ := tC.Obj.Combinations(tC.no, "")
 
 		for i := 0; i < got.Len(); i++ {
 			if got.Get(i) != tC.expected.Get(i) {
