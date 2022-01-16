@@ -6,32 +6,36 @@ import (
 
 // List interface and all methods
 type Lists interface {
-	List() interface{}
-	Get(index int) interface{}
-	Append(element interface{})
-	Index(element interface{}) int
-	Last() (interface{}, error)
-	Max() (interface{}, error)
-	Min() (interface{}, error)
-	Type() string
-	Sum() interface{}
-	String() string
-	LCM() (interface{}, error)
-	GCF() (interface{}, error)
-	HCF() (interface{}, error) // same as GCF
-	Clear()
-	Copy() (*List, error)
-	Count(element interface{}) int
-	Extend(element interface{})
-	Pop(index int) interface{}
-	Insert(element interface{}, index int) error
-	Rand() interface{}
-	Remove(element interface{}) error
-	Replace(element interface{}, index int) error
-	Reverse() *List
-	Set() (*List, error)
-	Slice(start int, stop int) (*List, error)
-	Sort(reverse bool) interface{}
+	List() interface{}                            // returns underlying slice
+	Get(index int) interface{}                    // get item with index
+	Append(element interface{})                   // append item
+	Index(element interface{}) int                // get item's index
+	Last() (interface{}, error)                   // get last item
+	Max() (interface{}, error)                    // max item
+	Min() (interface{}, error)                    // min item
+	Type() string                                 // type of list
+	Sum() interface{}                             // sum list items
+	String() string                               // string repr
+	LCM() (interface{}, error)                    // lcm of lest
+	GCF() (interface{}, error)                    // gcf of list
+	HCF() (interface{}, error)                    // same as GCF
+	Clear()                                       // remove all elements in list
+	Copy() (*List, error)                         // return a copy of list
+	Count(element interface{}) int                // count how many times an item appears in list
+	Extend(element interface{}) error             // extend list
+	Pop(index int) interface{}                    // remove item
+	Insert(element interface{}, index int) error  // insert item
+	Rand() interface{}                            // return random item
+	Remove(element interface{}) error             // remove item
+	Replace(element interface{}, index int) error // replace item
+	Reverse() *List                               // reverse list
+	Set() (*List, error)                          // remove duplicates
+	Slice(start int, stop int) (*List, error)     // return sub list
+	Sort(reverse bool) interface{}                // sort list
+	Add(other *List) *List                        // add 2 lists
+	IsEqual(other *List) bool                     // checks 2 lists are equal
+	Combinations(n int, joiner string) *List      // combinations of items in list
+	Contains(element interface{}) bool            // check if item in list
 }
 
 // list struct
