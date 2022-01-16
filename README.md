@@ -26,7 +26,7 @@ go get github.com/emylincon/golist
 
 Here are all of the methods of the list objects:
 
-## list.Get(i) interface{}
+## list.Get(i int) interface{}
 Get an item in the list by index. `i` represents the index. Returns `nil` if index don't exist.
 ```golang
 list := golist.NewList([]int{1,2,3})
@@ -34,7 +34,7 @@ item := list.Get(0)
 fmt.Println(item)  // 1
 ```
 
-## list.Index(x) int
+## list.Index(x interface{}) int
 Get an item's index in the list. works in reverse of `list.Get(i)`. `x` represents the item. Returns `-1` if item don't exist.
 ```golang
 list := golist.NewList([]int{1,2,3})
@@ -49,7 +49,7 @@ list := NewList([]int{3,2,1})
 fmt.Println(list.String())  // [3, 2, 1]
 ```
 
-## list.Append(x)
+## list.Append(x interface{})
 Add an item to the end of the list. Items must be of the same type.
 ```golang
 list := golist.NewList([]int{1,2,3})
@@ -57,7 +57,7 @@ list.Append(7)
 fmt.Println(list)  // [1, 2, 3, 7]
 ```
 
-## list.Extend(slice)
+## list.Extend(slice interface{})
 Extend the list by appending all the items from a slice or array.
 ```golang
 list := golist.NewList([]int{1,2,3})
@@ -65,7 +65,7 @@ list.Extend([]int{4,5})
 fmt.Println(list)  // [1, 2, 3, 4, 5]
 ```
 
-## list.Insert(x, i) error
+## list.Insert(x interface{}, i int) error
 Insert an item at a given position. The first argument is the element while the second is the index to insert the element, so `list.insert(x, 0)` inserts at the front of the list, and `list.Insert(x, len(a))` is equivalent to `list.Append(x)`. Returns error is any
 ```golang
 list := golist.NewList([]int{1, 2, 3})
@@ -77,7 +77,7 @@ fmt.Println(list) // [1, 2, 3, 4]
 ```
 * The above inserts item 4 to position 3 which is the end of the list
 
-## list.Remove(x) error
+## list.Remove(x interface{}) error
 Remove the first item from the list whose value is equal to x. It raises a ValueError if there is no such item.
 ```golang
 list := golist.NewList([]int{1, 2, 3})
@@ -88,8 +88,8 @@ if err != nil {
 fmt.Println(list) // [1, 3]
 ```
 
-## list.Pop(i) interface{}
-Remove the item at the given position in the list, and return it. i is the index of the element to be popped.
+## list.Pop(i int) interface{}
+Remove the item at the given position in the list, and return it. `i` is the index of the element to be popped.
 ```golang
 list := golist.NewList([]int{1, 2, 3})
 popped := list.Pop(0)
@@ -105,7 +105,7 @@ list.Clear()
 fmt.Println(list) // []
 ```
 
-## list.Slice(start, end) (*golist.List, error)
+## list.Slice(start int, end int) (*golist.List, error)
 The arguments start and end are interpreted as in the slice notation and are used to return a particular subsequence of the list. The returned index is computed relative to the beginning of the full sequence rather than the start argument.
 ```golang
 list := golist.NewList([]int{1, 2, 3, 2})
@@ -117,7 +117,7 @@ if err != nil {
 fmt.Println(NewList) // [1, 2]
 ```
 
-## list.Count(x) interface{}
+## list.Count(x interface{}) int
 Return the number of times x appears in the list.
 ```golang
 list := golist.NewList([]int{1, 2, 3, 2})
@@ -125,7 +125,7 @@ count := list.Count(2)
 fmt.Println(count) // 2
 ```
 
-## list.Sort(reverse) interface{}
+## list.Sort(reverse bool) interface{}
 Sort the items of the list in place (the argument can be used for sort customization. `reverse` is `bool` so can be `true` or `false`.
 ```golang
 list := golist.NewList([]int{3, 2, 1})
@@ -134,7 +134,7 @@ list.Sort(reverse)
 fmt.Println(list) // [1, 2, 3]
 ```
 
-## list.Sorted(reverse) *golist.List
+## list.Sorted(reverse bool) *golist.List
 Returns a list of Sorted items (the argument can be used for sort customization. `reverse` is `bool` so can be `true` or `false`).
 ```golang
 list := golist.NewList([]int{3, 2, 1})
@@ -181,14 +181,14 @@ list := golist.NewList([]int{3, 2, 1})
 fmt.Println(list.List())  // [3 2 1]
 ```
 
-## list.Join(joiner) string
+## list.Join(joiner string) string
 This only works with string data types, panics otherwise. `joiner` is a string used to join the list.
 ```golang
 list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Join("-"))  // "Hello-World"
 ```
 
-## list.Replace(x, i) error
+## list.Replace(x interface{}, i int) error
 Replaces an element at index i with element x. returns error if index does not exist. index of `-1` is equivalent to last item. This method is equivalent to working with slice (`a`) `a[1] = 10`
 ```golang
 list := golist.NewList([]string{"Hello", "World"})
@@ -287,25 +287,27 @@ list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Rand())  // World
 ```
 
-## list.Contains(interface{}) bool
+## list.Contains(element interface{}) bool
 returns true if element exists, returns false otherwise
 ```golang
 list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Contains("okay"))  // false
 ```
 
-## list.Combinations(int) *golist.List
-This is adapted from [Link](https://github.com/mxschmitt/golang-combinations). Combinations returns combinations of n number of elements for a given string array.e.g if `n=2` it will return only 2 combined elements.
-Futhermore `NewList([]string{"a", "b", "c"}).Combinations(2) = ["ab", "ac", "bc"]`.
+## list.Combinations(n int, joiner string) *golist.List
+This is adapted from [Link](https://github.com/mxschmitt/golang-combinations). `joiner` is a string used to join the strings. Combinations returns combinations of n number of elements for a given string array.e.g if `n=2` it will return only 2 combined elements.
+Futhermore `NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac", "bc"]`.
 * For `n < 1`, it equals to All and returns all combinations.
 * For `n > len(list)` then `n = len(list)`
 ```golang
 list := NewList([]string{"a", "b", "c"})
-combinedList := list.Combinations(2)
-fmt.Println(combinedList)  // ["ab", "ac", "bc"]
+combinedList := list.Combinations(2, " ")
+fmt.Println(combinedList)  // ["a b", "a c", "b c"]
+combinedList = list.Combinations(2, ",")
+fmt.Println(combinedList)  // ["a,b", "a,c", "b,c"]
 ```
 
-## list.IsEqual(*golist.List) bool
+## list.IsEqual(other *golist.List) bool
 returns true if both lists are equal, returns false otherwise
 ```golang
 list := golist.NewList([]string{"Hello", "World"})
