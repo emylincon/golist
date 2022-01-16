@@ -321,4 +321,14 @@ list := golist.NewList([]int{1, 1, 1, 2, 3, 3, 4, 5, 6, 6})
 fmt.Println(list.Set()) // [1, 2, 3, 4, 5, 6]
 ```
 
-
+## list.Add(other *golist.List) (golist.List, err)
+Adds two list together and returns a new list which is the result of the addition.
+```golang
+list := golist.NewList([]int{1, 0, 1})
+other := golist.NewList([]int{0, 2, 0})
+newList, err := list.Add(other)
+if err != nil {
+    log.Println(err) // handle error
+}
+fmt.Println(newList) // [1, 0, 1, 0, 2, 0]
+```

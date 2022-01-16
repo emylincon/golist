@@ -33,9 +33,9 @@ type Lists interface {
 	Slice(start int, stop int) (*List, error)     // return sub list
 	Sort(reverse bool) interface{}                // sort list
 	Add(other *List) *List                        // add 2 lists
-	IsEqual(other *List) bool
-	Combinations(n int, joiner string) *List
-	Contains(interface{}) bool
+	IsEqual(other *List) bool                     // checks 2 lists are equal
+	Combinations(n int, joiner string) *List      // combinations of items in list
+	Contains(element interface{}) bool            // check if item in list
 }
 
 // list struct
