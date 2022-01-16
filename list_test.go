@@ -663,3 +663,103 @@ func TestSet(t *testing.T) {
 		}
 	}
 }
+
+func TestExtend(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *List
+		other    interface{}
+		expected *List
+	}{
+		{
+			Obj:      NewList([]int{2, 3}),
+			other:    []int{4, 5},
+			expected: NewList([]int{2, 3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]int32{2, 5}),
+			other:    []int32{4, 5},
+			expected: NewList([]int32{2, 5, 4, 5}),
+		},
+		{
+			Obj:      NewList([]int64{2, 3}),
+			other:    []int64{4, 5},
+			expected: NewList([]int64{2, 3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]float32{2, 1, 2, 1}),
+			other:    []float32{4, 5},
+			expected: NewList([]float32{2, 1, 2, 1, 4, 5}),
+		},
+		{
+			Obj:      NewList([]float64{2, 3, 3}),
+			other:    []float64{1, 1},
+			expected: NewList([]float64{2, 3, 3, 1, 1}),
+		},
+		{
+			Obj:      NewList([]string{"Hello"}),
+			other:    []string{"world"},
+			expected: NewList([]string{"Hello", "world"}),
+		},
+	}
+	for _, tC := range testCases {
+		err := tC.Obj.Extend(tC.other)
+		if err != nil {
+			t.Errorf("[Error TestExtend]: %v", err)
+		}
+		got := tC.Obj
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error TestExtend] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+	}
+}
+
+func TestAdd(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *List
+		other    *List
+		expected *List
+	}{
+		{
+			Obj:      NewList([]int{2, 3}),
+			other:    NewList([]int{4, 5}),
+			expected: NewList([]int{2, 3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]int32{2, 5}),
+			other:    NewList([]int32{4, 5}),
+			expected: NewList([]int32{2, 5, 4, 5}),
+		},
+		{
+			Obj:      NewList([]int64{2, 3}),
+			other:    NewList([]int64{4, 5}),
+			expected: NewList([]int64{2, 3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]float32{2, 1, 2, 1}),
+			other:    NewList([]float32{4, 5}),
+			expected: NewList([]float32{2, 1, 2, 1, 4, 5}),
+		},
+		{
+			Obj:      NewList([]float64{2, 3, 3}),
+			other:    NewList([]float64{1, 1}),
+			expected: NewList([]float64{2, 3, 3, 1, 1}),
+		},
+		{
+			Obj:      NewList([]string{"Hello"}),
+			other:    NewList([]string{"world"}),
+			expected: NewList([]string{"Hello", "world"}),
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.Add(tC.other)
+		if err != nil {
+			t.Errorf("[Error TestAdd]: %v", err)
+		}
+
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error TestAdd] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+	}
+}
