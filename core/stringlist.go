@@ -155,6 +155,43 @@ func CombinationsString(set []string, n int, joiner string) (subsets []string) {
 	return subsets
 }
 
+// CombinationsStringMax: should return combinations of max length.
+// For example: a list of [a, b, c] with max combination 2, should return 1 and 2 combinations.
+// i.e combinations length <= n
+// adapted from https://github.com/mxschmitt/golang-combinations
+func CombinationsStringMax(set []string, n int, joiner string) (subsets []string) {
+	length := uint(len(set))
+
+	if n > len(set) {
+		n = len(set)
+	}
+
+	// Go through all possible combinations of objects
+	// from 1 (only first object in subset) to 2^length (all objects in subset)
+	for subsetBits := 1; subsetBits < (1 << length); subsetBits++ {
+		if n > 0 && bits.OnesCount(uint(subsetBits)) > n {
+			continue
+		}
+
+		var subset string
+
+		for object := uint(0); object < length; object++ {
+			// checks if object is contained in subset
+			// by checking if bit 'object' is set in subsetBits
+			if (subsetBits>>object)&1 == 1 {
+				// add object to subset
+				subset += set[object] + joiner
+			}
+		}
+		// remove unwanted joiner and add subset to subsets
+		if len(joiner) != 0 {
+			subset = subset[:len(subset)-1]
+		}
+		subsets = append(subsets, subset)
+	}
+	return subsets
+}
+
 // returns a set of slice i.e removes duplicates
 func SetString(list []string) (set []string) {
 	keys := map[string]bool{}
