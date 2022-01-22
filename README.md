@@ -296,7 +296,7 @@ fmt.Println(list.Contains("okay"))  // false
 
 ## list.Combinations(n int, joiner string) (*golist.List, error)
 This is adapted from [Link](https://github.com/mxschmitt/golang-combinations). `joiner` is a string used to join the strings. Combinations returns combinations of n number of elements for a given string array.e.g if `n=2` it will return only 2 combined elements.
-Futhermore `NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac", "bc"]`.
+Furthermore `NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac", "bc"]`.
 * For `n < 1`, it equals to All and returns all combinations.
 * For `n > len(list)` then `n = len(list)`
 ```golang

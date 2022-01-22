@@ -4,6 +4,7 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
+// Lists:
 // List interface and all methods
 type Lists interface {
 	List() interface{}                            // returns underlying slice
@@ -35,14 +36,16 @@ type Lists interface {
 	Add(other *List) *List                        // add 2 lists
 	IsEqual(other *List) bool                     // checks 2 lists are equal
 	Combinations(n int, joiner string) *List      // combinations of items in list
+	CombinationsMax(n int, joiner string) *List   // combinations of items in list
 	Contains(element interface{}) bool            // check if item in list
 }
 
-// list struct
+// List struct
 type List struct {
 	list interface{}
 }
 
+// NewList:
 // list constructor
 func NewList(list interface{}) *List {
 	newlist := &List{
@@ -51,6 +54,7 @@ func NewList(list interface{}) *List {
 	return newlist
 }
 
+// List:
 // returns underlying slice or array
 func (arr *List) List() interface{} {
 	switch arr.list.(type) {
@@ -83,6 +87,7 @@ func (arr *List) List() interface{} {
 	}
 }
 
+// Append:
 // append element to list
 func (arr *List) Append(element interface{}) {
 
@@ -123,6 +128,7 @@ func (arr *List) Append(element interface{}) {
 
 }
 
+// Index:
 // returns index of a given element. returns  -1 if element don't exist
 func (arr *List) Index(element interface{}) int {
 
@@ -163,6 +169,7 @@ func (arr *List) Index(element interface{}) int {
 
 }
 
+// Last:
 // returns last element in the list
 func (arr *List) Last() (interface{}, error) {
 

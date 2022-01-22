@@ -4,6 +4,7 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
+// LCM:
 // returns Lowest common multiple of a list. returns error if list type is string
 func (arr *List) LCM() (lcm interface{}, err error) {
 

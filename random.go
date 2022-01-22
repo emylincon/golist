@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// Rand:
 // ## list.Rand() interface{}
 // Returns a random element from list.
 //

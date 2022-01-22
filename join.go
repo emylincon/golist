@@ -2,6 +2,7 @@ package golist
 
 import "strings"
 
+// Join:
 // joins elements in a string list with a joiner
 func (arr *List) Join(joiner string) string {
 	switch arr.list.(type) {

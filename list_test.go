@@ -130,9 +130,9 @@ func TestPop(t *testing.T) {
 	obj := NewList([]int{2, 3, 4})
 	expected := []int{2, 4}
 	popped := obj.Pop(1)
-	expected_popped := 3
-	if popped != expected_popped {
-		t.Errorf("Error [TestPop], Got: %v, Expected: %v.\n", popped, expected_popped)
+	expectedPopped := 3
+	if popped != expectedPopped {
+		t.Errorf("Error [TestPop], Got: %v, Expected: %v.\n", popped, expectedPopped)
 	}
 	got := obj.list.([]int)
 	for i, v := range got {

@@ -5,12 +5,14 @@ import (
 	"sort"
 )
 
+// AppendFloat64:
 // implements append
 func AppendFloat64(array *[]float64, element float64) *[]float64 {
 	newArray := append(*array, element)
 	return &newArray
 }
 
+// IndexOfFloat64:
 // returns index of element. returns -1 if element dont exist
 func IndexOfFloat64(array *[]float64, element float64) int {
 	for index, value := range *array {
@@ -21,6 +23,7 @@ func IndexOfFloat64(array *[]float64, element float64) int {
 	return -1
 }
 
+// LastFloat64:
 // return last element in slice
 func LastFloat64(list []float64) (float64, error) {
 	if len(list) == 0 {
@@ -29,6 +32,7 @@ func LastFloat64(list []float64) (float64, error) {
 	return list[len(list)-1], nil
 }
 
+// SortFloat64:
 // sorts slice
 func SortFloat64(list *[]float64, reverse bool) *[]float64 {
 	if reverse {
@@ -43,6 +47,7 @@ func SortFloat64(list *[]float64, reverse bool) *[]float64 {
 	return list
 }
 
+// PopFloat64:
 // removes element from slice
 func PopFloat64(list *[]float64, index int) ([]float64, float64) {
 	listD := *list
@@ -51,6 +56,7 @@ func PopFloat64(list *[]float64, index int) ([]float64, float64) {
 	return newList, popped
 }
 
+// CountFloat64:
 // returns the number of times a given element appears in a slice
 func CountFloat64(list *[]float64, element float64) int {
 	count := 0
@@ -62,11 +68,13 @@ func CountFloat64(list *[]float64, element float64) int {
 	return count
 }
 
+// ExtendFloat64:
 // adds two slice together
 func ExtendFloat64(list *[]float64, another []float64) []float64 {
 	return append((*list), another...)
 }
 
+// InsertFloat64:
 // insert an element in a given position
 func InsertFloat64(list *[]float64, element float64, index int) *[]float64 {
 	postpend := append([]float64{element}, (*list)[index:]...)
@@ -74,6 +82,7 @@ func InsertFloat64(list *[]float64, element float64, index int) *[]float64 {
 	return &newList
 }
 
+// RemoveFloat64:
 // removes given element from slice
 func RemoveFloat64(list *[]float64, element float64) (*[]float64, error) {
 	index := IndexOfFloat64(list, element)
@@ -84,6 +93,7 @@ func RemoveFloat64(list *[]float64, element float64) (*[]float64, error) {
 	return &newList, nil
 }
 
+// ReverseFloat64:
 // reverse the positions of elements in slice
 func ReverseFloat64(list *[]float64) *[]float64 {
 	newList := []float64{}
@@ -94,6 +104,7 @@ func ReverseFloat64(list *[]float64) *[]float64 {
 	return &newList
 }
 
+// SumFloat64:
 // sum of elements in slice
 func SumFloat64(list *[]float64) (sum float64) {
 	for _, value := range *list {
@@ -102,6 +113,7 @@ func SumFloat64(list *[]float64) (sum float64) {
 	return
 }
 
+// MaxFloat64:
 // returns max element in slice
 func MaxFloat64(list *[]float64) (max float64) {
 	for i, value := range *list {
@@ -112,6 +124,7 @@ func MaxFloat64(list *[]float64) (max float64) {
 	return
 }
 
+// MinFloat64:
 // returns min element in slice
 func MinFloat64(list *[]float64) (min float64) {
 	for i, value := range *list {
@@ -127,6 +140,7 @@ func rounder(num float64) int {
 	return int(num + math.Copysign(0.5, num))
 }
 
+// RoundFloat64:
 // rounds float with a precision
 func RoundFloat64(num float64, precision int) float64 {
 	output := math.Pow(10, float64(precision))
@@ -176,6 +190,7 @@ func lcmHcfFloat64(list *[]float64, get func(a, b float64) float64) (result floa
 	return result, nil
 }
 
+// GCFFloat64:
 // helper function for gcf
 func GCFFloat64(list *[]float64) (gcf float64, err error) {
 	return lcmHcfFloat64(list, _gcfFloat64)
@@ -189,11 +204,13 @@ func _lcmFloat64(a, b float64) float64 {
 	return (a * b) / _gcfFloat64(a, b)
 }
 
+// LCMFloat64:
 // returns lowest common multiple of slice
 func LCMFloat64(list *[]float64) (lcm float64, err error) {
 	return lcmHcfFloat64(list, _lcmFloat64)
 }
 
+// SetFloat64:
 // returns a set of slice i.e removes duplicates
 func SetFloat64(list []float64) (set []float64) {
 	keys := map[float64]bool{}
