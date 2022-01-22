@@ -1,5 +1,6 @@
 package golist
 
+// Clear:
 // removes all element in list
 func (arr *List) Clear() {
 	switch arr.list.(type) {

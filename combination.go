@@ -5,10 +5,10 @@ import (
 )
 
 // adapted from https://github.com/mxschmitt/golang-combinations
-// Combinations returns combinations of n number of elements for a given string array.
+// Combinations returns Combinations of n number of elements for a given string array.
 // e.g if n=2 it will return only 2 combined elements :=
-// futhermore NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac", "bc"]
-// For n < 1, it equals to All and returns all combinations.
+// furthermore NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac", "bc"]
+// For n < 1, it equals to All and returns all Combinations.
 // for n > len(list); n = len(list)
 func (arr *List) Combinations(n int, joiner string) (*List, error) {
 
@@ -29,7 +29,7 @@ func (arr *List) Combinations(n int, joiner string) (*List, error) {
 // adapted from https://github.com/mxschmitt/golang-combinations
 // CombinationsMax returns combinations of n number of elements for a given string array.
 // e.g if n=2 it will return combinations <= 2
-// futhermore NewList([]string{"a", "b", "c"}).CombinationsMax(2, "") = ["a", "b", "c", "ab", "ac", "bc"]
+// furthermore NewList([]string{"a", "b", "c"}).CombinationsMax(2, "") = ["a", "b", "c", "ab", "ac", "bc"]
 // For n < 1, it equals to All and returns all combinations.
 // for n > len(list); n = len(list)
 func (arr *List) CombinationsMax(n int, joiner string) (*List, error) {

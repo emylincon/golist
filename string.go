@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// String:
 // returns string representation of the list
 func (arr *List) String() string {
 	switch arr.list.(type) {

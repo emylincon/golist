@@ -6,12 +6,14 @@ import (
 	"strings"
 )
 
+// AppendString:
 // implements append
 func AppendString(array *[]string, element string) *[]string {
 	newArray := append(*array, element)
 	return &newArray
 }
 
+// IndexOfString:
 // returns index of element. returns -1 if element dont exist
 func IndexOfString(array *[]string, element string) int {
 	for index, value := range *array {
@@ -22,6 +24,7 @@ func IndexOfString(array *[]string, element string) int {
 	return -1
 }
 
+// LastString:
 // return last element in slice
 func LastString(array []string) (string, error) {
 	if len(array) == 0 {
@@ -30,6 +33,7 @@ func LastString(array []string) (string, error) {
 	return array[len(array)-1], nil
 }
 
+// SortString:
 // sorts slice
 func SortString(list *[]string, reverse bool) *[]string {
 	if reverse {
@@ -44,6 +48,7 @@ func SortString(list *[]string, reverse bool) *[]string {
 	return list
 }
 
+// PopString:
 // removes element from slice
 func PopString(list *[]string, index int) ([]string, string) {
 	listD := *list
@@ -52,6 +57,7 @@ func PopString(list *[]string, index int) ([]string, string) {
 	return newArray, popped
 }
 
+// CountString:
 // returns the number of times a given element appears in a slice
 func CountString(list *[]string, element string) int {
 	count := 0
@@ -63,11 +69,13 @@ func CountString(list *[]string, element string) int {
 	return count
 }
 
+// ExtendString:
 // adds two slice together
 func ExtendString(list *[]string, another []string) []string {
 	return append((*list), another...)
 }
 
+// InsertString:
 // insert an element in a given position
 func InsertString(list *[]string, element string, index int) *[]string {
 	postpend := append([]string{element}, (*list)[index:]...)
@@ -75,6 +83,7 @@ func InsertString(list *[]string, element string, index int) *[]string {
 	return &newList
 }
 
+// RemoveString:
 // removes given element from slice
 func RemoveString(list *[]string, element string) (*[]string, error) {
 	index := IndexOfString(list, element)
@@ -85,6 +94,7 @@ func RemoveString(list *[]string, element string) (*[]string, error) {
 	return &newList, nil
 }
 
+// ReverseString:
 // reverse the positions of elements in slice
 func ReverseString(list *[]string) *[]string {
 	newList := []string{}
@@ -95,12 +105,14 @@ func ReverseString(list *[]string) *[]string {
 	return &newList
 }
 
+// SumString:
 // joins elements in slice
 func SumString(list *[]string) (sum string) {
 	sum = strings.Join(*list, " ")
 	return
 }
 
+// MaxString:
 // returns max element in slice
 func MaxString(list *[]string) (max string) {
 	for i, value := range *list {
@@ -111,6 +123,7 @@ func MaxString(list *[]string) (max string) {
 	return
 }
 
+// MinString:
 // returns min element in slice
 func MinString(list *[]string) (min string) {
 	for i, value := range *list {
@@ -121,6 +134,7 @@ func MinString(list *[]string) (min string) {
 	return
 }
 
+// CombinationsString:
 // adapted from https://github.com/mxschmitt/golang-combinations
 func CombinationsString(set []string, n int, joiner string) (subsets []string) {
 	length := uint(len(set))
@@ -192,6 +206,7 @@ func CombinationsStringMax(set []string, n int, joiner string) (subsets []string
 	return subsets
 }
 
+// SetString
 // returns a set of slice i.e removes duplicates
 func SetString(list []string) (set []string) {
 	keys := map[string]bool{}

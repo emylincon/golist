@@ -4,6 +4,7 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
+// Max:
 // returns max element in list
 func (arr *List) Max() (interface{}, error) {
 	switch arr.list.(type) {
@@ -55,6 +56,7 @@ func (arr *List) Max() (interface{}, error) {
 
 }
 
+// Min:
 // returns min element in list
 func (arr *List) Min() (interface{}, error) {
 	switch arr.list.(type) {

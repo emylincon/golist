@@ -2,6 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
+// Set:
 // removes duplicates from list and returns new list
 func (arr *List) Set() (setList *List, err error) {
 	err = nil

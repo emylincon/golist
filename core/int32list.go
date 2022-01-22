@@ -4,12 +4,14 @@ import (
 	"sort"
 )
 
+// AppendInt32:
 // implements append
 func AppendInt32(array *[]int32, element int32) *[]int32 {
 	newArray := append(*array, element)
 	return &newArray
 }
 
+// IndexOfInt32:
 // returns index of element. returns -1 if element dont exist
 func IndexOfInt32(array *[]int32, element int32) int {
 	for index, value := range *array {
@@ -20,6 +22,7 @@ func IndexOfInt32(array *[]int32, element int32) int {
 	return -1
 }
 
+// LastInt32:
 // return last element in slice
 func LastInt32(list []int32) (int32, error) {
 	if len(list) == 0 {
@@ -28,6 +31,7 @@ func LastInt32(list []int32) (int32, error) {
 	return list[len(list)-1], nil
 }
 
+// SortInt32:
 // sorts slice
 func SortInt32(list *[]int32, reverse bool) *[]int32 {
 	if reverse {
@@ -42,6 +46,7 @@ func SortInt32(list *[]int32, reverse bool) *[]int32 {
 	return list
 }
 
+// PopInt32:
 // removes element from slice
 func PopInt32(list *[]int32, index int) ([]int32, int32) {
 	listD := *list
@@ -50,6 +55,7 @@ func PopInt32(list *[]int32, index int) ([]int32, int32) {
 	return newArray, popped
 }
 
+// CountInt32:
 // returns the number of times a given element appears in a slice
 func CountInt32(list *[]int32, element int32) int {
 	count := 0
@@ -61,11 +67,13 @@ func CountInt32(list *[]int32, element int32) int {
 	return count
 }
 
+// ExtendInt32:
 // adds two slice together
 func ExtendInt32(list *[]int32, another []int32) []int32 {
 	return append((*list), another...)
 }
 
+// InsertInt32:
 // insert an element in a given position
 func InsertInt32(list *[]int32, element int32, index int) *[]int32 {
 	postpend := append([]int32{element}, (*list)[index:]...)
@@ -73,6 +81,7 @@ func InsertInt32(list *[]int32, element int32, index int) *[]int32 {
 	return &newList
 }
 
+// RemoveInt32:
 // removes given element from slice
 func RemoveInt32(list *[]int32, element int32) (*[]int32, error) {
 	index := IndexOfInt32(list, element)
@@ -83,6 +92,7 @@ func RemoveInt32(list *[]int32, element int32) (*[]int32, error) {
 	return &newList, nil
 }
 
+// ReverseInt32:
 // reverse the positions of elements in slice
 func ReverseInt32(list *[]int32) *[]int32 {
 	newList := []int32{}
@@ -93,6 +103,7 @@ func ReverseInt32(list *[]int32) *[]int32 {
 	return &newList
 }
 
+// SumInt32:
 // sum of elements in slice
 func SumInt32(list *[]int32) (sum int32) {
 	for _, value := range *list {
@@ -101,6 +112,7 @@ func SumInt32(list *[]int32) (sum int32) {
 	return
 }
 
+// MaxInt32:
 // returns max element in slice
 func MaxInt32(list *[]int32) (max int32) {
 	for i, value := range *list {
@@ -111,6 +123,7 @@ func MaxInt32(list *[]int32) (max int32) {
 	return
 }
 
+// MinInt32:
 // returns min element in slice
 func MinInt32(list *[]int32) (min int32) {
 	for i, value := range *list {
@@ -164,6 +177,7 @@ func _gcfInt32(a, b int32) int32 {
 
 }
 
+// GCFInt32:
 // returns greatest common factor of slice
 func GCFInt32(list *[]int32) (gcf int32, err error) {
 	return lcmHcfInt32(list, _gcfInt32)
@@ -177,11 +191,13 @@ func _lcmInt32(a, b int32) int32 {
 	return (a * b) / _gcfInt32(a, b)
 }
 
+// LCMInt32:
 // returns lowest common multiple of slice
 func LCMInt32(list *[]int32) (lcm int32, err error) {
 	return lcmHcfInt32(list, _lcmInt32)
 }
 
+// SetInt32:
 // returns a set of slice i.e removes duplicates
 func SetInt32(list []int32) (set []int32) {
 	keys := map[int32]bool{}
