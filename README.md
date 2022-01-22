@@ -294,7 +294,7 @@ list := golist.NewList([]string{"Hello", "World"})
 fmt.Println(list.Contains("okay"))  // false
 ```
 
-## list.Combinations(n int, joiner string) *golist.List
+## list.Combinations(n int, joiner string) (*golist.List, error)
 This is adapted from [Link](https://github.com/mxschmitt/golang-combinations). `joiner` is a string used to join the strings. Combinations returns combinations of n number of elements for a given string array.e.g if `n=2` it will return only 2 combined elements.
 Futhermore `NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac", "bc"]`.
 * For `n < 1`, it equals to All and returns all combinations.
@@ -304,7 +304,15 @@ list := NewList([]string{"a", "b", "c"})
 combinedList := list.Combinations(2, " ")
 fmt.Println(combinedList)  // ["a b", "a c", "b c"]
 combinedList = list.Combinations(2, ",")
-fmt.Println(combinedList)  // ["a,b", "a,c", "b,c"]
+fmt.Println(combinedList)  // ["a,b", "a,c", "b,c"] <nil>
+```
+
+## list.CombinationsMax(n int, joiner string) (*golist.List, error)
+Variation of `list.Combinations`. Difference is that for a given `n`, it returns combination lengths <= n, rather than only n.
+
+```golang
+list:= golist.NewList([]string{"a", "b", "c"})
+fmt.Println(list.CombinationsMax(2, "")) // ["a", "b", "ab", "c", "ac", "bc"] <nil>
 ```
 
 ## list.IsEqual(other *golist.List) bool
