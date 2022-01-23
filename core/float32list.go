@@ -181,3 +181,11 @@ func SetFloat32(list []float32) (set []float32) {
 	}
 	return
 }
+
+// ListSumInt sums contents of two lists
+func ListSumFloat32(list []float32, other []float32) (sum []float32) {
+	for i, v := range list {
+		sum = append(sum, v+other[i])
+	}
+	return
+}

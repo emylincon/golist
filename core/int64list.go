@@ -209,3 +209,11 @@ func SetInt64(list []int64) (set []int64) {
 	}
 	return
 }
+
+// ListSumInt64 sums contents of two lists
+func ListSumInt64(list []int64, other []int64) (sum []int64) {
+	for i, v := range list {
+		sum = append(sum, v+other[i])
+	}
+	return
+}
