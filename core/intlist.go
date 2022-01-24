@@ -216,3 +216,40 @@ func ListSumInt(list []int, other []int) (sum []int) {
 	}
 	return
 }
+
+// ConvertToInt converts to slice to int
+func ConvertToInt(array interface{}) (Intify []int, err error) {
+
+	switch array := array.(type) {
+	case []int:
+		return array, nil
+
+	case []int32:
+		for _, v := range array {
+			Intify = append(Intify, int(v))
+		}
+
+	case []int64:
+		for _, v := range array {
+			Intify = append(Intify, int(v))
+		}
+
+	case []float32:
+		for _, v := range array {
+			Intify = append(Intify, int(v))
+		}
+
+	case []float64:
+		for _, v := range array {
+			Intify = append(Intify, int(v))
+		}
+
+	case []string:
+		return nil, ErrTypeNotSupported
+
+	default:
+		return nil, ErrTypeNotSupported
+
+	}
+	return
+}

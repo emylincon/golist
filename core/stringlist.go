@@ -1,6 +1,7 @@
 package core
 
 import (
+	"fmt"
 	"math/bits"
 	"sort"
 	"strings"
@@ -215,6 +216,44 @@ func SetString(list []string) (set []string) {
 			keys[key] = true
 			set = append(set, key)
 		}
+	}
+	return
+}
+
+func ConvertToString(array interface{}) (stringfy []string, err error) {
+
+	switch array := array.(type) {
+	case []int:
+		for _, v := range array {
+			stringfy = append(stringfy, fmt.Sprintf("%v", v))
+		}
+
+	case []int32:
+		for _, v := range array {
+			stringfy = append(stringfy, fmt.Sprintf("%v", v))
+		}
+
+	case []int64:
+		for _, v := range array {
+			stringfy = append(stringfy, fmt.Sprintf("%v", v))
+		}
+
+	case []float32:
+		for _, v := range array {
+			stringfy = append(stringfy, fmt.Sprintf("%v", v))
+		}
+
+	case []float64:
+		for _, v := range array {
+			stringfy = append(stringfy, fmt.Sprintf("%v", v))
+		}
+
+	case []string:
+		return array, nil
+
+	default:
+		return nil, ErrTypeNotSupported
+
 	}
 	return
 }

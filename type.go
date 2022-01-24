@@ -1,18 +1,22 @@
 package golist
 
+import "github.com/emylincon/golist/core"
+
 // List types
 const (
-	TypeListInt     = "golist.List[]int"
-	TypeListInt32   = "golist.List[]int32"
-	TypeListInt64   = "golist.List[]int64"
-	TypeListFloat32 = "golist.List[]float32"
-	TypeListFloat64 = "golist.List[]float64"
-	TypeListString  = "golist.List[]string"
-	TypeListUnknown = "golist.List[]unknown"
+	TypeListInt     ListType = "golist.List[]int"
+	TypeListInt32   ListType = "golist.List[]int32"
+	TypeListInt64   ListType = "golist.List[]int64"
+	TypeListFloat32 ListType = "golist.List[]float32"
+	TypeListFloat64 ListType = "golist.List[]float64"
+	TypeListString  ListType = "golist.List[]string"
+	TypeListUnknown ListType = "golist.List[]unknown"
 )
 
-// Type: returns string representation of the list.
-func (arr *List) Type() (ltype string) {
+type ListType string
+
+// Type returns string representation of the list.
+func (arr *List) Type() ListType {
 	switch arr.list.(type) {
 	case []int:
 		return TypeListInt
@@ -34,5 +38,55 @@ func (arr *List) Type() (ltype string) {
 
 	default:
 		return TypeListUnknown
+	}
+}
+
+// ConvertTo converts list to a new type
+func (arr *List) ConvertTo(t ListType) (*List, error) {
+	switch t {
+	case TypeListInt:
+		list, err := core.ConvertToInt(arr.list)
+		if err != nil {
+			return &List{}, err
+		}
+		return NewList(list), nil
+
+	case TypeListInt32:
+		list, err := core.ConvertToInt32(arr.list)
+		if err != nil {
+			return &List{}, err
+		}
+		return NewList(list), nil
+
+	case TypeListInt64:
+		list, err := core.ConvertToInt64(arr.list)
+		if err != nil {
+			return &List{}, err
+		}
+		return NewList(list), nil
+
+	case TypeListFloat32:
+		list, err := core.ConvertToFloat32(arr.list)
+		if err != nil {
+			return &List{}, err
+		}
+		return NewList(list), nil
+
+	case TypeListFloat64:
+		list, err := core.ConvertToFloat64(arr.list)
+		if err != nil {
+			return &List{}, err
+		}
+		return NewList(list), nil
+
+	case TypeListString:
+		list, err := core.ConvertToString(arr.list)
+		if err != nil {
+			return &List{}, err
+		}
+		return NewList(list), nil
+
+	default:
+		return &List{}, ErrTypeNotsupported
 	}
 }

@@ -217,3 +217,40 @@ func ListSumInt64(list []int64, other []int64) (sum []int64) {
 	}
 	return
 }
+
+// ConvertToInt64 converts to slice to int64
+func ConvertToInt64(array interface{}) (Intify []int64, err error) {
+
+	switch array := array.(type) {
+	case []int:
+		for _, v := range array {
+			Intify = append(Intify, int64(v))
+		}
+
+	case []int32:
+		for _, v := range array {
+			Intify = append(Intify, int64(v))
+		}
+
+	case []int64:
+		return array, nil
+
+	case []float32:
+		for _, v := range array {
+			Intify = append(Intify, int64(v))
+		}
+
+	case []float64:
+		for _, v := range array {
+			Intify = append(Intify, int64(v))
+		}
+
+	case []string:
+		return nil, ErrTypeNotSupported
+
+	default:
+		return nil, ErrTypeNotSupported
+
+	}
+	return
+}
