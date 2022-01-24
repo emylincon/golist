@@ -217,6 +217,14 @@ func ListSumInt(list []int, other []int) (sum []int) {
 	return
 }
 
+// ListSumNoInt sums contents of two lists
+func ListSumNoInt(list []int, no int) (sum []int) {
+	for _, v := range list {
+		sum = append(sum, v+no)
+	}
+	return
+}
+
 // ConvertToInt converts to slice to int
 func ConvertToInt(array interface{}) (Intify []int, err error) {
 

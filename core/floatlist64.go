@@ -231,6 +231,14 @@ func ListSumFloat64(list []float64, other []float64) (sum []float64) {
 	return
 }
 
+// ListSumNoInt sums contents of two lists
+func ListSumNoFloat64(list []float64, no float64) (sum []float64) {
+	for _, v := range list {
+		sum = append(sum, v+no)
+	}
+	return
+}
+
 // ConvertToFloat64 converts to slice to float64
 func ConvertToFloat64(array interface{}) (Intify []float64, err error) {
 

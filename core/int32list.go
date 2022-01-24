@@ -218,6 +218,14 @@ func ListSumInt32(list []int32, other []int32) (sum []int32) {
 	return
 }
 
+// ListSumNoInt sums contents of two lists
+func ListSumNoInt32(list []int32, no int32) (sum []int32) {
+	for _, v := range list {
+		sum = append(sum, v+no)
+	}
+	return
+}
+
 // ConvertToInt32 converts to slice to int32
 func ConvertToInt32(array interface{}) (Intify []int32, err error) {
 

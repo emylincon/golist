@@ -723,3 +723,53 @@ func TestAdd(t *testing.T) {
 		}
 	}
 }
+
+func TestListSumNo(t *testing.T) {
+	var vint int = 5
+	var vint32 int32 = 5
+	var vint64 int64 = 5
+	var vfloat32 float32 = 5
+	var vfloat64 float64 = 5
+
+	testCases := []struct {
+		Obj      List
+		expected List
+		no       interface{}
+	}{
+		{
+			Obj:      *NewList([]int{2, 3, 4}),
+			expected: *NewList([]int{7, 8, 9}),
+			no:       vint,
+		},
+		{
+			Obj:      *NewList([]int32{2, 3, 4}),
+			expected: *NewList([]int32{7, 8, 9}),
+			no:       vint32,
+		},
+		{
+			Obj:      *NewList([]int64{2, 3, 4}),
+			expected: *NewList([]int64{7, 8, 9}),
+			no:       vint64,
+		},
+		{
+			Obj:      *NewList([]float32{2, 3, 4}),
+			expected: *NewList([]float32{7, 8, 9}),
+			no:       vfloat32,
+		},
+		{
+			Obj:      *NewList([]float64{2, 3, 4}),
+			expected: *NewList([]float64{7, 8, 9}),
+			no:       vfloat64,
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ListSumNo(tC.no)
+		if err != nil {
+			t.Errorf("[Error SumListNo] : %v", err)
+		}
+		if !got.IsEqual(&tC.expected) {
+			t.Errorf("[Error SumListNo] : Got: %v, Expected: %v.\n", &got, &tC.expected)
+		}
+
+	}
+}
