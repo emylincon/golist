@@ -1,6 +1,13 @@
 ![golist](img/golist.png)
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge) ![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square)  ![status](https://github.com/emylincon/golist/workflows/Go/badge.svg) [![GoDoc](https://godoc.org/github.com/emylincon/golist?status.svg)](https://godoc.org/github.com/emylincon/golist) [![Go Report Card](https://goreportcard.com/badge/github.com/emylincon/golist)](https://goreportcard.com/report/github.com/emylincon/golist)
+<p align="center">
+<a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" target="_blank">
+    <img src="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" alt="Build Status" />
+</a>
+</p>
+
+![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square)  ![status](https://github.com/emylincon/golist/workflows/Go/badge.svg) [![GoDoc](https://godoc.org/github.com/emylincon/golist?status.svg)](https://godoc.org/github.com/emylincon/golist) [![Go Report Card](https://goreportcard.com/badge/github.com/emylincon/golist)](https://goreportcard.com/report/github.com/emylincon/golist)
+
 
 # golist
 A customized go list with index, sort, append, pop, count, clear and last item methods.
