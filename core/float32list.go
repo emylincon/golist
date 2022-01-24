@@ -190,6 +190,14 @@ func ListSumFloat32(list []float32, other []float32) (sum []float32) {
 	return
 }
 
+// ListSumNoInt sums contents of two lists
+func ListSumNoFloat32(list []float32, no float32) (sum []float32) {
+	for _, v := range list {
+		sum = append(sum, v+no)
+	}
+	return
+}
+
 // ConvertToFloat32 converts to slice to float32
 func ConvertToFloat32(array interface{}) (Intify []float32, err error) {
 
