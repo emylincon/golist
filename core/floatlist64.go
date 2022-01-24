@@ -230,3 +230,40 @@ func ListSumFloat64(list []float64, other []float64) (sum []float64) {
 	}
 	return
 }
+
+// ConvertToFloat64 converts to slice to float64
+func ConvertToFloat64(array interface{}) (Intify []float64, err error) {
+
+	switch array := array.(type) {
+	case []int:
+		for _, v := range array {
+			Intify = append(Intify, float64(v))
+		}
+
+	case []int32:
+		for _, v := range array {
+			Intify = append(Intify, float64(v))
+		}
+
+	case []int64:
+		for _, v := range array {
+			Intify = append(Intify, float64(v))
+		}
+
+	case []float32:
+		for _, v := range array {
+			Intify = append(Intify, float64(v))
+		}
+
+	case []float64:
+		return array, nil
+
+	case []string:
+		return nil, ErrTypeNotSupported
+
+	default:
+		return nil, ErrTypeNotSupported
+
+	}
+	return
+}

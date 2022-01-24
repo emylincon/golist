@@ -189,3 +189,40 @@ func ListSumFloat32(list []float32, other []float32) (sum []float32) {
 	}
 	return
 }
+
+// ConvertToFloat32 converts to slice to float32
+func ConvertToFloat32(array interface{}) (Intify []float32, err error) {
+
+	switch array := array.(type) {
+	case []int:
+		for _, v := range array {
+			Intify = append(Intify, float32(v))
+		}
+
+	case []int32:
+		for _, v := range array {
+			Intify = append(Intify, float32(v))
+		}
+
+	case []int64:
+		for _, v := range array {
+			Intify = append(Intify, float32(v))
+		}
+
+	case []float32:
+		return array, nil
+
+	case []float64:
+		for _, v := range array {
+			Intify = append(Intify, float32(v))
+		}
+
+	case []string:
+		return nil, ErrTypeNotSupported
+
+	default:
+		return nil, ErrTypeNotSupported
+
+	}
+	return
+}

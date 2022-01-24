@@ -217,3 +217,40 @@ func ListSumInt32(list []int32, other []int32) (sum []int32) {
 	}
 	return
 }
+
+// ConvertToInt32 converts to slice to int32
+func ConvertToInt32(array interface{}) (Intify []int32, err error) {
+
+	switch array := array.(type) {
+	case []int:
+		for _, v := range array {
+			Intify = append(Intify, int32(v))
+		}
+
+	case []int32:
+		return array, nil
+
+	case []int64:
+		for _, v := range array {
+			Intify = append(Intify, int32(v))
+		}
+
+	case []float32:
+		for _, v := range array {
+			Intify = append(Intify, int32(v))
+		}
+
+	case []float64:
+		for _, v := range array {
+			Intify = append(Intify, int32(v))
+		}
+
+	case []string:
+		return nil, ErrTypeNotSupported
+
+	default:
+		return nil, ErrTypeNotSupported
+
+	}
+	return
+}

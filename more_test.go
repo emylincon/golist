@@ -594,7 +594,7 @@ func TestType(t *testing.T) {
 	}
 	for _, tC := range testCases {
 		got := tC.Obj.Type()
-		if got != tC.expected {
+		if got != ListType(tC.expected) {
 			t.Errorf("Type Error : %v != %v", tC.expected, got)
 		}
 
@@ -654,6 +654,61 @@ func TestListSum(t *testing.T) {
 
 		if !got.IsEqual(tC.expected) {
 			t.Errorf("Error [TestListSum] Got: %v Expected: %v \n.", got, tC.expected)
+		}
+
+	}
+}
+
+func TestConvertTo(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *List
+		expected *List
+		itype    ListType
+	}{
+		{
+			Obj:      NewList([]int{10, 5, 25, 200}),
+			expected: NewList([]float32{10, 5, 25, 200}),
+			itype:    TypeListFloat32,
+		},
+		{
+			Obj:      NewList([]int32{10, 5, 25, 200}),
+			expected: NewList([]float64{10, 5, 25, 200}),
+			itype:    TypeListFloat64,
+		},
+		{
+			Obj:      NewList([]int64{10, 5, 25, 200}),
+			expected: NewList([]int{10, 5, 25, 200}),
+			itype:    TypeListInt,
+		},
+		{
+			Obj:      NewList([]float32{10, 5, 25, 200}),
+			expected: NewList([]int32{10, 5, 25, 200}),
+			itype:    TypeListInt32,
+		},
+		{
+			Obj:      NewList([]float64{10, 5, 25, 200}),
+			expected: NewList([]int64{10, 5, 25, 200}),
+			itype:    TypeListInt64,
+		},
+		{
+			Obj:      NewList([]float64{10, 5, 25, 200}),
+			expected: NewList([]string{"10", "5", "25", "200"}),
+			itype:    TypeListString,
+		},
+		{
+			Obj:      NewList([]string{"Hello", "world"}),
+			expected: NewList([]string{"Hello", "world"}),
+			itype:    TypeListString,
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ConvertTo(tC.itype)
+		if err != nil {
+			t.Errorf("Convert Error : %v", err)
+		}
+		if got.Type() != tC.expected.Type() {
+			t.Errorf("Type Error : %v != %v", tC.expected.Type(), got.Type())
 		}
 
 	}
