@@ -198,12 +198,8 @@ func TestReverse(t *testing.T) {
 	for _, tC := range testCases {
 		got := tC.Obj.Reverse()
 
-		for i := 0; i < got.Len(); i++ {
-			Gotitem := got.Get(i)
-			Expecteditem := tC.expected.Get(i)
-			if Gotitem != Expecteditem {
-				t.Errorf("Error [TestReverse] Got: %v Expected: %v \n.", got, tC.expected)
-			}
+		if !got.IsEqual(&tC.expected) {
+			t.Errorf("Error [TestReverse] Got: %v Expected: %v \n.", got, &tC.expected)
 		}
 
 	}
@@ -600,6 +596,64 @@ func TestType(t *testing.T) {
 		got := tC.Obj.Type()
 		if got != tC.expected {
 			t.Errorf("Type Error : %v != %v", tC.expected, got)
+		}
+
+	}
+}
+
+func TestListSum(t *testing.T) {
+	testCases := []struct {
+		Obj      *List
+		other    *List
+		Error    error
+		expected *List
+	}{
+		{
+			Obj:      NewList([]int{2, 3, 4}),
+			other:    NewList([]int{1, 1, 1}),
+			Error:    nil,
+			expected: NewList([]int{3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]int32{2, 3, 4}),
+			other:    NewList([]int32{1, 1, 1}),
+			Error:    nil,
+			expected: NewList([]int32{3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]int64{2, 3, 4}),
+			other:    NewList([]int64{1, 1, 1}),
+			Error:    nil,
+			expected: NewList([]int64{3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]float32{2, 3, 4}),
+			other:    NewList([]float32{1, 1, 1}),
+			Error:    nil,
+			expected: NewList([]float32{3, 4, 5}),
+		},
+		{
+			Obj:      NewList([]float64{2, 3, 4}),
+			other:    NewList([]float64{1, 1, 1}),
+			Error:    nil,
+			expected: NewList([]float64{3, 4, 5}),
+		},
+		// edge cases
+		{
+			Obj:      NewList([]float64{2, 3, 4}),
+			other:    NewList([]float64{1, 1, 1, 2}),
+			Error:    ErrListsNotOfSameLen,
+			expected: &List{},
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ListSum(tC.other)
+		if err != tC.Error {
+			t.Errorf("Errors Not same ListSum: Got: %v Expected: %v \n", err, tC.Error)
+		}
+
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("Error [TestListSum] Got: %v Expected: %v \n.", got, tC.expected)
 		}
 
 	}

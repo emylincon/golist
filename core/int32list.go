@@ -209,3 +209,11 @@ func SetInt32(list []int32) (set []int32) {
 	}
 	return
 }
+
+// ListSumInt sums contents of two lists
+func ListSumInt32(list []int32, other []int32) (sum []int32) {
+	for i, v := range list {
+		sum = append(sum, v+other[i])
+	}
+	return
+}

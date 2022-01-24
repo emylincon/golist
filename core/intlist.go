@@ -208,3 +208,11 @@ func SetInt(list []int) (set []int) {
 	}
 	return
 }
+
+// ListSumInt sums contents of two lists
+func ListSumInt(list []int, other []int) (sum []int) {
+	for i, v := range list {
+		sum = append(sum, v+other[i])
+	}
+	return
+}

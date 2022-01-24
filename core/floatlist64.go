@@ -222,3 +222,11 @@ func SetFloat64(list []float64) (set []float64) {
 	}
 	return
 }
+
+// ListSumInt sums contents of two lists
+func ListSumFloat64(list []float64, other []float64) (sum []float64) {
+	for i, v := range list {
+		sum = append(sum, v+other[i])
+	}
+	return
+}

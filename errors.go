@@ -8,4 +8,5 @@ var (
 	ErrStringsNotsupported = errors.New("operation error: strings are not supported for this operation")
 	ErrIndexOutOfRange     = errors.New("index error: list index out of range")
 	ErrListsNotOfSameType  = errors.New("type error: lists not of same type")
+	ErrListsNotOfSameLen   = errors.New("length error: lists not of same length")
 )
