@@ -340,3 +340,12 @@ if err != nil {
 }
 fmt.Println(newList) // [1, 0, 1, 0, 2, 0]
 ```
+
+## list.ListSum(other *golist.List) (golist.List, err)
+Add the content of two lists. The lists must be of the same type and have equal length. Example:
+```golang
+list1 := golist.NewList([]int{1,1})
+list2 := golist.NewList([]int{2,2})
+list3 := list1.SumList(list2)
+fmt.Println(list3) // [3,3]
+```
