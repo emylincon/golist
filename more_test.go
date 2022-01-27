@@ -1,6 +1,10 @@
-package golist
+package golist_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/emylincon/golist"
+)
 
 func TestRemove(t *testing.T) {
 	var vint int = 5
@@ -11,38 +15,38 @@ func TestRemove(t *testing.T) {
 	var vstring string = "5"
 
 	testCases := []struct {
-		Obj      List
-		expected List
+		Obj      golist.List
+		expected golist.List
 		remove   interface{}
 	}{
 		{
-			Obj:      *NewList([]int{2, vint, 3, 4}),
-			expected: *NewList([]int{2, 3, 4}),
+			Obj:      *golist.NewList([]int{2, vint, 3, 4}),
+			expected: *golist.NewList([]int{2, 3, 4}),
 			remove:   vint,
 		},
 		{
-			Obj:      *NewList([]int32{2, 3, vint32, 4}),
-			expected: *NewList([]int32{2, 3, 4}),
+			Obj:      *golist.NewList([]int32{2, 3, vint32, 4}),
+			expected: *golist.NewList([]int32{2, 3, 4}),
 			remove:   vint32,
 		},
 		{
-			Obj:      *NewList([]int64{2, 3, 4, vint64}),
-			expected: *NewList([]int64{2, 3, 4}),
+			Obj:      *golist.NewList([]int64{2, 3, 4, vint64}),
+			expected: *golist.NewList([]int64{2, 3, 4}),
 			remove:   vint64,
 		},
 		{
-			Obj:      *NewList([]float32{vfloat32, 2, 3, 4}),
-			expected: *NewList([]float32{2, 3, 4}),
+			Obj:      *golist.NewList([]float32{vfloat32, 2, 3, 4}),
+			expected: *golist.NewList([]float32{2, 3, 4}),
 			remove:   vfloat32,
 		},
 		{
-			Obj:      *NewList([]float64{vfloat64, 2, 3, 4}),
-			expected: *NewList([]float64{2, 3, 4}),
+			Obj:      *golist.NewList([]float64{vfloat64, 2, 3, 4}),
+			expected: *golist.NewList([]float64{2, 3, 4}),
 			remove:   vfloat64,
 		},
 		{
-			Obj:      *NewList([]string{vstring, "2", "3", "4"}),
-			expected: *NewList([]string{"2", "3", "4"}),
+			Obj:      *golist.NewList([]string{vstring, "2", "3", "4"}),
+			expected: *golist.NewList([]string{"2", "3", "4"}),
 			remove:   vstring,
 		},
 	}
@@ -61,32 +65,32 @@ func TestRemove(t *testing.T) {
 
 func TestCopy(t *testing.T) {
 	testCases := []struct {
-		Obj      List
-		expected List
+		Obj      golist.List
+		expected golist.List
 	}{
 		{
-			Obj:      *NewList([]int{2, 3, 4}),
-			expected: *NewList([]int{2, 3, 4}),
+			Obj:      *golist.NewList([]int{2, 3, 4}),
+			expected: *golist.NewList([]int{2, 3, 4}),
 		},
 		{
-			Obj:      *NewList([]int32{2, 3, 4}),
-			expected: *NewList([]int32{2, 3, 4}),
+			Obj:      *golist.NewList([]int32{2, 3, 4}),
+			expected: *golist.NewList([]int32{2, 3, 4}),
 		},
 		{
-			Obj:      *NewList([]int64{2, 3, 4}),
-			expected: *NewList([]int64{2, 3, 4}),
+			Obj:      *golist.NewList([]int64{2, 3, 4}),
+			expected: *golist.NewList([]int64{2, 3, 4}),
 		},
 		{
-			Obj:      *NewList([]float32{2, 3, 4}),
-			expected: *NewList([]float32{2, 3, 4}),
+			Obj:      *golist.NewList([]float32{2, 3, 4}),
+			expected: *golist.NewList([]float32{2, 3, 4}),
 		},
 		{
-			Obj:      *NewList([]float64{2, 3, 4}),
-			expected: *NewList([]float64{2, 3, 4}),
+			Obj:      *golist.NewList([]float64{2, 3, 4}),
+			expected: *golist.NewList([]float64{2, 3, 4}),
 		},
 		{
-			Obj:      *NewList([]string{"2", "3", "4"}),
-			expected: *NewList([]string{"2", "3", "4"}),
+			Obj:      *golist.NewList([]string{"2", "3", "4"}),
+			expected: *golist.NewList([]string{"2", "3", "4"}),
 		},
 	}
 	for _, tC := range testCases {
@@ -107,44 +111,44 @@ func TestCopy(t *testing.T) {
 
 func TestSlice(t *testing.T) {
 	testCases := []struct {
-		Obj      List
-		expected List
+		Obj      golist.List
+		expected golist.List
 		start    int
 		stop     int
 	}{
 		{
-			Obj:      *NewList([]int{2, 3, 4}),
-			expected: *NewList([]int{2, 3}),
+			Obj:      *golist.NewList([]int{2, 3, 4}),
+			expected: *golist.NewList([]int{2, 3}),
 			start:    0,
 			stop:     2,
 		},
 		{
-			Obj:      *NewList([]int32{2, 3, 4}),
-			expected: *NewList([]int32{2}),
+			Obj:      *golist.NewList([]int32{2, 3, 4}),
+			expected: *golist.NewList([]int32{2}),
 			start:    0,
 			stop:     1,
 		},
 		{
-			Obj:      *NewList([]int64{2, 3, 4}),
-			expected: *NewList([]int64{2, 3, 4}),
+			Obj:      *golist.NewList([]int64{2, 3, 4}),
+			expected: *golist.NewList([]int64{2, 3, 4}),
 			start:    0,
 			stop:     -1,
 		},
 		{
-			Obj:      *NewList([]float32{2, 3, 4}),
-			expected: *NewList([]float32{}),
+			Obj:      *golist.NewList([]float32{2, 3, 4}),
+			expected: *golist.NewList([]float32{}),
 			start:    0,
 			stop:     0,
 		},
 		{
-			Obj:      *NewList([]float64{2, 3, 4}),
-			expected: *NewList([]float64{2, 3, 4}),
+			Obj:      *golist.NewList([]float64{2, 3, 4}),
+			expected: *golist.NewList([]float64{2, 3, 4}),
 			start:    0,
 			stop:     -1,
 		},
 		{
-			Obj:      *NewList([]string{"2", "3", "4"}),
-			expected: *NewList([]string{"2", "3", "4"}),
+			Obj:      *golist.NewList([]string{"2", "3", "4"}),
+			expected: *golist.NewList([]string{"2", "3", "4"}),
 			start:    0,
 			stop:     -1,
 		},
@@ -167,32 +171,32 @@ func TestSlice(t *testing.T) {
 
 func TestReverse(t *testing.T) {
 	testCases := []struct {
-		Obj      List
-		expected List
+		Obj      golist.List
+		expected golist.List
 	}{
 		{
-			Obj:      *NewList([]int{2, 3, 4}),
-			expected: *NewList([]int{4, 3, 2}),
+			Obj:      *golist.NewList([]int{2, 3, 4}),
+			expected: *golist.NewList([]int{4, 3, 2}),
 		},
 		{
-			Obj:      *NewList([]int32{2, 3, 4}),
-			expected: *NewList([]int32{4, 3, 2}),
+			Obj:      *golist.NewList([]int32{2, 3, 4}),
+			expected: *golist.NewList([]int32{4, 3, 2}),
 		},
 		{
-			Obj:      *NewList([]int64{2, 3, 4}),
-			expected: *NewList([]int64{4, 3, 2}),
+			Obj:      *golist.NewList([]int64{2, 3, 4}),
+			expected: *golist.NewList([]int64{4, 3, 2}),
 		},
 		{
-			Obj:      *NewList([]float32{2, 3, 4}),
-			expected: *NewList([]float32{4, 3, 2}),
+			Obj:      *golist.NewList([]float32{2, 3, 4}),
+			expected: *golist.NewList([]float32{4, 3, 2}),
 		},
 		{
-			Obj:      *NewList([]float64{2, 3, 4}),
-			expected: *NewList([]float64{4, 3, 2}),
+			Obj:      *golist.NewList([]float64{2, 3, 4}),
+			expected: *golist.NewList([]float64{4, 3, 2}),
 		},
 		{
-			Obj:      *NewList([]string{"2", "3", "4"}),
-			expected: *NewList([]string{"4", "3", "2"}),
+			Obj:      *golist.NewList([]string{"2", "3", "4"}),
+			expected: *golist.NewList([]string{"4", "3", "2"}),
 		},
 	}
 	for _, tC := range testCases {
@@ -207,31 +211,31 @@ func TestReverse(t *testing.T) {
 
 func TestString(t *testing.T) {
 	testCases := []struct {
-		Obj      List
+		Obj      golist.List
 		expected string
 	}{
 		{
-			Obj:      *NewList([]int{2, 3, 4}),
+			Obj:      *golist.NewList([]int{2, 3, 4}),
 			expected: "[2, 3, 4]",
 		},
 		{
-			Obj:      *NewList([]int32{2, 3, 4}),
+			Obj:      *golist.NewList([]int32{2, 3, 4}),
 			expected: "[2, 3, 4]",
 		},
 		{
-			Obj:      *NewList([]int64{2, 3, 4}),
+			Obj:      *golist.NewList([]int64{2, 3, 4}),
 			expected: "[2, 3, 4]",
 		},
 		{
-			Obj:      *NewList([]float32{2, 3, 4}),
+			Obj:      *golist.NewList([]float32{2, 3, 4}),
 			expected: "[2, 3, 4]",
 		},
 		{
-			Obj:      *NewList([]float64{2, 3, 4}),
+			Obj:      *golist.NewList([]float64{2, 3, 4}),
 			expected: "[2, 3, 4]",
 		},
 		{
-			Obj:      *NewList([]string{"2", "3", "4"}),
+			Obj:      *golist.NewList([]string{"2", "3", "4"}),
 			expected: "[\"2\", \"3\", \"4\"]",
 		},
 	}
@@ -253,31 +257,31 @@ func TestSum(t *testing.T) {
 	var vfloat64 float64 = 5
 
 	testCases := []struct {
-		Obj      List
+		Obj      golist.List
 		expected interface{}
 	}{
 		{
-			Obj:      *NewList([]int{2, 3}),
+			Obj:      *golist.NewList([]int{2, 3}),
 			expected: vint,
 		},
 		{
-			Obj:      *NewList([]int32{2, 3}),
+			Obj:      *golist.NewList([]int32{2, 3}),
 			expected: vint32,
 		},
 		{
-			Obj:      *NewList([]int64{2, 3}),
+			Obj:      *golist.NewList([]int64{2, 3}),
 			expected: vint64,
 		},
 		{
-			Obj:      *NewList([]float32{2, 3}),
+			Obj:      *golist.NewList([]float32{2, 3}),
 			expected: vfloat32,
 		},
 		{
-			Obj:      *NewList([]float64{2, 3}),
+			Obj:      *golist.NewList([]float64{2, 3}),
 			expected: vfloat64,
 		},
 		{
-			Obj:      *NewList([]string{"Hello", "world"}),
+			Obj:      *golist.NewList([]string{"Hello", "world"}),
 			expected: "Hello world",
 		},
 	}
@@ -294,38 +298,38 @@ func TestSum(t *testing.T) {
 func TestList(t *testing.T) {
 
 	testCases := []struct {
-		Obj      List
+		Obj      golist.List
 		expected interface{}
 	}{
 		{
-			Obj:      *NewList([]int{2, 3}),
+			Obj:      *golist.NewList([]int{2, 3}),
 			expected: []int{2, 3},
 		},
 		{
-			Obj:      *NewList([]int32{2, 3}),
+			Obj:      *golist.NewList([]int32{2, 3}),
 			expected: []int32{2, 3},
 		},
 		{
-			Obj:      *NewList([]int64{2, 3}),
+			Obj:      *golist.NewList([]int64{2, 3}),
 			expected: []int64{2, 3},
 		},
 		{
-			Obj:      *NewList([]float32{2, 3}),
+			Obj:      *golist.NewList([]float32{2, 3}),
 			expected: []float32{2, 3},
 		},
 		{
-			Obj:      *NewList([]float64{2, 3}),
+			Obj:      *golist.NewList([]float64{2, 3}),
 			expected: []float64{2, 3},
 		},
 		{
-			Obj:      *NewList([]string{"Hello", "world"}),
+			Obj:      *golist.NewList([]string{"Hello", "world"}),
 			expected: []string{"Hello", "world"},
 		},
 	}
 	for _, tC := range testCases {
 		got := tC.Obj.List()
-		gotObj := NewList(got)
-		expected := NewList(tC.expected)
+		gotObj := golist.NewList(got)
+		expected := golist.NewList(tC.expected)
 		for i := 0; i < expected.Len(); i++ {
 			if gotObj.Get(i) != expected.Get(i) {
 				t.Errorf("[Error TestList | not equal] : Got: %v, Expected: %v.\n", got, tC.expected)
@@ -337,27 +341,27 @@ func TestList(t *testing.T) {
 
 func TestJoin(t *testing.T) {
 	testCases := []struct {
-		Obj      *List
+		Obj      *golist.List
 		expected string
 		joiner   string
 	}{
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
 			joiner:   ",",
 			expected: "Hello,world",
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
 			joiner:   " ",
 			expected: "Hello world",
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
 			joiner:   "-",
 			expected: "Hello-world",
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
 			joiner:   "",
 			expected: "Helloworld",
 		},
@@ -378,44 +382,44 @@ func TestReplace(t *testing.T) {
 	var vfloat64 float64 = 5
 
 	testCases := []struct {
-		Obj      *List
-		expected *List
+		Obj      *golist.List
+		expected *golist.List
 		replace  interface{}
 		index    int
 	}{
 		{
-			Obj:      NewList([]int{2, 3}),
-			expected: NewList([]int{vint, 3}),
+			Obj:      golist.NewList([]int{2, 3}),
+			expected: golist.NewList([]int{vint, 3}),
 			replace:  vint,
 			index:    0,
 		},
 		{
-			Obj:      NewList([]int32{2, 3}),
-			expected: NewList([]int32{5, 3}),
+			Obj:      golist.NewList([]int32{2, 3}),
+			expected: golist.NewList([]int32{5, 3}),
 			replace:  vint32,
 			index:    0,
 		},
 		{
-			Obj:      NewList([]int64{2, 3}),
-			expected: NewList([]int64{2, 5}),
+			Obj:      golist.NewList([]int64{2, 3}),
+			expected: golist.NewList([]int64{2, 5}),
 			replace:  vint64,
 			index:    1,
 		},
 		{
-			Obj:      NewList([]float32{2, 3}),
-			expected: NewList([]float32{2, 5}),
+			Obj:      golist.NewList([]float32{2, 3}),
+			expected: golist.NewList([]float32{2, 5}),
 			replace:  vfloat32,
 			index:    -1,
 		},
 		{
-			Obj:      NewList([]float64{2, 3}),
-			expected: NewList([]float64{2, 5}),
+			Obj:      golist.NewList([]float64{2, 3}),
+			expected: golist.NewList([]float64{2, 5}),
 			replace:  vfloat64,
 			index:    1,
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
-			expected: NewList([]string{"Hello", "golang"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
+			expected: golist.NewList([]string{"Hello", "golang"}),
 			replace:  "golang",
 			index:    -1,
 		},
@@ -446,46 +450,46 @@ func TestGCF(t *testing.T) {
 	var edge2 float64 = 0
 
 	testCases := []struct {
-		Obj      *List
+		Obj      *golist.List
 		expected interface{}
 	}{
 		{
-			Obj:      NewList([]int{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int{10, 5, 25, 200}),
 			expected: vint,
 		},
 		// edge case
 		{
-			Obj:      NewList([]int{10, 5, 0, 0}),
+			Obj:      golist.NewList([]int{10, 5, 0, 0}),
 			expected: vint,
 		},
 		{
-			Obj:      NewList([]int32{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int32{10, 5, 25, 200}),
 			expected: vint32,
 		},
 		{
-			Obj:      NewList([]int64{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int64{10, 5, 25, 200}),
 			expected: vint64,
 		},
 		{
-			Obj:      NewList([]float32{10, 5, 25, 200}),
+			Obj:      golist.NewList([]float32{10, 5, 25, 200}),
 			expected: vfloat32,
 		},
 		{
-			Obj:      NewList([]float64{10, 5, 25, 200}),
+			Obj:      golist.NewList([]float64{10, 5, 25, 200}),
 			expected: vfloat64,
 		},
 		// edge case
 		{
-			Obj:      NewList([]float64{6.3, 12}),
+			Obj:      golist.NewList([]float64{6.3, 12}),
 			expected: edge,
 		},
 		// edge case
 		{
-			Obj:      NewList([]float64{0, 0}),
+			Obj:      golist.NewList([]float64{0, 0}),
 			expected: edge2,
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
 			expected: nil,
 		},
 	}
@@ -509,46 +513,46 @@ func TestLCM(t *testing.T) {
 	var edge2 float64 = 0
 
 	testCases := []struct {
-		Obj      *List
+		Obj      *golist.List
 		expected interface{}
 	}{
 		{
-			Obj:      NewList([]int{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int{10, 5, 25, 200}),
 			expected: vint,
 		},
 		// edge case
 		{
-			Obj:      NewList([]int{10, 5, 0, 0}),
+			Obj:      golist.NewList([]int{10, 5, 0, 0}),
 			expected: edge1,
 		},
 		{
-			Obj:      NewList([]int32{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int32{10, 5, 25, 200}),
 			expected: vint32,
 		},
 		{
-			Obj:      NewList([]int64{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int64{10, 5, 25, 200}),
 			expected: vint64,
 		},
 		{
-			Obj:      NewList([]float32{10, 5, 25, 200}),
+			Obj:      golist.NewList([]float32{10, 5, 25, 200}),
 			expected: vfloat32,
 		},
 		{
-			Obj:      NewList([]float64{10, 5, 25, 200}),
+			Obj:      golist.NewList([]float64{10, 5, 25, 200}),
 			expected: vfloat64,
 		},
 		// edge case
 		{
-			Obj:      NewList([]float64{6.3, 12}),
+			Obj:      golist.NewList([]float64{6.3, 12}),
 			expected: edge,
 		},
 		// edge case
 		{
-			Obj:      NewList([]float64{0, 0}),
+			Obj:      golist.NewList([]float64{0, 0}),
 			expected: edge2,
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
 			expected: nil,
 		},
 	}
@@ -564,37 +568,37 @@ func TestLCM(t *testing.T) {
 func TestType(t *testing.T) {
 
 	testCases := []struct {
-		Obj      *List
+		Obj      *golist.List
 		expected string
 	}{
 		{
-			Obj:      NewList([]int{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int{10, 5, 25, 200}),
 			expected: "golist.List[]int",
 		},
 		{
-			Obj:      NewList([]int32{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int32{10, 5, 25, 200}),
 			expected: "golist.List[]int32",
 		},
 		{
-			Obj:      NewList([]int64{10, 5, 25, 200}),
+			Obj:      golist.NewList([]int64{10, 5, 25, 200}),
 			expected: "golist.List[]int64",
 		},
 		{
-			Obj:      NewList([]float32{10, 5, 25, 200}),
+			Obj:      golist.NewList([]float32{10, 5, 25, 200}),
 			expected: "golist.List[]float32",
 		},
 		{
-			Obj:      NewList([]float64{10, 5, 25, 200}),
+			Obj:      golist.NewList([]float64{10, 5, 25, 200}),
 			expected: "golist.List[]float64",
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
+			Obj:      golist.NewList([]string{"Hello", "world"}),
 			expected: "golist.List[]string",
 		},
 	}
 	for _, tC := range testCases {
 		got := tC.Obj.Type()
-		if got != ListType(tC.expected) {
+		if got != golist.ListType(tC.expected) {
 			t.Errorf("Type Error : %v != %v", tC.expected, got)
 		}
 
@@ -603,47 +607,47 @@ func TestType(t *testing.T) {
 
 func TestListSum(t *testing.T) {
 	testCases := []struct {
-		Obj      *List
-		other    *List
+		Obj      *golist.List
+		other    *golist.List
 		Error    error
-		expected *List
+		expected *golist.List
 	}{
 		{
-			Obj:      NewList([]int{2, 3, 4}),
-			other:    NewList([]int{1, 1, 1}),
+			Obj:      golist.NewList([]int{2, 3, 4}),
+			other:    golist.NewList([]int{1, 1, 1}),
 			Error:    nil,
-			expected: NewList([]int{3, 4, 5}),
+			expected: golist.NewList([]int{3, 4, 5}),
 		},
 		{
-			Obj:      NewList([]int32{2, 3, 4}),
-			other:    NewList([]int32{1, 1, 1}),
+			Obj:      golist.NewList([]int32{2, 3, 4}),
+			other:    golist.NewList([]int32{1, 1, 1}),
 			Error:    nil,
-			expected: NewList([]int32{3, 4, 5}),
+			expected: golist.NewList([]int32{3, 4, 5}),
 		},
 		{
-			Obj:      NewList([]int64{2, 3, 4}),
-			other:    NewList([]int64{1, 1, 1}),
+			Obj:      golist.NewList([]int64{2, 3, 4}),
+			other:    golist.NewList([]int64{1, 1, 1}),
 			Error:    nil,
-			expected: NewList([]int64{3, 4, 5}),
+			expected: golist.NewList([]int64{3, 4, 5}),
 		},
 		{
-			Obj:      NewList([]float32{2, 3, 4}),
-			other:    NewList([]float32{1, 1, 1}),
+			Obj:      golist.NewList([]float32{2, 3, 4}),
+			other:    golist.NewList([]float32{1, 1, 1}),
 			Error:    nil,
-			expected: NewList([]float32{3, 4, 5}),
+			expected: golist.NewList([]float32{3, 4, 5}),
 		},
 		{
-			Obj:      NewList([]float64{2, 3, 4}),
-			other:    NewList([]float64{1, 1, 1}),
+			Obj:      golist.NewList([]float64{2, 3, 4}),
+			other:    golist.NewList([]float64{1, 1, 1}),
 			Error:    nil,
-			expected: NewList([]float64{3, 4, 5}),
+			expected: golist.NewList([]float64{3, 4, 5}),
 		},
 		// edge cases
 		{
-			Obj:      NewList([]float64{2, 3, 4}),
-			other:    NewList([]float64{1, 1, 1, 2}),
-			Error:    ErrListsNotOfSameLen,
-			expected: &List{},
+			Obj:      golist.NewList([]float64{2, 3, 4}),
+			other:    golist.NewList([]float64{1, 1, 1, 2}),
+			Error:    golist.ErrListsNotOfSameLen,
+			expected: &golist.List{},
 		},
 	}
 	for _, tC := range testCases {
@@ -662,44 +666,44 @@ func TestListSum(t *testing.T) {
 func TestConvertTo(t *testing.T) {
 
 	testCases := []struct {
-		Obj      *List
-		expected *List
-		itype    ListType
+		Obj      *golist.List
+		expected *golist.List
+		itype    golist.ListType
 	}{
 		{
-			Obj:      NewList([]int{10, 5, 25, 200}),
-			expected: NewList([]float32{10, 5, 25, 200}),
-			itype:    TypeListFloat32,
+			Obj:      golist.NewList([]int{10, 5, 25, 200}),
+			expected: golist.NewList([]float32{10, 5, 25, 200}),
+			itype:    golist.TypeListFloat32,
 		},
 		{
-			Obj:      NewList([]int32{10, 5, 25, 200}),
-			expected: NewList([]float64{10, 5, 25, 200}),
-			itype:    TypeListFloat64,
+			Obj:      golist.NewList([]int32{10, 5, 25, 200}),
+			expected: golist.NewList([]float64{10, 5, 25, 200}),
+			itype:    golist.TypeListFloat64,
 		},
 		{
-			Obj:      NewList([]int64{10, 5, 25, 200}),
-			expected: NewList([]int{10, 5, 25, 200}),
-			itype:    TypeListInt,
+			Obj:      golist.NewList([]int64{10, 5, 25, 200}),
+			expected: golist.NewList([]int{10, 5, 25, 200}),
+			itype:    golist.TypeListInt,
 		},
 		{
-			Obj:      NewList([]float32{10, 5, 25, 200}),
-			expected: NewList([]int32{10, 5, 25, 200}),
-			itype:    TypeListInt32,
+			Obj:      golist.NewList([]float32{10, 5, 25, 200}),
+			expected: golist.NewList([]int32{10, 5, 25, 200}),
+			itype:    golist.TypeListInt32,
 		},
 		{
-			Obj:      NewList([]float64{10, 5, 25, 200}),
-			expected: NewList([]int64{10, 5, 25, 200}),
-			itype:    TypeListInt64,
+			Obj:      golist.NewList([]float64{10, 5, 25, 200}),
+			expected: golist.NewList([]int64{10, 5, 25, 200}),
+			itype:    golist.TypeListInt64,
 		},
 		{
-			Obj:      NewList([]float64{10, 5, 25, 200}),
-			expected: NewList([]string{"10", "5", "25", "200"}),
-			itype:    TypeListString,
+			Obj:      golist.NewList([]float64{10, 5, 25, 200}),
+			expected: golist.NewList([]string{"10", "5", "25", "200"}),
+			itype:    golist.TypeListString,
 		},
 		{
-			Obj:      NewList([]string{"Hello", "world"}),
-			expected: NewList([]string{"Hello", "world"}),
-			itype:    TypeListString,
+			Obj:      golist.NewList([]string{"Hello", "world"}),
+			expected: golist.NewList([]string{"Hello", "world"}),
+			itype:    golist.TypeListString,
 		},
 	}
 	for _, tC := range testCases {

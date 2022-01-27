@@ -45,7 +45,7 @@ fmt.Println(item)  // 1
 Get an item's index in the list. works in reverse of `list.Get(i)`. `x` represents the item. Returns `-1` if item don't exist.
 ```golang
 list := golist.NewList([]int{1,2,3})
-index := list.index(2)
+index := list.Index(2)
 fmt.Println(index)  // 1
 ```
 
