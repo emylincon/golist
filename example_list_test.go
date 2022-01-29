@@ -34,6 +34,12 @@ func Example() {
 	// sum elements in list
 	fmt.Println("Sum() :", list.Sum())
 
+	err := list.Remove(7)
+	if err != nil {
+		fmt.Println(err) // handle error
+	}
+	fmt.Println("Remove(7) :", list)
+
 	// Output:
 	// Get(0) : 1
 	// Index(2) : 1
@@ -41,4 +47,5 @@ func Example() {
 	// Extend([]int{4, 5) : [1, 2, 3, 7, 4, 5]
 	// Reverse() : [5, 4, 7, 3, 2, 1]
 	// Sum() : 22
+	// Remove(7) : [1, 2, 3, 4, 5]
 }
