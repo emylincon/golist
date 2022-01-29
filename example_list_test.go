@@ -14,31 +14,31 @@ func Example() {
 	list := golist.NewList([]int{1, 2, 3})
 	// Get an item in the list by index. `i` represents the index. Returns `nil` if index don't exist.
 	item := list.Get(0)
-	fmt.Println(item)
+	fmt.Println("Get(0) :", item)
 
 	// To return an item's index in the list, use list.index. works in reverse of `list.Get(i)`. `x` represents the item. Returns `-1` if item don't exist.
 	index := list.Index(2)
-	fmt.Println(index)
+	fmt.Println("Index(2) :", index)
 
 	// Append an item to the end of the list. Items must be of the same type.
 	list.Append(7)
-	fmt.Println(list)
+	fmt.Println("Append(7) :", list)
 
 	// Extend the list by appending all the items from a slice or array.
 	list.Extend([]int{4, 5})
-	fmt.Println(list)
+	fmt.Println("Extend([]int{4, 5) :", list)
 
 	// Reverse elements in list.
-	fmt.Println(list.Reverse())
+	fmt.Println("Reverse() :", list.Reverse())
 
 	// sum elements in list
-	fmt.Println(list.Sum())
+	fmt.Println("Sum() :", list.Sum())
 
 	// Output:
-	// 1
-	// 1
-	// [1, 2, 3, 7]
-	// [1, 2, 3, 7, 4, 5]
-	// [5, 4, 7, 3, 2, 1]
-	// 22
+	// Get(0) : 1
+	// Index(2) : 1
+	// Append(7) : [1, 2, 3, 7]
+	// Extend([]int{4, 5) : [1, 2, 3, 7, 4, 5]
+	// Reverse() : [5, 4, 7, 3, 2, 1]
+	// Sum() : 22
 }
