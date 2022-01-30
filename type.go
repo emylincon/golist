@@ -13,6 +13,7 @@ const (
 	TypeListUnknown ListType = "golist.List[]unknown"
 )
 
+// ListType is a string representation of list type
 type ListType string
 
 // Type returns string representation of the list.
