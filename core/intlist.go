@@ -257,6 +257,22 @@ func ListMultiplyNoInt(list []int, no int) (product []int) {
 	return
 }
 
+// ListDivideInt divide the contents of two lists
+func ListDivideInt(list []int, other []int) (product []int) {
+	for i, v := range list {
+		product = append(product, v/other[i])
+	}
+	return
+}
+
+// ListMultiplyNoInt divide a given number with all elements in list
+func ListDivideNoInt(list []int, no int) (product []int) {
+	for _, v := range list {
+		product = append(product, v/no)
+	}
+	return
+}
+
 // ConvertToInt converts to slice to int
 func ConvertToInt(array interface{}) (Intify []int, err error) {
 
