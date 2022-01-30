@@ -2,7 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
-// Pop :
+// Pop  :
 // removes element in list using index and returns it
 func (arr *List) Pop(index int) interface{} {
 

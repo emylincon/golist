@@ -4,7 +4,7 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
-// Remove :
+// Remove  :
 // removes a given element from list. returns error if element do not exist
 func (arr *List) Remove(element interface{}) error {
 

@@ -8,7 +8,7 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
-// Lists :
+// Lists  :
 // List interface and all methods
 type Lists interface {
 	List() interface{}                            // returns underlying slice
@@ -49,7 +49,7 @@ type List struct {
 	list interface{}
 }
 
-// NewList :
+// NewList  :
 // list constructor
 func NewList(list interface{}) *List {
 	newlist := &List{
@@ -58,7 +58,7 @@ func NewList(list interface{}) *List {
 	return newlist
 }
 
-// List :
+// List  :
 // returns underlying slice or array
 func (arr *List) List() interface{} {
 	switch arr.list.(type) {
@@ -91,7 +91,7 @@ func (arr *List) List() interface{} {
 	}
 }
 
-// Append :
+// Append  :
 // append element to list
 func (arr *List) Append(element interface{}) {
 
@@ -132,7 +132,7 @@ func (arr *List) Append(element interface{}) {
 
 }
 
-// Index :
+// Index  :
 // returns index of a given element. returns  -1 if element don't exist
 func (arr *List) Index(element interface{}) int {
 
@@ -173,7 +173,7 @@ func (arr *List) Index(element interface{}) int {
 
 }
 
-// Last :
+// Last  :
 // returns last element in the list
 func (arr *List) Last() (interface{}, error) {
 
