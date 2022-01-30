@@ -34,6 +34,7 @@ func Example() {
 	// sum elements in list
 	fmt.Println("Sum() :", list.Sum())
 
+	// remove a given element from list
 	err := list.Remove(7)
 	if err != nil {
 		fmt.Println(err) // handle error

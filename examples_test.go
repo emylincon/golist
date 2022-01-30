@@ -11,6 +11,7 @@ import (
 )
 
 func ExampleNewList() {
+	// create new list object
 	list := golist.NewList([]int{1, 2, 3})
 	fmt.Println(list)
 	// Output:
