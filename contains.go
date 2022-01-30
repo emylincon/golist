@@ -1,6 +1,6 @@
 package golist
 
-// Contains:
+// Contains :
 // returns true if element exists, returns false otherwise
 // ```golang
 // list := golist.NewList([]string{"Hello", "World"})

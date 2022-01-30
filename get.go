@@ -1,6 +1,6 @@
 package golist
 
-// Get:
+// Get :
 // returns element from list using index. if index dont exist returns nil
 func (arr *List) Get(index int) interface{} {
 

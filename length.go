@@ -1,6 +1,6 @@
 package golist
 
-// Len:
+// Len :
 // returns length of list
 func (arr *List) Len() int {
 	switch arr.list.(type) {
