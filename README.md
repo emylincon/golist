@@ -4,19 +4,9 @@
 <a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" target="_blank">
     <img src="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" alt="Build Status" />
 </a>
-<a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square" target="_blank">
-    <img src="https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square" alt="Version: 1.3.0" />
-</a>
-<a style="text-decoration:none" href="https://github.com/emylincon/golist/workflows/Go/badge.svg" target="_blank">
-    <img src="https://github.com/emylincon/golist/workflows/Go/badge.svg" alt="Status" />
-</a>
-<a style="text-decoration:none" href="https://godoc.org/github.com/emylincon/golist" target="_blank">
-    <img src="https://godoc.org/github.com/emylincon/golist?status.svg" alt="GoDoc" />
-</a>
-<a style="text-decoration:none" href="https://goreportcard.com/report/github.com/emylincon/golist" target="_blank">
-    <img src="https://goreportcard.com/badge/github.com/emylincon/golist" alt="Go Report Card" />
-</a>
 </p>
+
+![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square)  ![status](https://github.com/emylincon/golist/workflows/Go/badge.svg) [![GoDoc](https://godoc.org/github.com/emylincon/golist?status.svg)](https://godoc.org/github.com/emylincon/golist) [![Go Report Card](https://goreportcard.com/badge/github.com/emylincon/golist)](https://goreportcard.com/report/github.com/emylincon/golist)
 
 
 # golist
@@ -363,7 +353,15 @@ Add the content of two lists. The lists must be of the same type and have equal 
 ```golang
 list1 := golist.NewList([]int{1,1})
 list2 := golist.NewList([]int{2,2})
-list3 := list1.SumList(list2)
+list3 := list1.ListSum(list2)
+fmt.Println(list3) // [3,3]
+```
+## `list.ListSumNo(no interface{}) (*golist.List, err)`
+Add number to all elements in list. Example
+```golang
+list1 := NewList([]int{1,1})
+no := 2
+list3 := list1.ListSumNo(no)
 fmt.Println(list3) // [3,3]
 ```
 
@@ -376,11 +374,26 @@ list.ConvertTo(golist.TypeListInt32)
 fmt.Println(list.Type()) // golist.List[]int32
 ```
 
-## `list.SumListNo(no interface{}) (*golist.List, err)`
-Add number to all elements in list. Example
+## `list.ListSubtract(other *golist.List) (*golist.List, err)`
+Subtract the content of two lists. The lists must be of the same type and have equal length. Example:
+```golang
+list1 := golist.NewList([]int{1,1})
+list2 := golist.NewList([]int{2,2})
+list3, err := list1.ListSubtract(list2)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [-1, -1]
+```
+
+## `list.ListSubtractNo(no interface{}) (*golist.List, err)`
+Subtract number from all elements in list. Example
 ```golang
 list1 := NewList([]int{1,1})
-no := 2
-list3 := list1.SumListNo(no)
-fmt.Println(list3) // [3,3]
+var no int = 2
+list3, err := list1.ListSubtract(list2)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [-1, -1]
 ```

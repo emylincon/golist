@@ -4,14 +4,14 @@ import (
 	"sort"
 )
 
-// AppendFloat32 :
+// AppendFloat32:
 // implements append
 func AppendFloat32(array *[]float32, element float32) *[]float32 {
 	newArray := append(*array, element)
 	return &newArray
 }
 
-// IndexOfFloat32 :
+// IndexOfFloat32:
 // returns index of element. returns -1 if element dont exist
 func IndexOfFloat32(array *[]float32, element float32) int {
 	for index, value := range *array {
@@ -22,7 +22,7 @@ func IndexOfFloat32(array *[]float32, element float32) int {
 	return -1
 }
 
-// LastFloat32 :
+// LastFloat32:
 // return last element in slice
 func LastFloat32(list []float32) (float32, error) {
 	if len(list) == 0 {
@@ -31,7 +31,7 @@ func LastFloat32(list []float32) (float32, error) {
 	return list[len(list)-1], nil
 }
 
-// SortFloat32 :
+// SortFloat32:
 // sorts slice
 func SortFloat32(list *[]float32, reverse bool) *[]float32 {
 	if reverse {
@@ -47,7 +47,7 @@ func SortFloat32(list *[]float32, reverse bool) *[]float32 {
 	return list
 }
 
-// PopFloat32 :
+// PopFloat32:
 // removes element from slice
 func PopFloat32(list *[]float32, index int) ([]float32, float32) {
 	listD := *list
@@ -56,7 +56,7 @@ func PopFloat32(list *[]float32, index int) ([]float32, float32) {
 	return newArray, popped
 }
 
-// CountFloat32 :
+// CountFloat32:
 // returns the number of times a given element appears in a slice
 func CountFloat32(list *[]float32, element float32) int {
 	count := 0
@@ -68,13 +68,13 @@ func CountFloat32(list *[]float32, element float32) int {
 	return count
 }
 
-// ExtendFloat32 :
+// ExtendFloat32:
 // adds two slice together
 func ExtendFloat32(list *[]float32, another []float32) []float32 {
 	return append((*list), another...)
 }
 
-// InsertFloat32 :
+// InsertFloat32:
 // insert an element in a given position
 func InsertFloat32(list *[]float32, element float32, index int) *[]float32 {
 	postpend := append([]float32{element}, (*list)[index:]...)
@@ -82,7 +82,7 @@ func InsertFloat32(list *[]float32, element float32, index int) *[]float32 {
 	return &newList
 }
 
-// RemoveFloat32 :
+// RemoveFloat32:
 // removes given element from slice
 func RemoveFloat32(list *[]float32, element float32) (*[]float32, error) {
 	index := IndexOfFloat32(list, element)
@@ -93,7 +93,7 @@ func RemoveFloat32(list *[]float32, element float32) (*[]float32, error) {
 	return &newList, nil
 }
 
-// ReverseFloat32 :
+// ReverseFloat32:
 // reverse the positions of elements in slice
 func ReverseFloat32(list *[]float32) *[]float32 {
 	newList := []float32{}
@@ -104,7 +104,7 @@ func ReverseFloat32(list *[]float32) *[]float32 {
 	return &newList
 }
 
-// SumFloat32 :
+// SumFloat32:
 // sum of elements in slice
 func SumFloat32(list *[]float32) (sum float32) {
 	for _, value := range *list {
@@ -113,7 +113,7 @@ func SumFloat32(list *[]float32) (sum float32) {
 	return
 }
 
-// MaxFloat32 :
+// MaxFloat32:
 // returns max element in slice
 func MaxFloat32(list *[]float32) (max float32) {
 	for i, value := range *list {
@@ -124,7 +124,7 @@ func MaxFloat32(list *[]float32) (max float32) {
 	return
 }
 
-// MinFloat32 :
+// MinFloat32:
 // returns min element in slice
 func MinFloat32(list *[]float32) (min float32) {
 	for i, value := range *list {
@@ -157,19 +157,19 @@ func lcmHcfFloat32(list *[]float32, get func(a, b float64) float64) (result floa
 	return result, nil
 }
 
-// GCFFloat32 :
+// GCFFloat32:
 // returns greatest common factor of slice
 func GCFFloat32(list *[]float32) (gcf float32, err error) {
 	return lcmHcfFloat32(list, _gcfFloat64)
 }
 
-// LCMFloat32 :
+// LCMFloat32:
 // returns lowest common multiple of slice
 func LCMFloat32(list *[]float32) (lcm float32, err error) {
 	return lcmHcfFloat32(list, _lcmFloat64)
 }
 
-// SetFloat32 :
+// SetFloat32:
 // returns a set of slice i.e removes duplicates
 func SetFloat32(list []float32) (set []float32) {
 	keys := map[float32]bool{}
@@ -194,6 +194,22 @@ func ListSumFloat32(list []float32, other []float32) (sum []float32) {
 func ListSumNoFloat32(list []float32, no float32) (sum []float32) {
 	for _, v := range list {
 		sum = append(sum, v+no)
+	}
+	return
+}
+
+// ListSubtractFloat32 sums contents of two lists
+func ListSubtractFloat32(list []float32, other []float32) (sum []float32) {
+	for i, v := range list {
+		sum = append(sum, v-other[i])
+	}
+	return
+}
+
+// ListSubtractNoFloat32 sums contents of two lists
+func ListSubtractNoFloat32(list []float32, no float32) (sum []float32) {
+	for _, v := range list {
+		sum = append(sum, v-no)
 	}
 	return
 }

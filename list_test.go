@@ -772,7 +772,102 @@ func TestListSumNo(t *testing.T) {
 			t.Errorf("[Error SumListNo] : %v", err)
 		}
 		if !got.IsEqual(&tC.expected) {
-			t.Errorf("[Error SumListNo] : Got: %v, Expected: %v.\n", &got, &tC.expected)
+			t.Errorf("[Error SumListNo] : Got: %v, Expected: %v.\n", got, &tC.expected)
+		}
+
+	}
+}
+
+func TestListSubtract(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *golist.List
+		other    *golist.List
+		expected *golist.List
+	}{
+		{
+			Obj:      golist.NewList([]int{2, 3}),
+			other:    golist.NewList([]int{4, 5}),
+			expected: golist.NewList([]int{-2, -2}),
+		},
+		{
+			Obj:      golist.NewList([]int32{2, 5}),
+			other:    golist.NewList([]int32{4, 5}),
+			expected: golist.NewList([]int32{-2, 0}),
+		},
+		{
+			Obj:      golist.NewList([]int64{2, 3}),
+			other:    golist.NewList([]int64{4, 5}),
+			expected: golist.NewList([]int64{-2, -2}),
+		},
+		{
+			Obj:      golist.NewList([]float32{2, 3}),
+			other:    golist.NewList([]float32{4, 5}),
+			expected: golist.NewList([]float32{-2, -2}),
+		},
+		{
+			Obj:      golist.NewList([]float64{2, 3}),
+			other:    golist.NewList([]float64{1, 1}),
+			expected: golist.NewList([]float64{1, 2}),
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ListSubtract(tC.other)
+		if err != nil {
+			t.Errorf("[Error TestListSubtract]: %v", err)
+		}
+
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error TestListSubtract] : Got: %v, Expected: %v. type: %v\n", got, tC.expected, tC.expected.Type())
+		}
+	}
+}
+
+func TestListSubtractNo(t *testing.T) {
+	var vint int = -5
+	var vint32 int32 = -5
+	var vint64 int64 = -5
+	var vfloat32 float32 = -5
+	var vfloat64 float64 = -5
+
+	testCases := []struct {
+		Obj      golist.List
+		expected golist.List
+		no       interface{}
+	}{
+		{
+			Obj:      *golist.NewList([]int{2, 3, 4}),
+			expected: *golist.NewList([]int{7, 8, 9}),
+			no:       vint,
+		},
+		{
+			Obj:      *golist.NewList([]int32{2, 3, 4}),
+			expected: *golist.NewList([]int32{7, 8, 9}),
+			no:       vint32,
+		},
+		{
+			Obj:      *golist.NewList([]int64{2, 3, 4}),
+			expected: *golist.NewList([]int64{7, 8, 9}),
+			no:       vint64,
+		},
+		{
+			Obj:      *golist.NewList([]float32{2, 3, 4}),
+			expected: *golist.NewList([]float32{7, 8, 9}),
+			no:       vfloat32,
+		},
+		{
+			Obj:      *golist.NewList([]float64{2, 3, 4}),
+			expected: *golist.NewList([]float64{7, 8, 9}),
+			no:       vfloat64,
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ListSubtractNo(tC.no)
+		if err != nil {
+			t.Errorf("[Error SubtractListNo] : %v", err)
+		}
+		if !got.IsEqual(&tC.expected) {
+			t.Errorf("[Error SubtractListNo] : Got: %v, Expected: %v.\n", got, &tC.expected)
 		}
 
 	}

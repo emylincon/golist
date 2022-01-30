@@ -4,14 +4,14 @@ import (
 	"sort"
 )
 
-// AppendInt64 :
+// AppendInt64:
 // implements append
 func AppendInt64(list *[]int64, element int64) *[]int64 {
 	newArray := append(*list, element)
 	return &newArray
 }
 
-// IndexOfInt64 :
+// IndexOfInt64:
 // returns index of element. returns -1 if element dont exist
 func IndexOfInt64(list *[]int64, element int64) int {
 	for index, value := range *list {
@@ -22,7 +22,7 @@ func IndexOfInt64(list *[]int64, element int64) int {
 	return -1
 }
 
-// LastInt64 :
+// LastInt64:
 // return last element in slice
 func LastInt64(list []int64) (int64, error) {
 	if len(list) == 0 {
@@ -31,7 +31,7 @@ func LastInt64(list []int64) (int64, error) {
 	return list[len(list)-1], nil
 }
 
-// SortInt64 :
+// SortInt64:
 // sorts slice
 func SortInt64(list *[]int64, reverse bool) *[]int64 {
 	if reverse {
@@ -46,7 +46,7 @@ func SortInt64(list *[]int64, reverse bool) *[]int64 {
 	return list
 }
 
-// PopInt64 :
+// PopInt64:
 // removes element from slice
 func PopInt64(list *[]int64, index int) ([]int64, int64) {
 	listD := *list
@@ -55,7 +55,7 @@ func PopInt64(list *[]int64, index int) ([]int64, int64) {
 	return newArray, popped
 }
 
-// CountInt64 :
+// CountInt64:
 // returns the number of times a given element appears in a slice
 func CountInt64(list *[]int64, element int64) int {
 	count := 0
@@ -67,13 +67,13 @@ func CountInt64(list *[]int64, element int64) int {
 	return count
 }
 
-// ExtendInt64 :
+// ExtendInt64:
 // adds two slice together
 func ExtendInt64(list *[]int64, another []int64) []int64 {
 	return append((*list), another...)
 }
 
-// InsertInt64 :
+// InsertInt64:
 // insert an element in a given position
 func InsertInt64(list *[]int64, element int64, index int) *[]int64 {
 	postpend := append([]int64{element}, (*list)[index:]...)
@@ -81,7 +81,7 @@ func InsertInt64(list *[]int64, element int64, index int) *[]int64 {
 	return &newList
 }
 
-// RemoveInt64 :
+// RemoveInt64:
 // removes given element from slice
 func RemoveInt64(list *[]int64, element int64) (*[]int64, error) {
 	index := IndexOfInt64(list, element)
@@ -92,7 +92,7 @@ func RemoveInt64(list *[]int64, element int64) (*[]int64, error) {
 	return &newList, nil
 }
 
-// ReverseInt64 :
+// ReverseInt64:
 // reverse the positions of elements in slice
 func ReverseInt64(list *[]int64) *[]int64 {
 	newList := []int64{}
@@ -103,7 +103,7 @@ func ReverseInt64(list *[]int64) *[]int64 {
 	return &newList
 }
 
-// SumInt64 :
+// SumInt64:
 // sum of elements in slice
 func SumInt64(list *[]int64) (sum int64) {
 	for _, value := range *list {
@@ -112,7 +112,7 @@ func SumInt64(list *[]int64) (sum int64) {
 	return
 }
 
-// MaxInt64 :
+// MaxInt64:
 // returns max element in slice
 func MaxInt64(list *[]int64) (max int64) {
 	for i, value := range *list {
@@ -123,7 +123,7 @@ func MaxInt64(list *[]int64) (max int64) {
 	return
 }
 
-// MinInt64 :
+// MinInt64:
 // returns min element in slice
 func MinInt64(list *[]int64) (min int64) {
 	for i, value := range *list {
@@ -177,7 +177,7 @@ func _gcfInt64(a, b int64) int64 {
 
 }
 
-// GCFInt64 :
+// GCFInt64:
 // returns greatest common factor of slice
 func GCFInt64(list *[]int64) (gcf int64, err error) {
 	return lcmHcfInt64(list, _gcfInt64)
@@ -191,13 +191,13 @@ func _lcmInt64(a, b int64) int64 {
 	return (a * b) / _gcfInt64(a, b)
 }
 
-// LCMInt64 :
+// LCMInt64:
 // returns lowest common multiple of slice
 func LCMInt64(list *[]int64) (lcm int64, err error) {
 	return lcmHcfInt64(list, _lcmInt64)
 }
 
-// SetInt64 :
+// SetInt64:
 // returns a set of slice i.e removes duplicates
 func SetInt64(list []int64) (set []int64) {
 	keys := map[int64]bool{}
@@ -222,6 +222,22 @@ func ListSumInt64(list []int64, other []int64) (sum []int64) {
 func ListSumNoInt64(list []int64, no int64) (sum []int64) {
 	for _, v := range list {
 		sum = append(sum, v+no)
+	}
+	return
+}
+
+// ListSubtractInt64 sums contents of two lists
+func ListSubtractInt64(list []int64, other []int64) (sum []int64) {
+	for i, v := range list {
+		sum = append(sum, v-other[i])
+	}
+	return
+}
+
+// ListSubtractNoInt64 sums contents of two lists
+func ListSubtractNoInt64(list []int64, no int64) (sum []int64) {
+	for _, v := range list {
+		sum = append(sum, v-no)
 	}
 	return
 }
