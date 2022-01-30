@@ -258,6 +258,22 @@ func ListMultiplyNoInt32(list []int32, no int32) (product []int32) {
 	return
 }
 
+// ListDivideInt32 divide the contents of two lists
+func ListDivideInt32(list []int32, other []int32) (product []int32) {
+	for i, v := range list {
+		product = append(product, v/other[i])
+	}
+	return
+}
+
+// ListMultiplyNoInt32 divide a given number with all elements in list
+func ListDivideNoInt32(list []int32, no int32) (product []int32) {
+	for _, v := range list {
+		product = append(product, v/no)
+	}
+	return
+}
+
 // ConvertToInt32 converts to slice to int32
 func ConvertToInt32(array interface{}) (Intify []int32, err error) {
 

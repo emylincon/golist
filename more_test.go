@@ -812,3 +812,98 @@ func TestListMultiplyNo(t *testing.T) {
 
 	}
 }
+
+func TestListDivide(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *golist.List
+		other    *golist.List
+		expected *golist.List
+	}{
+		{
+			Obj:      golist.NewList([]int{4, 15}),
+			other:    golist.NewList([]int{2, 5}),
+			expected: golist.NewList([]int{2, 3}),
+		},
+		{
+			Obj:      golist.NewList([]int32{4, 15}),
+			other:    golist.NewList([]int32{2, 5}),
+			expected: golist.NewList([]int32{2, 3}),
+		},
+		{
+			Obj:      golist.NewList([]int64{4, 15}),
+			other:    golist.NewList([]int64{2, 5}),
+			expected: golist.NewList([]int64{2, 3}),
+		},
+		{
+			Obj:      golist.NewList([]float32{4, 15}),
+			other:    golist.NewList([]float32{2, 5}),
+			expected: golist.NewList([]float32{2, 3}),
+		},
+		{
+			Obj:      golist.NewList([]float64{4, 15}),
+			other:    golist.NewList([]float64{2, 5}),
+			expected: golist.NewList([]float64{2, 3}),
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ListDivide(tC.other)
+		if err != nil {
+			t.Errorf("[Error TestListDivide]: %v", err)
+		}
+
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error TestListDivide] : Got: %v, Expected: %v. Type: %v\n", got, tC.expected, tC.expected.Type())
+		}
+	}
+}
+
+func TestListDivideNo(t *testing.T) {
+	var vint int = 5
+	var vint32 int32 = 5
+	var vint64 int64 = 5
+	var vfloat32 float32 = 5
+	var vfloat64 float64 = 5
+
+	testCases := []struct {
+		expected golist.List
+		obj      golist.List
+		no       interface{}
+	}{
+		{
+			expected: *golist.NewList([]int{2, 3, 4}),
+			obj:      *golist.NewList([]int{10, 15, 20}),
+			no:       vint,
+		},
+		{
+			expected: *golist.NewList([]int32{2, 3, 4}),
+			obj:      *golist.NewList([]int32{10, 15, 20}),
+			no:       vint32,
+		},
+		{
+			expected: *golist.NewList([]int64{2, 3, 4}),
+			obj:      *golist.NewList([]int64{10, 15, 20}),
+			no:       vint64,
+		},
+		{
+			expected: *golist.NewList([]float32{2, 3, 4}),
+			obj:      *golist.NewList([]float32{10, 15, 20}),
+			no:       vfloat32,
+		},
+		{
+			expected: *golist.NewList([]float64{2, 3, 4}),
+			obj:      *golist.NewList([]float64{10, 15, 20}),
+			no:       vfloat64,
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.obj.ListDivideNo(tC.no)
+		if err != nil {
+			t.Errorf("[Error DivideListNo] : %v", err)
+		}
+		if !got.IsEqual(&tC.expected) {
+			t.Errorf("[Error DivideListNo] : Got: %v, Expected: %v.\n", got, &tC.expected)
+		}
+
+	}
+}

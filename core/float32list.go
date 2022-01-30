@@ -230,6 +230,22 @@ func ListMultiplyNoFloat32(list []float32, no float32) (product []float32) {
 	return
 }
 
+// ListDivideFloat32 divide the contents of two lists
+func ListDivideFloat32(list []float32, other []float32) (product []float32) {
+	for i, v := range list {
+		product = append(product, v/other[i])
+	}
+	return
+}
+
+// ListMultiplyNoFloat32 divide a given number with all elements in list
+func ListDivideNoFloat32(list []float32, no float32) (product []float32) {
+	for _, v := range list {
+		product = append(product, v/no)
+	}
+	return
+}
+
 // ConvertToFloat32 converts to slice to float32
 func ConvertToFloat32(array interface{}) (Intify []float32, err error) {
 

@@ -50,6 +50,7 @@ func Example() {
 	}
 	fmt.Println("ListSubtract :", list3)
 
+	// Multiply all elements in list with no. Example
 	list1 = golist.NewList([]int{1, 1})
 	var no int = 2
 	list3, err = list1.ListMultiplyNo(no)
@@ -57,6 +58,15 @@ func Example() {
 		fmt.Println(err) // handle error
 	}
 	fmt.Println("ListMultiplyNo :", list3)
+
+	// Divide all elements with other list. Example
+	list1 = golist.NewList([]int{8, 6})
+	list2 = golist.NewList([]int{2, 2})
+	list3, err = list1.ListDivide(list2)
+	if err != nil {
+		fmt.Println(err) // handle error
+	}
+	fmt.Println("ListDivide :", list3)
 
 	// Output:
 	// Get(0) : 1
@@ -68,4 +78,5 @@ func Example() {
 	// Remove(7) : [1, 2, 3, 4, 5]
 	// ListSubtract : [-1, -1]
 	// ListMultiplyNo : [2, 2]
+	// ListDivide : [4, 3]
 }

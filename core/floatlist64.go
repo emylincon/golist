@@ -271,6 +271,22 @@ func ListMultiplyNoFloat64(list []float64, no float64) (product []float64) {
 	return
 }
 
+// ListDivideFloat64 divide the contents of two lists
+func ListDivideFloat64(list []float64, other []float64) (product []float64) {
+	for i, v := range list {
+		product = append(product, v/other[i])
+	}
+	return
+}
+
+// ListMultiplyNoFloat64 divide a given number with all elements in list
+func ListDivideNoFloat64(list []float64, no float64) (product []float64) {
+	for _, v := range list {
+		product = append(product, v/no)
+	}
+	return
+}
+
 // ConvertToFloat64 converts to slice to float64
 func ConvertToFloat64(array interface{}) (Intify []float64, err error) {
 

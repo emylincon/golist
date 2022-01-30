@@ -62,7 +62,7 @@ fmt.Println(index)  // 1
 ## `list.String()`
 Returns a string representation of the object
 ```golang
-list := NewList([]int{3,2,1})
+list := golist.NewList([]int{3,2,1})
 fmt.Println(list.String())  // [3, 2, 1]
 ```
 
@@ -317,7 +317,7 @@ Furthermore `NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac",
 * For `n < 1`, it equals to All and returns all combinations.
 * For `n > len(list)` then `n = len(list)`
 ```golang
-list := NewList([]string{"a", "b", "c"})
+list := golist.NewList([]string{"a", "b", "c"})
 combinedList := list.Combinations(2, " ")
 fmt.Println(combinedList)  // ["a b", "a c", "b c"]
 combinedList = list.Combinations(2, ",")
@@ -369,7 +369,7 @@ fmt.Println(list3) // [3,3]
 ## `list.ListSumNo(no interface{}) (*golist.List, err)`
 Add number to all elements in list. Example
 ```golang
-list1 := NewList([]int{1,1})
+list1 := golist.NewList([]int{1,1})
 no := 2
 list3 := list1.ListSumNo(no)
 fmt.Println(list3) // [3,3]
@@ -399,7 +399,7 @@ fmt.Println(list3) // [-1, -1]
 ## `list.ListSubtractNo(no interface{}) (*golist.List, err)`
 Subtract number from all elements in list. Example
 ```golang
-list1 := NewList([]int{1,1})
+list1 := golist.NewList([]int{1,1})
 var no int = 2
 list3, err := list1.ListSubtractNo(no)
 if err != nil {
@@ -423,11 +423,35 @@ fmt.Println(list3) // [2, 2]
 ## `list.ListMultiplyNo(no interface{}) (*golist.List, err)`
 Multiply a number with all elements in list. Example
 ```golang
-list1 := NewList([]int{1,1})
+list1 := golist.NewList([]int{1,1})
 var no int = 2
 list3, err := list1.ListMultiplyNo(no)
 if err != nil {
     fmt.Println(err) // handle error
 }
 fmt.Println(list3) // [2, 2]
+```
+
+## `list.ListDivide(other *golist.List) (*golist.List, err)`
+Divide the content of two lists. The lists must be of the same type and have equal length. Example:
+```golang
+list1 := golist.NewList([]int{8,6})
+list2 := golist.NewList([]int{2,2})
+list3, err := list1.ListDivide(list2)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [4, 3]
+```
+
+## `list.ListDivideNo(no interface{}) (*golist.List, err)`
+Divide all elements in list with no. Example
+```golang
+list1 := golist.NewList([]int{12,2})
+var no int = 2
+list3, err := list1.ListDivideNo(no)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [6, 1]
 ```

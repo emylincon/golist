@@ -258,6 +258,22 @@ func ListMultiplyNoInt64(list []int64, no int64) (product []int64) {
 	return
 }
 
+// ListDivideInt64 divide the contents of two lists
+func ListDivideInt64(list []int64, other []int64) (product []int64) {
+	for i, v := range list {
+		product = append(product, v/other[i])
+	}
+	return
+}
+
+// ListMultiplyNoInt64 divide a given number with all elements in list
+func ListDivideNoInt64(list []int64, no int64) (product []int64) {
+	for _, v := range list {
+		product = append(product, v/no)
+	}
+	return
+}
+
 // ConvertToInt64 converts to slice to int64
 func ConvertToInt64(array interface{}) (Intify []int64, err error) {
 
