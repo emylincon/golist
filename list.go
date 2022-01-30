@@ -11,37 +11,48 @@ import (
 // Lists  :
 // List interface and all methods
 type Lists interface {
-	List() interface{}                            // returns underlying slice
-	Get(index int) interface{}                    // get item with index
-	Append(element interface{})                   // append item
-	Index(element interface{}) int                // get item's index
-	Last() (interface{}, error)                   // get last item
-	Max() (interface{}, error)                    // max item
-	Min() (interface{}, error)                    // min item
-	Type() string                                 // type of list
-	Sum() interface{}                             // sum list items
-	String() string                               // string repr
-	LCM() (interface{}, error)                    // lcm of lest
-	GCF() (interface{}, error)                    // gcf of list
-	HCF() (interface{}, error)                    // same as GCF
-	Clear()                                       // remove all elements in list
-	Copy() (*List, error)                         // return a copy of list
-	Count(element interface{}) int                // count how many times an item appears in list
-	Extend(element interface{}) error             // extend list
-	Pop(index int) interface{}                    // remove item
-	Insert(element interface{}, index int) error  // insert item
-	Rand() interface{}                            // return random item
-	Remove(element interface{}) error             // remove item
-	Replace(element interface{}, index int) error // replace item
-	Reverse() *List                               // reverse list
-	Set() (*List, error)                          // remove duplicates
-	Slice(start int, stop int) (*List, error)     // return sub list
-	Sort(reverse bool) interface{}                // sort list
-	Add(other *List) *List                        // add 2 lists
-	IsEqual(other *List) bool                     // checks 2 lists are equal
-	Combinations(n int, joiner string) *List      // combinations of items in list
-	CombinationsMax(n int, joiner string) *List   // combinations of items in list
-	Contains(element interface{}) bool            // check if item in list
+	List() interface{}                                   // returns underlying slice
+	Get(index int) interface{}                           // get item with index
+	Append(element interface{})                          // append item
+	Index(element interface{}) int                       // get item's index
+	Last() (interface{}, error)                          // get last item
+	Max() (interface{}, error)                           // max item
+	Min() (interface{}, error)                           // min item
+	Type() ListType                                      // type of list
+	Sum() interface{}                                    // sum list items
+	String() string                                      // string repr
+	LCM() (interface{}, error)                           // lcm of lest
+	GCF() (interface{}, error)                           // gcf of list
+	HCF() (interface{}, error)                           // same as GCF
+	Clear()                                              // remove all elements in list
+	Copy() (*List, error)                                // return a copy of list
+	Join(joiner string) string                           // join elements in list
+	Len() int                                            // length of list
+	Count(element interface{}) int                       // count how many times an item appears in list
+	Extend(element interface{}) error                    // extend list
+	Pop(index int) interface{}                           // remove item
+	Insert(element interface{}, index int) error         // insert item
+	Rand() interface{}                                   // return random item
+	Remove(element interface{}) error                    // remove item
+	Replace(element interface{}, index int) error        // replace item
+	Reverse() *List                                      // reverse list
+	Set() (*List, error)                                 // remove duplicates
+	Slice(start int, stop int) (*List, error)            // return sub list
+	Sort(reverse bool) interface{}                       // sort list
+	Add(other *List) (*List, error)                      // add 2 lists
+	IsEqual(other *List) bool                            // checks 2 lists are equal
+	Combinations(n int, joiner string) (*List, error)    // combinations of items in list
+	CombinationsMax(n int, joiner string) (*List, error) // combinations of items in list
+	Contains(element interface{}) bool                   // check if item in list
+	ConvertTo(t ListType) (*List, error)                 // convert to another list type
+	ListSum(other *List) (*List, error)                  // sum elements in 2 lists
+	ListSumNo(no interface{}) (*List, error)             // add no to all elements in list
+	ListSubtract(other *List) (*List, error)             // subtract elements of list from other list
+	ListSubtractNo(no interface{}) (*List, error)        // subtract no to all elements in list
+	ListMultiply(other *List) (*List, error)             // multiply elements in  2 lists
+	ListMultiplyNo(no interface{}) (*List, error)        // multiply no with all elements in list
+	ListDivide(other *List) (*List, error)               // divide elements in  2 lists
+	ListDivideNo(no interface{}) (*List, error)          // divide all elements in list with no
 }
 
 // List struct
