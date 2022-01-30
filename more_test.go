@@ -907,3 +907,8 @@ func TestListDivideNo(t *testing.T) {
 
 	}
 }
+
+func TestListInterface(t *testing.T) {
+	var list golist.Lists = golist.NewList([]int{1, 2, 3})
+	t.Log(list)
+}
