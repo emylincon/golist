@@ -4,9 +4,19 @@
 <a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" target="_blank">
     <img src="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" alt="Build Status" />
 </a>
+<a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square" target="_blank">
+    <img src="https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square" alt="Version: 1.3.0" />
+</a>
+<a style="text-decoration:none" href="https://github.com/emylincon/golist/workflows/Go/badge.svg" target="_blank">
+    <img src="https://github.com/emylincon/golist/workflows/Go/badge.svg" alt="Status" />
+</a>
+<a style="text-decoration:none" href="https://godoc.org/github.com/emylincon/golist" target="_blank">
+    <img src="https://godoc.org/github.com/emylincon/golist?status.svg" alt="GoDoc" />
+</a>
+<a style="text-decoration:none" href="https://goreportcard.com/report/github.com/emylincon/golist" target="_blank">
+    <img src="https://goreportcard.com/badge/github.com/emylincon/golist" alt="Go Report Card" />
+</a>
 </p>
-
-![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square)  ![status](https://github.com/emylincon/golist/workflows/Go/badge.svg) [![GoDoc](https://godoc.org/github.com/emylincon/golist?status.svg)](https://godoc.org/github.com/emylincon/golist) [![Go Report Card](https://goreportcard.com/badge/github.com/emylincon/golist)](https://goreportcard.com/report/github.com/emylincon/golist)
 
 
 # golist
@@ -45,7 +55,7 @@ fmt.Println(item)  // 1
 Get an item's index in the list. works in reverse of `list.Get(i)`. `x` represents the item. Returns `-1` if item don't exist.
 ```golang
 list := golist.NewList([]int{1,2,3})
-index := list.index(2)
+index := list.Index(2)
 fmt.Println(index)  // 1
 ```
 
