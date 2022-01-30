@@ -225,7 +225,7 @@ func ListSumNoInt(list []int, no int) (sum []int) {
 	return
 }
 
-// ListSubtractInt sums contents of two lists
+// ListSubtractInt subtracts the contents of two lists
 func ListSubtractInt(list []int, other []int) (sum []int) {
 	for i, v := range list {
 		sum = append(sum, v-other[i])
@@ -233,10 +233,26 @@ func ListSubtractInt(list []int, other []int) (sum []int) {
 	return
 }
 
-// ListSubtractNoInt sums contents of two lists
+// ListSubtractNoInt subtracts an element from the contents a list
 func ListSubtractNoInt(list []int, no int) (sum []int) {
 	for _, v := range list {
 		sum = append(sum, v-no)
+	}
+	return
+}
+
+// ListMultiplyInt multiply contents of two lists
+func ListMultiplyInt(list []int, other []int) (product []int) {
+	for i, v := range list {
+		product = append(product, v*other[i])
+	}
+	return
+}
+
+// ListMultiplyNoInt multiply a given number with all elements in list
+func ListMultiplyNoInt(list []int, no int) (product []int) {
+	for _, v := range list {
+		product = append(product, v*no)
 	}
 	return
 }

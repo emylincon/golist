@@ -1,12 +1,22 @@
 ![golist](img/golist.png)
 
 <p align="center">
-<a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" target="_blank">
-    <img src="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" alt="Build Status" />
-</a>
-</p>
-
-![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square)  ![status](https://github.com/emylincon/golist/workflows/Go/badge.svg) [![GoDoc](https://godoc.org/github.com/emylincon/golist?status.svg)](https://godoc.org/github.com/emylincon/golist) [![Go Report Card](https://goreportcard.com/badge/github.com/emylincon/golist)](https://goreportcard.com/report/github.com/emylincon/golist)
+ <a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" target="_blank">
+     <img src="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" alt="Build Status" />
+ </a>
+ <a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square" target="_blank">
+     <img src="https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square" alt="Version: 1.3.0" />
+ </a>
+ <a style="text-decoration:none" href="https://github.com/emylincon/golist/workflows/Go/badge.svg" target="_blank">
+     <img src="https://github.com/emylincon/golist/workflows/Go/badge.svg" alt="Status" />
+ </a>
+ <a style="text-decoration:none" href="https://godoc.org/github.com/emylincon/golist" target="_blank">
+     <img src="https://godoc.org/github.com/emylincon/golist?status.svg" alt="GoDoc" />
+ </a>
+ <a style="text-decoration:none" href="https://goreportcard.com/report/github.com/emylincon/golist" target="_blank">
+     <img src="https://goreportcard.com/badge/github.com/emylincon/golist" alt="Go Report Card" />
+ </a>
+ </p>
 
 
 # golist
@@ -391,9 +401,33 @@ Subtract number from all elements in list. Example
 ```golang
 list1 := NewList([]int{1,1})
 var no int = 2
-list3, err := list1.ListSubtract(list2)
+list3, err := list1.ListSubtractNo(no)
 if err != nil {
     fmt.Println(err) // handle error
 }
 fmt.Println(list3) // [-1, -1]
+```
+
+## `list.ListMultiply(other *golist.List) (*golist.List, err)`
+Multiply the content of two lists. The lists must be of the same type and have equal length. Example:
+```golang
+list1 := golist.NewList([]int{1,1})
+list2 := golist.NewList([]int{2,2})
+list3, err := list1.ListMultiply(list2)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [2, 2]
+```
+
+## `list.ListMultiplyNo(no interface{}) (*golist.List, err)`
+Multiply a number with all elements in list. Example
+```golang
+list1 := NewList([]int{1,1})
+var no int = 2
+list3, err := list1.ListMultiplyNo(no)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [2, 2]
 ```

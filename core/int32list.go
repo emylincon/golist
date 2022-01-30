@@ -226,7 +226,7 @@ func ListSumNoInt32(list []int32, no int32) (sum []int32) {
 	return
 }
 
-// ListSubtractInt32 sums contents of two lists
+// ListSubtractInt32 subtracts the contents of two lists
 func ListSubtractInt32(list []int32, other []int32) (sum []int32) {
 	for i, v := range list {
 		sum = append(sum, v-other[i])
@@ -234,10 +234,26 @@ func ListSubtractInt32(list []int32, other []int32) (sum []int32) {
 	return
 }
 
-// ListSubtractNoInt32 sums contents of two lists
+// ListSubtractNoInt32 subtracts an element from the contents a list
 func ListSubtractNoInt32(list []int32, no int32) (sum []int32) {
 	for _, v := range list {
 		sum = append(sum, v-no)
+	}
+	return
+}
+
+// ListMultiplyInt32 multiply contents of two lists
+func ListMultiplyInt32(list []int32, other []int32) (product []int32) {
+	for i, v := range list {
+		product = append(product, v*other[i])
+	}
+	return
+}
+
+// ListMultiplyNoInt32 multiply a given number with all elements in list
+func ListMultiplyNoInt32(list []int32, no int32) (product []int32) {
+	for _, v := range list {
+		product = append(product, v*no)
 	}
 	return
 }
