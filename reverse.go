@@ -2,7 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
-// Reverse :
+// Reverse  :
 // reverse elements in the list
 func (arr *List) Reverse() *List {
 

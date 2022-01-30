@@ -4,14 +4,14 @@ import (
 	"sort"
 )
 
-// AppendInt:
+// AppendInt :
 // implements append
 func AppendInt(array *[]int, element int) *[]int {
 	newArray := append(*array, element)
 	return &newArray
 }
 
-// IndexOfInt:
+// IndexOfInt :
 // returns index of element. returns -1 if element dont exist
 func IndexOfInt(array *[]int, element int) int {
 	for index, value := range *array {
@@ -22,7 +22,7 @@ func IndexOfInt(array *[]int, element int) int {
 	return -1
 }
 
-// LastInt:
+// LastInt :
 // return last element in slice
 func LastInt(array []int) (int, error) {
 	if len(array) == 0 {
@@ -31,7 +31,7 @@ func LastInt(array []int) (int, error) {
 	return array[len(array)-1], nil
 }
 
-// SortInt:
+// SortInt :
 // sorts slice
 func SortInt(list *[]int, reverse bool) *[]int {
 	if reverse {
@@ -46,7 +46,7 @@ func SortInt(list *[]int, reverse bool) *[]int {
 	return list
 }
 
-// PopInt:
+// PopInt :
 // removes element from slice
 func PopInt(list *[]int, index int) ([]int, int) {
 	listD := *list
@@ -55,7 +55,7 @@ func PopInt(list *[]int, index int) ([]int, int) {
 	return newArray, popped
 }
 
-// CountInt:
+// CountInt :
 // returns the number of times a given element appears in a slice
 func CountInt(list *[]int, element int) int {
 	count := 0
@@ -67,13 +67,13 @@ func CountInt(list *[]int, element int) int {
 	return count
 }
 
-// ExtendInt:
+// ExtendInt :
 // adds two slice together
 func ExtendInt(list *[]int, another []int) []int {
 	return append((*list), another...)
 }
 
-// InsertInt:
+// InsertInt :
 // insert an element in a given position
 func InsertInt(list *[]int, element int, index int) *[]int {
 	postpend := append([]int{element}, (*list)[index:]...)
@@ -81,7 +81,7 @@ func InsertInt(list *[]int, element int, index int) *[]int {
 	return &newList
 }
 
-// RemoveInt:
+// RemoveInt :
 // removes given element from slice
 func RemoveInt(list *[]int, element int) (*[]int, error) {
 	index := IndexOfInt(list, element)
@@ -92,7 +92,7 @@ func RemoveInt(list *[]int, element int) (*[]int, error) {
 	return &newList, nil
 }
 
-// ReverseInt:
+// ReverseInt :
 // reverse the positions of elements in slice
 func ReverseInt(list *[]int) *[]int {
 	newList := []int{}
@@ -103,7 +103,7 @@ func ReverseInt(list *[]int) *[]int {
 	return &newList
 }
 
-// SumInt:
+// SumInt :
 // sum of elements in slice
 func SumInt(list *[]int) (sum int) {
 	for _, value := range *list {
@@ -112,7 +112,7 @@ func SumInt(list *[]int) (sum int) {
 	return
 }
 
-// MaxInt:
+// MaxInt :
 // returns max element in slice
 func MaxInt(list *[]int) (max int) {
 	for i, value := range *list {
@@ -123,7 +123,7 @@ func MaxInt(list *[]int) (max int) {
 	return
 }
 
-// MinInt:
+// MinInt :
 // returns min element in slice
 func MinInt(list *[]int) (min int) {
 	for i, value := range *list {
@@ -169,15 +169,14 @@ func _gcfInt(a, b int) int {
 		r := h % l
 		if r == 0 {
 			return l
-		} else {
-			h = l
-			l = r
 		}
+		h = l
+		l = r
 	}
 
 }
 
-// GCFInt:
+// GCFInt : returns gcf of list
 func GCFInt(list *[]int) (gcf int, err error) {
 	return lcmHcfInt(list, _gcfInt)
 }
@@ -190,13 +189,13 @@ func _lcmInt(a, b int) int {
 	return (a * b) / _gcfInt(a, b)
 }
 
-// LCMInt:
+// LCMInt :
 // returns lowest common multiple of slice
 func LCMInt(list *[]int) (lcm int, err error) {
 	return lcmHcfInt(list, _lcmInt)
 }
 
-// SetInt:
+// SetInt :
 // returns a set of slice i.e removes duplicates
 func SetInt(list []int) (set []int) {
 	keys := map[int]bool{}
@@ -265,7 +264,7 @@ func ListDivideInt(list []int, other []int) (product []int) {
 	return
 }
 
-// ListMultiplyNoInt divide a given number with all elements in list
+// ListDivideNoInt divide a given number with all elements in list
 func ListDivideNoInt(list []int, no int) (product []int) {
 	for _, v := range list {
 		product = append(product, v/no)
