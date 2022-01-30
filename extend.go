@@ -2,7 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
-// Extend: This extends current list with input slice. errors if both underlying lists are not of the same type
+// Extend : This extends current list with input slice. errors if both underlying lists are not of the same type
 func (arr *List) Extend(other interface{}) error {
 	if arr.Type() != NewList(other).Type() {
 		return ErrListsNotOfSameType

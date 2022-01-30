@@ -170,7 +170,7 @@ func CombinationsString(set []string, n int, joiner string) (subsets []string) {
 	return subsets
 }
 
-// CombinationsStringMax: should return combinations of max length.
+// CombinationsStringMax returns combinations of max length.
 // For example: a list of [a, b, c] with max combination 2, should return 1 and 2 combinations.
 // i.e combinations length <= n
 // adapted from https://github.com/mxschmitt/golang-combinations
@@ -207,8 +207,7 @@ func CombinationsStringMax(set []string, n int, joiner string) (subsets []string
 	return subsets
 }
 
-// SetString
-// returns a set of slice i.e removes duplicates
+// SetString returns a set of slice i.e removes duplicates
 func SetString(list []string) (set []string) {
 	keys := map[string]bool{}
 	for _, key := range list {
@@ -220,6 +219,7 @@ func SetString(list []string) (set []string) {
 	return
 }
 
+// ConvertToString converts to a specified list type
 func ConvertToString(array interface{}) (stringfy []string, err error) {
 
 	switch array := array.(type) {

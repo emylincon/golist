@@ -4,8 +4,8 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
-// adapted from https://github.com/mxschmitt/golang-combinations
 // Combinations returns Combinations of n number of elements for a given string array.
+// adapted from https://github.com/mxschmitt/golang-combinations
 // e.g if n=2 it will return only 2 combined elements :=
 // furthermore NewList([]string{"a", "b", "c"}).Combinations(2, "") = ["ab", "ac", "bc"]
 // For n < 1, it equals to All and returns all Combinations.
@@ -26,8 +26,8 @@ func (arr *List) Combinations(n int, joiner string) (*List, error) {
 
 }
 
-// adapted from https://github.com/mxschmitt/golang-combinations
 // CombinationsMax returns combinations of n number of elements for a given string array.
+// adapted from https://github.com/mxschmitt/golang-combinations
 // e.g if n=2 it will return combinations <= 2
 // furthermore NewList([]string{"a", "b", "c"}).CombinationsMax(2, "") = ["a", "b", "c", "ab", "ac", "bc"]
 // For n < 1, it equals to All and returns all combinations.
