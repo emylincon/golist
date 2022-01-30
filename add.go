@@ -2,7 +2,7 @@ package golist
 
 import "github.com/emylincon/golist/core"
 
-// Add  :
+// Add :
 // adds two list together and returns new list and possible error
 func (arr *List) Add(other *List) (newList *List, err error) {
 	if arr.Type() != other.Type() {
