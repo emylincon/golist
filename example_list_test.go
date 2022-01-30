@@ -41,6 +41,15 @@ func Example() {
 	}
 	fmt.Println("Remove(7) :", list)
 
+	// Subtract the content of two lists.
+	list1 := golist.NewList([]int{1, 1})
+	list2 := golist.NewList([]int{2, 2})
+	list3, err := list1.ListSubtract(list2)
+	if err != nil {
+		fmt.Println(err) // handle error
+	}
+	fmt.Println("ListSubtract :", list3)
+
 	// Output:
 	// Get(0) : 1
 	// Index(2) : 1
@@ -49,4 +58,5 @@ func Example() {
 	// Reverse() : [5, 4, 7, 3, 2, 1]
 	// Sum() : 22
 	// Remove(7) : [1, 2, 3, 4, 5]
+	// ListSubtract : [-1, -1]
 }

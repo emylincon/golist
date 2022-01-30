@@ -353,7 +353,15 @@ Add the content of two lists. The lists must be of the same type and have equal 
 ```golang
 list1 := golist.NewList([]int{1,1})
 list2 := golist.NewList([]int{2,2})
-list3 := list1.SumList(list2)
+list3 := list1.ListSum(list2)
+fmt.Println(list3) // [3,3]
+```
+## `list.ListSumNo(no interface{}) (*golist.List, err)`
+Add number to all elements in list. Example
+```golang
+list1 := NewList([]int{1,1})
+no := 2
+list3 := list1.ListSumNo(no)
 fmt.Println(list3) // [3,3]
 ```
 
@@ -366,11 +374,26 @@ list.ConvertTo(golist.TypeListInt32)
 fmt.Println(list.Type()) // golist.List[]int32
 ```
 
-## `list.SumListNo(no interface{}) (*golist.List, err)`
-Add number to all elements in list. Example
+## `list.ListSubtract(other *golist.List) (*golist.List, err)`
+Subtract the content of two lists. The lists must be of the same type and have equal length. Example:
+```golang
+list1 := golist.NewList([]int{1,1})
+list2 := golist.NewList([]int{2,2})
+list3, err := list1.ListSubtract(list2)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [-1, -1]
+```
+
+## `list.ListSubtractNo(no interface{}) (*golist.List, err)`
+Subtract number from all elements in list. Example
 ```golang
 list1 := NewList([]int{1,1})
-no := 2
-list3 := list1.SumListNo(no)
-fmt.Println(list3) // [3,3]
+var no int = 2
+list3, err := list1.ListSubtract(list2)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [-1, -1]
 ```

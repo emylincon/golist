@@ -225,6 +225,22 @@ func ListSumNoInt(list []int, no int) (sum []int) {
 	return
 }
 
+// ListSubtractInt sums contents of two lists
+func ListSubtractInt(list []int, other []int) (sum []int) {
+	for i, v := range list {
+		sum = append(sum, v-other[i])
+	}
+	return
+}
+
+// ListSubtractNoInt sums contents of two lists
+func ListSubtractNoInt(list []int, no int) (sum []int) {
+	for _, v := range list {
+		sum = append(sum, v-no)
+	}
+	return
+}
+
 // ConvertToInt converts to slice to int
 func ConvertToInt(array interface{}) (Intify []int, err error) {
 

@@ -4,19 +4,8 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
-// validateListOp validates
-func validateListOp(ok bool, listLen, otherLen int) error {
-	if !ok {
-		return ErrListsNotOfSameType
-	}
-	if listLen != otherLen {
-		return ErrListsNotOfSameLen
-	}
-	return nil
-}
-
-// ListSum returns the sum of contents of two lists
-func (arr *List) ListSum(other *List) (*List, error) {
+// ListSubtract returns the sum of contents of two lists
+func (arr *List) ListSubtract(other *List) (*List, error) {
 
 	switch arr.list.(type) {
 	case []int:
@@ -26,7 +15,7 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		if err != nil {
 			return &List{}, err
 		}
-		sum := core.ListSumInt(list, otherArr)
+		sum := core.ListSubtractInt(list, otherArr)
 		return NewList(sum), nil
 
 	case []int32:
@@ -36,7 +25,7 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		if err != nil {
 			return &List{}, err
 		}
-		sum := core.ListSumInt32(list, otherArr)
+		sum := core.ListSubtractInt32(list, otherArr)
 		return NewList(sum), nil
 
 	case []int64:
@@ -46,7 +35,7 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		if err != nil {
 			return &List{}, err
 		}
-		sum := core.ListSumInt64(list, otherArr)
+		sum := core.ListSubtractInt64(list, otherArr)
 		return NewList(sum), nil
 
 	case []float32:
@@ -56,7 +45,7 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		if err != nil {
 			return &List{}, err
 		}
-		sum := core.ListSumFloat32(list, otherArr)
+		sum := core.ListSubtractFloat32(list, otherArr)
 		return NewList(sum), nil
 
 	case []float64:
@@ -66,7 +55,7 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		if err != nil {
 			return &List{}, err
 		}
-		sum := core.ListSumFloat64(list, otherArr)
+		sum := core.ListSubtractFloat64(list, otherArr)
 		return NewList(sum), nil
 
 	case []string:
@@ -78,8 +67,8 @@ func (arr *List) ListSum(other *List) (*List, error) {
 
 }
 
-// ListSumNo adds a given number to all elements in list
-func (arr *List) ListSumNo(no interface{}) (*List, error) {
+// ListSubtractNo subtracts a given number from all elements in list
+func (arr *List) ListSubtractNo(no interface{}) (*List, error) {
 
 	switch arr.list.(type) {
 	case []int:
@@ -88,7 +77,7 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		if !ok {
 			return &List{}, ErrTypeNotSame
 		}
-		sum := core.ListSumNoInt(list, o)
+		sum := core.ListSubtractNoInt(list, o)
 		return NewList(sum), nil
 
 	case []int32:
@@ -97,7 +86,7 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		if !ok {
 			return &List{}, ErrTypeNotSame
 		}
-		sum := core.ListSumNoInt32(list, o)
+		sum := core.ListSubtractNoInt32(list, o)
 		return NewList(sum), nil
 
 	case []int64:
@@ -106,7 +95,7 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		if !ok {
 			return &List{}, ErrTypeNotSame
 		}
-		sum := core.ListSumNoInt64(list, o)
+		sum := core.ListSubtractNoInt64(list, o)
 		return NewList(sum), nil
 
 	case []float32:
@@ -115,7 +104,7 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		if !ok {
 			return &List{}, ErrTypeNotSame
 		}
-		sum := core.ListSumNoFloat32(list, o)
+		sum := core.ListSubtractNoFloat32(list, o)
 		return NewList(sum), nil
 
 	case []float64:
@@ -124,7 +113,7 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		if !ok {
 			return &List{}, ErrTypeNotSame
 		}
-		sum := core.ListSumNoFloat64(list, o)
+		sum := core.ListSubtractNoFloat64(list, o)
 		return NewList(sum), nil
 
 	case []string:

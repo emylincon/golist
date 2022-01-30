@@ -226,6 +226,22 @@ func ListSumNoInt64(list []int64, no int64) (sum []int64) {
 	return
 }
 
+// ListSubtractInt64 sums contents of two lists
+func ListSubtractInt64(list []int64, other []int64) (sum []int64) {
+	for i, v := range list {
+		sum = append(sum, v-other[i])
+	}
+	return
+}
+
+// ListSubtractNoInt64 sums contents of two lists
+func ListSubtractNoInt64(list []int64, no int64) (sum []int64) {
+	for _, v := range list {
+		sum = append(sum, v-no)
+	}
+	return
+}
+
 // ConvertToInt64 converts to slice to int64
 func ConvertToInt64(array interface{}) (Intify []int64, err error) {
 
