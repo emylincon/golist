@@ -401,9 +401,33 @@ Subtract number from all elements in list. Example
 ```golang
 list1 := NewList([]int{1,1})
 var no int = 2
-list3, err := list1.ListSubtract(list2)
+list3, err := list1.ListSubtractNo(no)
 if err != nil {
     fmt.Println(err) // handle error
 }
 fmt.Println(list3) // [-1, -1]
+```
+
+## `list.ListMultiply(other *golist.List) (*golist.List, err)`
+Multiply the content of two lists. The lists must be of the same type and have equal length. Example:
+```golang
+list1 := golist.NewList([]int{1,1})
+list2 := golist.NewList([]int{2,2})
+list3, err := list1.ListMultiply(list2)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [2, 2]
+```
+
+## `list.ListMultiplyNo(no interface{}) (*golist.List, err)`
+Multiply a number with all elements in list. Example
+```golang
+list1 := NewList([]int{1,1})
+var no int = 2
+list3, err := list1.ListMultiplyNo(no)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(list3) // [2, 2]
 ```

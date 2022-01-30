@@ -226,7 +226,7 @@ func ListSumNoInt64(list []int64, no int64) (sum []int64) {
 	return
 }
 
-// ListSubtractInt64 sums contents of two lists
+// ListSubtractInt64 subtracts the contents of two lists
 func ListSubtractInt64(list []int64, other []int64) (sum []int64) {
 	for i, v := range list {
 		sum = append(sum, v-other[i])
@@ -234,10 +234,26 @@ func ListSubtractInt64(list []int64, other []int64) (sum []int64) {
 	return
 }
 
-// ListSubtractNoInt64 sums contents of two lists
+// ListSubtractNoInt64 subtracts an element from the contents a list
 func ListSubtractNoInt64(list []int64, no int64) (sum []int64) {
 	for _, v := range list {
 		sum = append(sum, v-no)
+	}
+	return
+}
+
+// ListMultiplyInt64 multiply contents of two lists
+func ListMultiplyInt64(list []int64, other []int64) (product []int64) {
+	for i, v := range list {
+		product = append(product, v*other[i])
+	}
+	return
+}
+
+// ListMultiplyNoInt64 multiply a given number with all elements in list
+func ListMultiplyNoInt64(list []int64, no int64) (product []int64) {
+	for _, v := range list {
+		product = append(product, v*no)
 	}
 	return
 }

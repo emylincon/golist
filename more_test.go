@@ -717,3 +717,98 @@ func TestConvertTo(t *testing.T) {
 
 	}
 }
+
+func TestListMultiply(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *golist.List
+		other    *golist.List
+		expected *golist.List
+	}{
+		{
+			Obj:      golist.NewList([]int{2, 3}),
+			other:    golist.NewList([]int{4, 5}),
+			expected: golist.NewList([]int{8, 15}),
+		},
+		{
+			Obj:      golist.NewList([]int32{2, 5}),
+			other:    golist.NewList([]int32{4, 5}),
+			expected: golist.NewList([]int32{8, 25}),
+		},
+		{
+			Obj:      golist.NewList([]int64{2, 3}),
+			other:    golist.NewList([]int64{4, 5}),
+			expected: golist.NewList([]int64{8, 15}),
+		},
+		{
+			Obj:      golist.NewList([]float32{2, 3}),
+			other:    golist.NewList([]float32{4, 5}),
+			expected: golist.NewList([]float32{8, 15}),
+		},
+		{
+			Obj:      golist.NewList([]float64{2, 3}),
+			other:    golist.NewList([]float64{1, 1}),
+			expected: golist.NewList([]float64{2, 3}),
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ListMultiply(tC.other)
+		if err != nil {
+			t.Errorf("[Error TestListMultiply]: %v", err)
+		}
+
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error TestListMultiply] : Got: %v, Expected: %v. type: %v\n", got, tC.expected, tC.expected.Type())
+		}
+	}
+}
+
+func TestListMultiplyNo(t *testing.T) {
+	var vint int = 5
+	var vint32 int32 = 5
+	var vint64 int64 = 5
+	var vfloat32 float32 = 5
+	var vfloat64 float64 = 5
+
+	testCases := []struct {
+		Obj      golist.List
+		expected golist.List
+		no       interface{}
+	}{
+		{
+			Obj:      *golist.NewList([]int{2, 3, 4}),
+			expected: *golist.NewList([]int{10, 15, 20}),
+			no:       vint,
+		},
+		{
+			Obj:      *golist.NewList([]int32{2, 3, 4}),
+			expected: *golist.NewList([]int32{10, 15, 20}),
+			no:       vint32,
+		},
+		{
+			Obj:      *golist.NewList([]int64{2, 3, 4}),
+			expected: *golist.NewList([]int64{10, 15, 20}),
+			no:       vint64,
+		},
+		{
+			Obj:      *golist.NewList([]float32{2, 3, 4}),
+			expected: *golist.NewList([]float32{10, 15, 20}),
+			no:       vfloat32,
+		},
+		{
+			Obj:      *golist.NewList([]float64{2, 3, 4}),
+			expected: *golist.NewList([]float64{10, 15, 20}),
+			no:       vfloat64,
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.ListMultiplyNo(tC.no)
+		if err != nil {
+			t.Errorf("[Error MultiplyListNo] : %v", err)
+		}
+		if !got.IsEqual(&tC.expected) {
+			t.Errorf("[Error MultiplyListNo] : Got: %v, Expected: %v.\n", got, &tC.expected)
+		}
+
+	}
+}

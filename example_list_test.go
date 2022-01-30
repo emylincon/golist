@@ -50,6 +50,14 @@ func Example() {
 	}
 	fmt.Println("ListSubtract :", list3)
 
+	list1 = golist.NewList([]int{1, 1})
+	var no int = 2
+	list3, err = list1.ListMultiplyNo(no)
+	if err != nil {
+		fmt.Println(err) // handle error
+	}
+	fmt.Println("ListMultiplyNo :", list3)
+
 	// Output:
 	// Get(0) : 1
 	// Index(2) : 1
@@ -59,4 +67,5 @@ func Example() {
 	// Sum() : 22
 	// Remove(7) : [1, 2, 3, 4, 5]
 	// ListSubtract : [-1, -1]
+	// ListMultiplyNo : [2, 2]
 }

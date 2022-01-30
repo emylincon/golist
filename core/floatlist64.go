@@ -239,7 +239,7 @@ func ListSumNoFloat64(list []float64, no float64) (sum []float64) {
 	return
 }
 
-// ListSubtractFloat64 sums contents of two lists
+// ListSubtractFloat64 subtracts the contents of two lists
 func ListSubtractFloat64(list []float64, other []float64) (sum []float64) {
 	for i, v := range list {
 		sum = append(sum, v-other[i])
@@ -247,10 +247,26 @@ func ListSubtractFloat64(list []float64, other []float64) (sum []float64) {
 	return
 }
 
-// ListSubtractNoFloat64 sums contents of two lists
+// ListSubtractNoFloat64 subtracts an element from the contents a list
 func ListSubtractNoFloat64(list []float64, no float64) (sum []float64) {
 	for _, v := range list {
 		sum = append(sum, v-no)
+	}
+	return
+}
+
+// ListMultiplyFloat64 multiply contents of two lists
+func ListMultiplyFloat64(list []float64, other []float64) (product []float64) {
+	for i, v := range list {
+		product = append(product, v*other[i])
+	}
+	return
+}
+
+// ListMultiplyNoFloat64 multiply a given number with all elements in list
+func ListMultiplyNoFloat64(list []float64, no float64) (product []float64) {
+	for _, v := range list {
+		product = append(product, v*no)
 	}
 	return
 }
