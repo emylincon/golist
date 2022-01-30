@@ -44,9 +44,9 @@ go get github.com/emylincon/golist
 Here are all of the methods of the list objects:
 
 # To Contribute
-- [ ] Download and install pre-commit: `pip install pre-commit`
-- [ ] Install precommit hook in repo: `pre-commit install`
-- [ ] before push run fmt: `gofmt -w .`
+- [x] Download and install pre-commit: `pip install pre-commit`
+- [x] Install precommit hook in repo: `pre-commit install`
+- [x] before push run fmt: `gofmt -w .`
 
 ## `list.Get(i int) interface{}`
 Get an item in the list by index. `i` represents the index. Returns `nil` if index don't exist.
