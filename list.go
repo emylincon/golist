@@ -72,29 +72,23 @@ func NewList(list interface{}) *List {
 // List  :
 // returns underlying slice or array
 func (arr *List) List() interface{} {
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
 		return list
 
 	case []int32:
-		list := arr.list.([]int32)
 		return list
 
 	case []int64:
-		list := arr.list.([]int64)
 		return list
 
 	case []float32:
-		list := arr.list.([]float32)
 		return list
 
 	case []float64:
-		list := arr.list.([]float64)
 		return list
 
 	case []string:
-		list := arr.list.([]string)
 		return list
 
 	default:
@@ -106,35 +100,47 @@ func (arr *List) List() interface{} {
 // append element to list
 func (arr *List) Append(element interface{}) {
 
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
-		item := element.(int)
+		item, ok := element.(int)
+		if !ok {
+			return
+		}
 		arr.list = *core.AppendInt(&list, item)
 
 	case []int32:
-		list := arr.list.([]int32)
-		item := element.(int32)
+		item, ok := element.(int32)
+		if !ok {
+			return
+		}
 		arr.list = *core.AppendInt32(&list, item)
 
 	case []int64:
-		list := arr.list.([]int64)
-		item := element.(int64)
+		item, ok := element.(int64)
+		if !ok {
+			return
+		}
 		arr.list = *core.AppendInt64(&list, item)
 
 	case []float32:
-		list := arr.list.([]float32)
-		item := element.(float32)
+		item, ok := element.(float32)
+		if !ok {
+			return
+		}
 		arr.list = *core.AppendFloat32(&list, item)
 
 	case []float64:
-		list := arr.list.([]float64)
-		item := element.(float64)
+		item, ok := element.(float64)
+		if !ok {
+			return
+		}
 		arr.list = *core.AppendFloat64(&list, item)
 
 	case []string:
-		list := arr.list.([]string)
-		item := element.(string)
+		item, ok := element.(string)
+		if !ok {
+			return
+		}
 		arr.list = *core.AppendString(&list, item)
 
 	default:
@@ -147,35 +153,47 @@ func (arr *List) Append(element interface{}) {
 // returns index of a given element. returns  -1 if element don't exist
 func (arr *List) Index(element interface{}) int {
 
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
-		item := element.(int)
+		item, ok := element.(int)
+		if !ok {
+			return -1
+		}
 		return core.IndexOfInt(&list, item)
 
 	case []int32:
-		list := arr.list.([]int32)
-		item := element.(int32)
+		item, ok := element.(int32)
+		if !ok {
+			return -1
+		}
 		return core.IndexOfInt32(&list, item)
 
 	case []int64:
-		list := arr.list.([]int64)
-		item := element.(int64)
+		item, ok := element.(int64)
+		if !ok {
+			return -1
+		}
 		return core.IndexOfInt64(&list, item)
 
 	case []float32:
-		list := arr.list.([]float32)
-		item := element.(float32)
+		item, ok := element.(float32)
+		if !ok {
+			return -1
+		}
 		return core.IndexOfFloat32(&list, item)
 
 	case []float64:
-		list := arr.list.([]float64)
-		item := element.(float64)
+		item, ok := element.(float64)
+		if !ok {
+			return -1
+		}
 		return core.IndexOfFloat64(&list, item)
 
 	case []string:
-		list := arr.list.([]string)
-		item := element.(string)
+		item, ok := element.(string)
+		if !ok {
+			return -1
+		}
 		return core.IndexOfString(&list, item)
 
 	default:
@@ -188,30 +206,23 @@ func (arr *List) Index(element interface{}) int {
 // returns last element in the list
 func (arr *List) Last() (interface{}, error) {
 
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
 		return core.LastInt(list)
 
 	case []int32:
-		list := arr.list.([]int32)
-
 		return core.LastInt32(list)
 
 	case []int64:
-		list := arr.list.([]int64)
 		return core.LastInt64(list)
 
 	case []float32:
-		list := arr.list.([]float32)
 		return core.LastFloat32(list)
 
 	case []float64:
-		list := arr.list.([]float64)
 		return core.LastFloat64(list)
 
 	case []string:
-		list := arr.list.([]string)
 		return core.LastString(list)
 
 	default:

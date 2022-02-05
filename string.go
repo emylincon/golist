@@ -8,9 +8,8 @@ import (
 // String  :
 // returns string representation of the list
 func (arr *List) String() string {
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []string:
-		list := arr.list.([]string)
 		stringList := "["
 		for i := 0; i < len(list); i++ {
 			if i == len(list)-1 {

@@ -9,35 +9,47 @@ func (arr *List) Extend(other interface{}) error {
 	} else if arr.Type() == TypeListUnknown {
 		return ErrTypeNotsupported
 	}
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
-		item := other.([]int)
+		item, ok := other.([]int)
+		if !ok {
+			return ErrTypeNotSame
+		}
 		arr.list = core.ExtendInt(&list, item)
 
 	case []int32:
-		list := arr.list.([]int32)
-		item := other.([]int32)
+		item, ok := other.([]int32)
+		if !ok {
+			return ErrTypeNotSame
+		}
 		arr.list = core.ExtendInt32(&list, item)
 
 	case []int64:
-		list := arr.list.([]int64)
-		item := other.([]int64)
+		item, ok := other.([]int64)
+		if !ok {
+			return ErrTypeNotSame
+		}
 		arr.list = core.ExtendInt64(&list, item)
 
 	case []float32:
-		list := arr.list.([]float32)
-		item := other.([]float32)
+		item, ok := other.([]float32)
+		if !ok {
+			return ErrTypeNotSame
+		}
 		arr.list = core.ExtendFloat32(&list, item)
 
 	case []float64:
-		list := arr.list.([]float64)
-		item := other.([]float64)
+		item, ok := other.([]float64)
+		if !ok {
+			return ErrTypeNotSame
+		}
 		arr.list = core.ExtendFloat64(&list, item)
 
 	case []string:
-		list := arr.list.([]string)
-		item := other.([]string)
+		item, ok := other.([]string)
+		if !ok {
+			return ErrTypeNotSame
+		}
 		arr.list = core.ExtendString(&list, item)
 
 	default:

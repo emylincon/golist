@@ -12,10 +12,8 @@ import (
 // for n > len(list); n = len(list)
 func (arr *List) Combinations(n int, joiner string) (*List, error) {
 
-	switch arr.list.(type) {
-
+	switch list := arr.list.(type) {
 	case []string:
-		list := arr.list.([]string)
 		set := core.SetString(list)
 		list = core.CombinationsString(set, n, joiner)
 		return NewList(list), nil
