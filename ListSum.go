@@ -18,9 +18,8 @@ func validateListOp(ok bool, listLen, otherLen int) error {
 // ListSum returns the sum of contents of two lists
 func (arr *List) ListSum(other *List) (*List, error) {
 
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
 		otherArr, ok := other.list.([]int)
 		err := validateListOp(ok, arr.Len(), other.Len())
 		if err != nil {
@@ -30,7 +29,6 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		return NewList(sum), nil
 
 	case []int32:
-		list := arr.list.([]int32)
 		otherArr, ok := other.list.([]int32)
 		err := validateListOp(ok, arr.Len(), other.Len())
 		if err != nil {
@@ -40,7 +38,6 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		return NewList(sum), nil
 
 	case []int64:
-		list := arr.list.([]int64)
 		otherArr, ok := other.list.([]int64)
 		err := validateListOp(ok, arr.Len(), other.Len())
 		if err != nil {
@@ -50,7 +47,6 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		return NewList(sum), nil
 
 	case []float32:
-		list := arr.list.([]float32)
 		otherArr, ok := other.list.([]float32)
 		err := validateListOp(ok, arr.Len(), other.Len())
 		if err != nil {
@@ -60,7 +56,6 @@ func (arr *List) ListSum(other *List) (*List, error) {
 		return NewList(sum), nil
 
 	case []float64:
-		list := arr.list.([]float64)
 		otherArr, ok := other.list.([]float64)
 		err := validateListOp(ok, arr.Len(), other.Len())
 		if err != nil {
@@ -81,9 +76,8 @@ func (arr *List) ListSum(other *List) (*List, error) {
 // ListSumNo adds a given number to all elements in list
 func (arr *List) ListSumNo(no interface{}) (*List, error) {
 
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
 		o, ok := no.(int)
 		if !ok {
 			return &List{}, ErrTypeNotSame
@@ -92,7 +86,6 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		return NewList(sum), nil
 
 	case []int32:
-		list := arr.list.([]int32)
 		o, ok := no.(int32)
 		if !ok {
 			return &List{}, ErrTypeNotSame
@@ -101,7 +94,6 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		return NewList(sum), nil
 
 	case []int64:
-		list := arr.list.([]int64)
 		o, ok := no.(int64)
 		if !ok {
 			return &List{}, ErrTypeNotSame
@@ -110,7 +102,6 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		return NewList(sum), nil
 
 	case []float32:
-		list := arr.list.([]float32)
 		o, ok := no.(float32)
 		if !ok {
 			return &List{}, ErrTypeNotSame
@@ -119,7 +110,6 @@ func (arr *List) ListSumNo(no interface{}) (*List, error) {
 		return NewList(sum), nil
 
 	case []float64:
-		list := arr.list.([]float64)
 		o, ok := no.(float64)
 		if !ok {
 			return &List{}, ErrTypeNotSame

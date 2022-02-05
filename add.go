@@ -11,35 +11,47 @@ func (arr *List) Add(other *List) (newList *List, err error) {
 		return nil, ErrTypeNotsupported
 	}
 	err = nil
-	switch arr.list.(type) {
+	switch list := arr.list.(type) {
 	case []int:
-		list := arr.list.([]int)
-		otherList := other.list.([]int)
+		otherList, ok := other.list.([]int)
+		if !ok {
+			return
+		}
 		newList = NewList(core.ExtendInt(&list, otherList))
 
 	case []int32:
-		list := arr.list.([]int32)
-		otherList := other.list.([]int32)
+		otherList, ok := other.list.([]int32)
+		if !ok {
+			return
+		}
 		newList = NewList(core.ExtendInt32(&list, otherList))
 
 	case []int64:
-		list := arr.list.([]int64)
-		otherList := other.list.([]int64)
+		otherList, ok := other.list.([]int64)
+		if !ok {
+			return
+		}
 		newList = NewList(core.ExtendInt64(&list, otherList))
 
 	case []float32:
-		list := arr.list.([]float32)
-		otherList := other.list.([]float32)
+		otherList, ok := other.list.([]float32)
+		if !ok {
+			return
+		}
 		newList = NewList(core.ExtendFloat32(&list, otherList))
 
 	case []float64:
-		list := arr.list.([]float64)
-		otherList := other.list.([]float64)
+		otherList, ok := other.list.([]float64)
+		if !ok {
+			return
+		}
 		newList = NewList(core.ExtendFloat64(&list, otherList))
 
 	case []string:
-		list := arr.list.([]string)
-		otherList := other.list.([]string)
+		otherList, ok := other.list.([]string)
+		if !ok {
+			return
+		}
 		newList = NewList(core.ExtendString(&list, otherList))
 
 	default:
