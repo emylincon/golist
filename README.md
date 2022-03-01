@@ -4,8 +4,8 @@
  <a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" target="_blank">
      <img src="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" alt="Build Status" />
  </a>
- <a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.4.3-informational?style=flat-square" target="_blank">
-     <img src="https://img.shields.io/badge/Version-1.4.3-informational?style=flat-square" alt="Version: 1.4.3" />
+ <a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.4.4-informational?style=flat-square" target="_blank">
+     <img src="https://img.shields.io/badge/Version-1.4.4-informational?style=flat-square" alt="Version: 1.4.4" />
  </a>
  <a style="text-decoration:none" href="https://github.com/emylincon/golist/workflows/Go/badge.svg" target="_blank">
      <img src="https://github.com/emylincon/golist/workflows/Go/badge.svg" alt="Status" />
