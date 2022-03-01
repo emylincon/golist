@@ -2,6 +2,7 @@ package core
 
 import (
 	"sort"
+	"strconv"
 )
 
 // AppendInt :
@@ -300,7 +301,13 @@ func ConvertToInt(array interface{}) (Intify []int, err error) {
 		}
 
 	case []string:
-		return nil, ErrTypeNotSupported
+		for _, v := range array {
+			intVar, err := strconv.Atoi(v)
+			if err != nil {
+				return nil, err
+			}
+			Intify = append(Intify, intVar)
+		}
 
 	default:
 		return nil, ErrTypeNotSupported
