@@ -2,6 +2,7 @@ package core
 
 import (
 	"sort"
+	"strconv"
 )
 
 // AppendInt64 :
@@ -302,7 +303,13 @@ func ConvertToInt64(array interface{}) (Intify []int64, err error) {
 		}
 
 	case []string:
-		return nil, ErrTypeNotSupported
+		for _, v := range array {
+			intVar, err := strconv.ParseInt(v, 0, 64)
+			if err != nil {
+				return nil, err
+			}
+			Intify = append(Intify, int64(intVar))
+		}
 
 	default:
 		return nil, ErrTypeNotSupported

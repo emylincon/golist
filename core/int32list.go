@@ -2,6 +2,7 @@ package core
 
 import (
 	"sort"
+	"strconv"
 )
 
 // AppendInt32 :
@@ -301,7 +302,13 @@ func ConvertToInt32(array interface{}) (Intify []int32, err error) {
 		}
 
 	case []string:
-		return nil, ErrTypeNotSupported
+		for _, v := range array {
+			intVar, err := strconv.ParseInt(v, 0, 32)
+			if err != nil {
+				return nil, err
+			}
+			Intify = append(Intify, int32(intVar))
+		}
 
 	default:
 		return nil, ErrTypeNotSupported

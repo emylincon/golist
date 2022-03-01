@@ -3,6 +3,7 @@ package core
 import (
 	"math"
 	"sort"
+	"strconv"
 )
 
 // AppendFloat64 :
@@ -314,7 +315,13 @@ func ConvertToFloat64(array interface{}) (Intify []float64, err error) {
 		return array, nil
 
 	case []string:
-		return nil, ErrTypeNotSupported
+		for _, v := range array {
+			value, err := strconv.ParseFloat(v, 64)
+			if err != nil {
+				return nil, err
+			}
+			Intify = append(Intify, float64(value))
+		}
 
 	default:
 		return nil, ErrTypeNotSupported

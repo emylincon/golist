@@ -701,6 +701,11 @@ func TestConvertTo(t *testing.T) {
 			itype:    golist.TypeListString,
 		},
 		{
+			Obj:      golist.NewList([]string{"10", "5", "25", "200"}),
+			expected: golist.NewList([]float64{10, 5, 25, 200}),
+			itype:    golist.TypeListFloat64,
+		},
+		{
 			Obj:      golist.NewList([]string{"Hello", "world"}),
 			expected: golist.NewList([]string{"Hello", "world"}),
 			itype:    golist.TypeListString,

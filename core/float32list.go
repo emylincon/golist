@@ -2,6 +2,7 @@ package core
 
 import (
 	"sort"
+	"strconv"
 )
 
 // AppendFloat32 : implements append
@@ -272,7 +273,13 @@ func ConvertToFloat32(array interface{}) (Intify []float32, err error) {
 		}
 
 	case []string:
-		return nil, ErrTypeNotSupported
+		for _, v := range array {
+			value, err := strconv.ParseFloat(v, 32)
+			if err != nil {
+				return nil, err
+			}
+			Intify = append(Intify, float32(value))
+		}
 
 	default:
 		return nil, ErrTypeNotSupported
