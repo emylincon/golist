@@ -68,6 +68,13 @@ func Example() {
 	}
 	fmt.Println("ListDivide :", list3)
 
+	// convert list to slice of strings
+	slice, err := list.ConvertToSliceString()
+	if err != nil {
+		fmt.Println(err) // handle error
+	}
+	fmt.Printf("%T\n", slice)
+
 	// Output:
 	// Get(0) : 1
 	// Index(2) : 1
@@ -79,4 +86,5 @@ func Example() {
 	// ListSubtract : [-1, -1]
 	// ListMultiplyNo : [2, 2]
 	// ListDivide : [4, 3]
+	// []string
 }

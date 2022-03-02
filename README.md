@@ -460,3 +460,75 @@ if err != nil {
 }
 fmt.Println(list3) // [6, 1]
 ```
+
+## `list.ConvertToSliceFloat32() ([]float32, error)`
+Converts golist to []float32. Example
+```golang
+list := golist.NewList([]int{12,2})
+
+slice, err := list.ConvertToSliceFloat32()
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Printf("%T", slice) // []float32
+```
+
+## `list.ConvertToSliceFloat64() ([]float64, error)`
+Converts golist to []float64. Example
+```golang
+list := golist.NewList([]int{12,2})
+
+slice, err := list.ConvertToSliceFloat64()
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Printf("%T", slice) // []float64
+```
+
+## `list.ConvertToSliceInt64() ([]int64, error)`
+Converts golist to []int64. Example
+```golang
+list := golist.NewList([]int{12,2})
+
+slice, err := list.ConvertToSliceInt64()
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Printf("%T", slice) // []int64
+```
+
+## `list.ConvertToSliceInt32() ([]int32, error)`
+Converts golist to []int32. Example
+```golang
+list := golist.NewList([]int{12,2})
+
+slice, err := list.ConvertToSliceInt32()
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Printf("%T", slice) // []int32
+```
+
+## `list.ConvertToSliceInt() ([]int, error)`
+Converts golist to []int. Example
+```golang
+list := golist.NewList([]int{12,2})
+
+slice, err := list.ConvertToSliceInt()
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Printf("%T", slice) // []int
+```
+
+## `list.ConvertToSliceString() ([]string, error)`
+Converts golist to []string. Example
+```golang
+list := golist.NewList([]int{12,2})
+
+slice, err := list.ConvertToSliceString()
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Printf("%T", slice) // []string
+```
