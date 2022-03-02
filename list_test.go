@@ -872,3 +872,85 @@ func TestListSubtractNo(t *testing.T) {
 
 	}
 }
+
+func TestConvertToSlice(t *testing.T) {
+	testCases := []struct {
+		Obj      *golist.List
+		expected *golist.List
+		desc     string
+	}{
+		{
+			Obj:      golist.NewList([]int{10, 5, 25, 200}),
+			expected: golist.NewList([]float32{10, 5, 25, 200}),
+			desc:     "convert to float32[]",
+		},
+		{
+			Obj:      golist.NewList([]int32{10, 5, 25, 200}),
+			expected: golist.NewList([]float64{10, 5, 25, 200}),
+			desc:     "convert to Float64[]",
+		},
+		{
+			Obj:      golist.NewList([]int64{10, 5, 25, 200}),
+			expected: golist.NewList([]int{10, 5, 25, 200}),
+			desc:     "convert to int[]",
+		},
+		{
+			Obj:      golist.NewList([]float32{10, 5, 25, 200}),
+			expected: golist.NewList([]int32{10, 5, 25, 200}),
+			desc:     "convert to int32[]",
+		},
+		{
+			Obj:      golist.NewList([]float64{10, 5, 25, 200}),
+			expected: golist.NewList([]int64{10, 5, 25, 200}),
+			desc:     "convert to int64[]",
+		},
+		{
+			Obj:      golist.NewList([]float64{10, 5, 25, 200}),
+			expected: golist.NewList([]string{"10", "5", "25", "200"}),
+			desc:     "convert to string[]",
+		},
+		{
+			Obj:      golist.NewList([]string{"10", "05", "25", "200"}),
+			expected: golist.NewList([]float64{10, 5, 25, 200}),
+			desc:     "convert to float64[]",
+		},
+		{
+			Obj:      golist.NewList([]string{"Hello", "world"}),
+			expected: golist.NewList([]string{"Hello", "world"}),
+			desc:     "convert string[] to string[]",
+		},
+	}
+
+	t.Run(testCases[0].desc, func(t *testing.T) {
+		got, err := testCases[0].Obj.ConvertToSliceFloat32()
+		if err != nil {
+			t.Errorf("[Error ConvertToSlice](0) : %v", err)
+		}
+		gotList := golist.NewList(got)
+		if !gotList.IsEqual(testCases[0].expected) {
+			t.Errorf("Error ConvertToSlice](0) : Got: %v, Expected: %v.\n", got, testCases[1].expected)
+		}
+	})
+
+	t.Run(testCases[1].desc, func(t *testing.T) {
+		got, err := testCases[1].Obj.ConvertToSliceFloat64()
+		if err != nil {
+			t.Errorf("[Error ConvertToSlice](1) : %v", err)
+		}
+		gotList := golist.NewList(got)
+		if !gotList.IsEqual(testCases[1].expected) {
+			t.Errorf("Error ConvertToSlice](1) : Got: %v, Expected: %v.\n", got, testCases[1].expected)
+		}
+	})
+
+	t.Run(testCases[2].desc, func(t *testing.T) {
+		got, err := testCases[2].Obj.ConvertToSliceInt()
+		if err != nil {
+			t.Errorf("[Error ConvertToSlice](2) : %v", err)
+		}
+		gotList := golist.NewList(got)
+		if !gotList.IsEqual(testCases[2].expected) {
+			t.Errorf("Error ConvertToSlice](2) : Got: %v, Expected: %v.\n", got, testCases[2].expected)
+		}
+	})
+}
