@@ -64,13 +64,10 @@ func TestClear(t *testing.T) {
 func TestSortInt(t *testing.T) {
 	obj := golist.NewList([]int{2, 1, 4})
 	reverse := false
-	sorted := obj.Sort(reverse)
-	sortObj := sorted.([]int)
-	expected := []int{1, 2, 4}
-	for i, v := range sortObj {
-		if v != expected[i] {
-			t.Errorf("Error [TestSortInt], Got: %v, Expected: %v.\n", sortObj, expected)
-		}
+	obj.Sort(reverse)
+	expected := golist.NewList([]int{1, 2, 4})
+	if !obj.IsEqual(expected) {
+		t.Errorf("Error [TestSortInt ], Got: %v, Expected: %v.\n", obj, expected)
 	}
 
 }
@@ -78,13 +75,10 @@ func TestSortInt(t *testing.T) {
 func TestSortInt32(t *testing.T) {
 	obj := golist.NewList([]int32{2, 1, 4})
 	reverse := false
-	sorted := obj.Sort(reverse)
-	sortObj := sorted.([]int32)
-	expected := []int32{1, 2, 4}
-	for i, v := range sortObj {
-		if v != expected[i] {
-			t.Errorf("Error [TestSortInt32 ], Got: %v, Expected: %v.\n", sortObj, expected)
-		}
+	obj.Sort(reverse)
+	expected := golist.NewList([]int32{1, 2, 4})
+	if !obj.IsEqual(expected) {
+		t.Errorf("Error [TestSortInt32 ], Got: %v, Expected: %v.\n", obj, expected)
 	}
 
 }

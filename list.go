@@ -26,6 +26,7 @@ type Lists interface {
 	ConvertToSliceString() ([]string, error)             // ConvertToSliceString converts golist to []string
 	Copy() (*List, error)                                // return a copy of list
 	Count(element interface{}) int                       // count how many times an item appears in list
+	Difference(other *List) (*List, error)               // Difference returns the elements in `list` that aren't in `other`.
 	Extend(element interface{}) error                    // extend list
 	GCF() (interface{}, error)                           // gcf of list
 	Get(index int) interface{}                           // get item with index
@@ -55,7 +56,8 @@ type Lists interface {
 	Reverse() *List                                      // reverse list
 	Set() (*List, error)                                 // remove duplicates
 	Slice(start int, stop int) (*List, error)            // return sub list
-	Sort(reverse bool) interface{}                       // sort list
+	Sort(reverse bool)                                   // sort list in place
+	Sorted(reverse bool) *List                           // returns new sorted list
 	String() string                                      // string repr
 	Sum() interface{}                                    // sum list items
 	Type() ListType                                      // type of list

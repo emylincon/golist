@@ -920,14 +920,13 @@ func TestListInterface(t *testing.T) {
 }
 
 func TestInterfaceMethods(t *testing.T) {
-	GoListType := reflect.TypeOf(golist.List{})
+	GoListType := reflect.TypeOf(golist.NewList([]int{}))
 	golistMethods := golist.NewList([]string{})
 	golistInterfaceMethods := golist.NewList([]string{})
 	for i := 0; i < GoListType.NumMethod(); i++ {
 		method := GoListType.Method(i)
 		golistMethods.Append(method.Name)
 	}
-	// (*golist.Lists)(nil)
 	golistInterfaceType := reflect.TypeOf((*golist.Lists)(nil)).Elem()
 
 	for i := 0; i < golistInterfaceType.NumMethod(); i++ {
@@ -935,8 +934,9 @@ func TestInterfaceMethods(t *testing.T) {
 	}
 	golistMethods.Sort(true)
 	golistInterfaceMethods.Sort(true)
-	// if !golistMethods.IsEqual(golistInterfaceMethods) {
-	// 	t.Errorf("[Error TestInterfaceMethods] : %v != %v", golistMethods, golistInterfaceMethods)
-	// }
+	if !golistMethods.IsEqual(golistInterfaceMethods) {
+		diff, _ := golistMethods.Difference(golistInterfaceMethods)
+		t.Errorf("[Error TestInterfaceMethods] difference is : %v", diff)
+	}
 
 }

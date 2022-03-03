@@ -147,7 +147,7 @@ count := list.Count(2)
 fmt.Println(count) // 2
 ```
 
-## `list.Sort(reverse bool) interface{}`
+## `list.Sort(reverse bool)`
 Sort the items of the list in place (the argument can be used for sort customization. `reverse` is `bool` so can be `true` or `false`.
 ```golang
 list := golist.NewList([]int{3, 2, 1})
