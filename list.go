@@ -8,30 +8,47 @@ import (
 	"github.com/emylincon/golist/core"
 )
 
-// Lists  :
+// Lists :
 // List interface and all methods
 type Lists interface {
-	List() interface{}                                   // returns underlying slice
-	Get(index int) interface{}                           // get item with index
+	Add(other *List) (*List, error)                      // add 2 lists
 	Append(element interface{}) error                    // append item
-	Index(element interface{}) int                       // get item's index
-	Last() (interface{}, error)                          // get last item
-	Max() (interface{}, error)                           // max item
-	Min() (interface{}, error)                           // min item
-	Type() ListType                                      // type of list
-	Sum() interface{}                                    // sum list items
-	String() string                                      // string repr
-	LCM() (interface{}, error)                           // lcm of lest
-	GCF() (interface{}, error)                           // gcf of list
-	HCF() (interface{}, error)                           // same as GCF
 	Clear()                                              // remove all elements in list
+	Combinations(n int, joiner string) (*List, error)    // combinations of items in list
+	CombinationsMax(n int, joiner string) (*List, error) // combinations of items in list
+	Contains(element interface{}) bool                   // check if item in list
+	ConvertTo(t ListType) (*List, error)                 // convert to another list type
+	ConvertToSliceFloat32() ([]float32, error)           // ConvertToSliceFloat32 converts golist to []float32
+	ConvertToSliceFloat64() ([]float64, error)           // ConvertToSliceFloat64 converts golist to []float64
+	ConvertToSliceInt() ([]int, error)                   // ConvertToSliceInt converts golist to []int
+	ConvertToSliceInt32() ([]int32, error)               // ConvertToSliceInt32 converts golist to []int32
+	ConvertToSliceInt64() ([]int64, error)               // ConvertToSliceInt64 converts golist to []int64
+	ConvertToSliceString() ([]string, error)             // ConvertToSliceString converts golist to []string
 	Copy() (*List, error)                                // return a copy of list
-	Join(joiner string) string                           // join elements in list
-	Len() int                                            // length of list
 	Count(element interface{}) int                       // count how many times an item appears in list
 	Extend(element interface{}) error                    // extend list
-	Pop(index int) interface{}                           // remove item
+	GCF() (interface{}, error)                           // gcf of list
+	Get(index int) interface{}                           // get item with index
+	HCF() (interface{}, error)                           // same as GCF
+	Index(element interface{}) int                       // get item's index
 	Insert(element interface{}, index int) error         // insert item
+	IsEqual(other *List) bool                            // checks 2 lists are equal
+	Join(joiner string) string                           // join elements in list
+	Last() (interface{}, error)                          // get last item
+	LCM() (interface{}, error)                           // lcm of lest
+	Len() int                                            // length of list
+	List() interface{}                                   // returns underlying slice
+	ListDivide(other *List) (*List, error)               // divide elements in  2 lists
+	ListDivideNo(no interface{}) (*List, error)          // divide all elements in list with no
+	ListMultiply(other *List) (*List, error)             // multiply elements in  2 lists
+	ListMultiplyNo(no interface{}) (*List, error)        // multiply no with all elements in list
+	ListSubtract(other *List) (*List, error)             // subtract elements of list from other list
+	ListSubtractNo(no interface{}) (*List, error)        // subtract no to all elements in list
+	ListSum(other *List) (*List, error)                  // sum elements in 2 lists
+	ListSumNo(no interface{}) (*List, error)             // add no to all elements in list
+	Max() (interface{}, error)                           // max item
+	Min() (interface{}, error)                           // min item
+	Pop(index int) interface{}                           // remove item
 	Rand() interface{}                                   // return random item
 	Remove(element interface{}) error                    // remove item
 	Replace(element interface{}, index int) error        // replace item
@@ -39,20 +56,9 @@ type Lists interface {
 	Set() (*List, error)                                 // remove duplicates
 	Slice(start int, stop int) (*List, error)            // return sub list
 	Sort(reverse bool) interface{}                       // sort list
-	Add(other *List) (*List, error)                      // add 2 lists
-	IsEqual(other *List) bool                            // checks 2 lists are equal
-	Combinations(n int, joiner string) (*List, error)    // combinations of items in list
-	CombinationsMax(n int, joiner string) (*List, error) // combinations of items in list
-	Contains(element interface{}) bool                   // check if item in list
-	ConvertTo(t ListType) (*List, error)                 // convert to another list type
-	ListSum(other *List) (*List, error)                  // sum elements in 2 lists
-	ListSumNo(no interface{}) (*List, error)             // add no to all elements in list
-	ListSubtract(other *List) (*List, error)             // subtract elements of list from other list
-	ListSubtractNo(no interface{}) (*List, error)        // subtract no to all elements in list
-	ListMultiply(other *List) (*List, error)             // multiply elements in  2 lists
-	ListMultiplyNo(no interface{}) (*List, error)        // multiply no with all elements in list
-	ListDivide(other *List) (*List, error)               // divide elements in  2 lists
-	ListDivideNo(no interface{}) (*List, error)          // divide all elements in list with no
+	String() string                                      // string repr
+	Sum() interface{}                                    // sum list items
+	Type() ListType                                      // type of list
 }
 
 // List struct

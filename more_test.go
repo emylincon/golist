@@ -1,6 +1,7 @@
 package golist_test
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/emylincon/golist"
@@ -916,4 +917,26 @@ func TestListDivideNo(t *testing.T) {
 func TestListInterface(t *testing.T) {
 	var list golist.Lists = golist.NewList([]int{1, 2, 3})
 	t.Log(list)
+}
+
+func TestInterfaceMethods(t *testing.T) {
+	GoListType := reflect.TypeOf(golist.List{})
+	golistMethods := golist.NewList([]string{})
+	golistInterfaceMethods := golist.NewList([]string{})
+	for i := 0; i < GoListType.NumMethod(); i++ {
+		method := GoListType.Method(i)
+		golistMethods.Append(method.Name)
+	}
+	// (*golist.Lists)(nil)
+	golistInterfaceType := reflect.TypeOf((*golist.Lists)(nil)).Elem()
+
+	for i := 0; i < golistInterfaceType.NumMethod(); i++ {
+		golistInterfaceMethods.Append(golistInterfaceType.Method(i).Name)
+	}
+	golistMethods.Sort(true)
+	golistInterfaceMethods.Sort(true)
+	// if !golistMethods.IsEqual(golistInterfaceMethods) {
+	// 	t.Errorf("[Error TestInterfaceMethods] : %v != %v", golistMethods, golistInterfaceMethods)
+	// }
+
 }
