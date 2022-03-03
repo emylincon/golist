@@ -532,3 +532,15 @@ if err != nil {
 }
 fmt.Printf("%T", slice) // []string
 ```
+
+## `list.Difference(other *List) (*List, error)`
+Difference returns the elements in `list` that aren't in `other`. Example
+```golang
+list := golist.NewList([]int{1,2,3,4})
+other := golist.NewList([]int{3,4})
+diff, err := list.Difference(other)
+if err != nil {
+    fmt.Println(err) // handle error
+}
+fmt.Println(diff) // [1, 2]
+```
