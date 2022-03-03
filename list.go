@@ -13,7 +13,7 @@ import (
 type Lists interface {
 	List() interface{}                                   // returns underlying slice
 	Get(index int) interface{}                           // get item with index
-	Append(element interface{})                          // append item
+	Append(element interface{}) error                    // append item
 	Index(element interface{}) int                       // get item's index
 	Last() (interface{}, error)                          // get last item
 	Max() (interface{}, error)                           // max item
@@ -96,57 +96,56 @@ func (arr *List) List() interface{} {
 	}
 }
 
-// Append  :
-// append element to list
-func (arr *List) Append(element interface{}) {
+// Append appends an element to list
+func (arr *List) Append(element interface{}) error {
 
 	switch list := arr.list.(type) {
 	case []int:
 		item, ok := element.(int)
 		if !ok {
-			return
+			return ErrTypeNotSame
 		}
 		arr.list = *core.AppendInt(&list, item)
 
 	case []int32:
 		item, ok := element.(int32)
 		if !ok {
-			return
+			return ErrTypeNotSame
 		}
 		arr.list = *core.AppendInt32(&list, item)
 
 	case []int64:
 		item, ok := element.(int64)
 		if !ok {
-			return
+			return ErrTypeNotSame
 		}
 		arr.list = *core.AppendInt64(&list, item)
 
 	case []float32:
 		item, ok := element.(float32)
 		if !ok {
-			return
+			return ErrTypeNotSame
 		}
 		arr.list = *core.AppendFloat32(&list, item)
 
 	case []float64:
 		item, ok := element.(float64)
 		if !ok {
-			return
+			return ErrTypeNotSame
 		}
 		arr.list = *core.AppendFloat64(&list, item)
 
 	case []string:
 		item, ok := element.(string)
 		if !ok {
-			return
+			return ErrTypeNotSame
 		}
 		arr.list = *core.AppendString(&list, item)
 
 	default:
-		return
+		return ErrTypeNotsupported
 	}
-
+	return nil
 }
 
 // Index  :
