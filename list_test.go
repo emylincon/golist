@@ -954,3 +954,48 @@ func TestConvertToSlice(t *testing.T) {
 		}
 	})
 }
+
+func TestListDifference(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *golist.List
+		other    *golist.List
+		expected *golist.List
+	}{
+		{
+			Obj:      golist.NewList([]int{2, 3, 4}),
+			other:    golist.NewList([]int{2, 1, 4}),
+			expected: golist.NewList([]int{3}),
+		},
+		{
+			Obj:      golist.NewList([]int32{2, 3, 4}),
+			other:    golist.NewList([]int32{2, 3, 4}),
+			expected: golist.NewList([]int32{}),
+		},
+		{
+			Obj:      golist.NewList([]int64{2, 3, 4}),
+			other:    golist.NewList([]int64{2, 3, 4}),
+			expected: golist.NewList([]int64{}),
+		},
+		{
+			Obj:      golist.NewList([]float32{2, 3, 4}),
+			other:    golist.NewList([]float32{2, 2, 4}),
+			expected: golist.NewList([]float32{3}),
+		},
+		{
+			Obj:      golist.NewList([]float64{2, 3, 4}),
+			other:    golist.NewList([]float64{1}),
+			expected: golist.NewList([]float64{2, 3, 4}),
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.Difference(tC.other)
+		if err != nil {
+			t.Errorf("[Error Difference] : %v", err)
+		}
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error Difference] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}

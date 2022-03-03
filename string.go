@@ -5,9 +5,12 @@ import (
 	"strings"
 )
 
-// String  :
+// String :
 // returns string representation of the list
 func (arr *List) String() string {
+	if arr.Len() == 0 {
+		return "[]"
+	}
 	switch list := arr.list.(type) {
 	case []string:
 		stringList := "["
