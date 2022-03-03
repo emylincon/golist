@@ -4,47 +4,39 @@ import "github.com/emylincon/golist/core"
 
 // Sort  :
 // sorts elements in the list in ascending order or descending order in place.
-func (arr *List) Sort(reverse bool) interface{} {
+func (arr *List) Sort(reverse bool) {
 
 	switch list := arr.list.(type) {
 	case []int:
 		sorted := core.SortInt(&list, reverse)
 		arr.list = *sorted
-		return *sorted
 
 	case []int32:
 		sorted := core.SortInt32(&list, reverse)
 		arr.list = *sorted
-		return *sorted
 
 	case []int64:
 		sorted := core.SortInt64(&list, reverse)
 		arr.list = *sorted
-		return *sorted
 
 	case []float32:
 		sorted := core.SortFloat32(&list, reverse)
 		arr.list = *sorted
-		return *sorted
 
 	case []float64:
 		sorted := core.SortFloat64(&list, reverse)
 		arr.list = *sorted
-		return *sorted
 
 	case []string:
 		sorted := core.SortString(&list, reverse)
 		arr.list = *sorted
-		return *sorted
 
-	default:
-		return nil
 	}
 
 }
 
 // Sorted  :
-// sorts elements in the list in ascending order or descending order and returns list.
+// sorts elements in the list in ascending order or descending order and returns new list.
 func (arr *List) Sorted(reverse bool) *List {
 
 	switch list := arr.list.(type) {
