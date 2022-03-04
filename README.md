@@ -550,7 +550,7 @@ DifferenceBoth returns the elements that aren't in both lists. Example
 ```golang
 list := golist.NewList([]int{1,2,3,4})
 other := golist.NewList([]int{3,4,5})
-diff, err := list.Difference(other)
+diff, err := list.DifferenceBoth(other)
 if err != nil {
     fmt.Println(err) // handle error
 }
