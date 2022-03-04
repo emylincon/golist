@@ -993,3 +993,49 @@ func TestListDifference(t *testing.T) {
 
 	}
 }
+
+func TestListDifferenceBoth(t *testing.T) {
+
+	testCases := []struct {
+		Obj      *golist.List
+		other    *golist.List
+		expected *golist.List
+	}{
+		{
+			Obj:      golist.NewList([]int{2, 3, 4}),
+			other:    golist.NewList([]int{2, 1, 4}),
+			expected: golist.NewList([]int{1, 3}),
+		},
+		{
+			Obj:      golist.NewList([]int32{2, 3, 4}),
+			other:    golist.NewList([]int32{2, 3, 4}),
+			expected: golist.NewList([]int32{}),
+		},
+		{
+			Obj:      golist.NewList([]int64{2, 3, 4}),
+			other:    golist.NewList([]int64{2, 3, 4}),
+			expected: golist.NewList([]int64{}),
+		},
+		{
+			Obj:      golist.NewList([]float32{2, 3, 4}),
+			other:    golist.NewList([]float32{2, 2, 4}),
+			expected: golist.NewList([]float32{3}),
+		},
+		{
+			Obj:      golist.NewList([]float64{2, 3, 4}),
+			other:    golist.NewList([]float64{1}),
+			expected: golist.NewList([]float64{1, 2, 3, 4}),
+		},
+	}
+	for _, tC := range testCases {
+		got, err := tC.Obj.DifferenceBoth(tC.other)
+		if err != nil {
+			t.Errorf("[Error DifferenceBoth] : %v", err)
+		}
+		got.Sort(false)
+		if !got.IsEqual(tC.expected) {
+			t.Errorf("[Error DifferenceBoth] : Got: %v, Expected: %v.\n", got, tC.expected)
+		}
+
+	}
+}
