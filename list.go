@@ -27,6 +27,7 @@ type Lists interface {
 	Copy() (*List, error)                                // return a copy of list
 	Count(element interface{}) int                       // count how many times an item appears in list
 	Difference(other *List) (*List, error)               // Difference returns the elements in `list` that aren't in `other`.
+	DifferenceBoth(other *List) (*List, error)           // DifferenceBoth returns the elements that aren't in both lists.
 	Extend(element interface{}) error                    // extend list
 	GCF() (interface{}, error)                           // gcf of list
 	Get(index int) interface{}                           // get item with index
