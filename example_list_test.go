@@ -73,7 +73,7 @@ func Example() {
 	if err != nil {
 		fmt.Println(err) // handle error
 	}
-	fmt.Printf("%T\n", slice)
+	fmt.Printf("ConvertToSliceString: %T\n", slice)
 
 	list = golist.NewList([]int{1, 2, 3, 4})
 	other := golist.NewList([]int{3, 4})
@@ -81,7 +81,7 @@ func Example() {
 	if err != nil {
 		fmt.Println(err) // handle error
 	}
-	fmt.Println(diff)
+	fmt.Printf("Difference: %v\n", diff)
 
 	// Output:
 	// Get(0) : 1
@@ -94,6 +94,6 @@ func Example() {
 	// ListSubtract : [-1, -1]
 	// ListMultiplyNo : [2, 2]
 	// ListDivide : [4, 3]
-	// []string
-	// [1, 2]
+	// ConvertToSliceString: []string
+	// Difference: [1, 2]
 }
