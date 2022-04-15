@@ -449,6 +449,7 @@ if err != nil {
 fmt.Println(list3) // [4, 3]
 ```
 
+
 ## `list.ListDivideNo(no interface{}) (*golist.List, err)`
 Divide all elements in list with no. Example
 ```golang
