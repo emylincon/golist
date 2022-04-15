@@ -7,9 +7,9 @@ import (
 
 // AppendInt64 :
 // implements append
-func AppendInt64(list *[]int64, element int64) *[]int64 {
-	newArray := append(*list, element)
-	return &newArray
+func AppendInt64(list []int64, element int64) []int64 {
+	newArray := append(list, element)
+	return newArray
 }
 
 // IndexOfInt64 :

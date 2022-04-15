@@ -7,9 +7,9 @@ import (
 
 // AppendInt32 :
 // implements append
-func AppendInt32(array *[]int32, element int32) *[]int32 {
-	newArray := append(*array, element)
-	return &newArray
+func AppendInt32(array []int32, element int32) []int32 {
+	newArray := append(array, element)
+	return newArray
 }
 
 // IndexOfInt32 :

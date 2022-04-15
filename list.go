@@ -69,12 +69,41 @@ type List struct {
 	list interface{}
 }
 
+// getCopy copys elements from input to new list to avoid running to bug defined in https://github.com/emylincon/golist/issues/132
+func getCopy(list interface{}) interface{} {
+	switch list := list.(type) {
+	case []int:
+		return append([]int{}, list...)
+
+	case []int32:
+		return append([]int32{}, list...)
+
+	case []int64:
+		return append([]int64{}, list...)
+
+	case []float32:
+		return append([]float32{}, list...)
+
+	case []float64:
+		return append([]float64{}, list...)
+
+	case []string:
+		return append([]string{}, list...)
+
+	default:
+		return list
+	}
+}
+
 // NewList  :
 // list constructor
 func NewList(list interface{}) *List {
+	listcopy := getCopy(list)
+
 	newlist := &List{
-		list: list,
+		list: listcopy,
 	}
+
 	return newlist
 }
 
@@ -114,42 +143,42 @@ func (arr *List) Append(element interface{}) error {
 		if !ok {
 			return ErrTypeNotSame
 		}
-		arr.list = *core.AppendInt(&list, item)
+		arr.list = core.AppendInt(list, item)
 
 	case []int32:
 		item, ok := element.(int32)
 		if !ok {
 			return ErrTypeNotSame
 		}
-		arr.list = *core.AppendInt32(&list, item)
+		arr.list = core.AppendInt32(list, item)
 
 	case []int64:
 		item, ok := element.(int64)
 		if !ok {
 			return ErrTypeNotSame
 		}
-		arr.list = *core.AppendInt64(&list, item)
+		arr.list = core.AppendInt64(list, item)
 
 	case []float32:
 		item, ok := element.(float32)
 		if !ok {
 			return ErrTypeNotSame
 		}
-		arr.list = *core.AppendFloat32(&list, item)
+		arr.list = core.AppendFloat32(list, item)
 
 	case []float64:
 		item, ok := element.(float64)
 		if !ok {
 			return ErrTypeNotSame
 		}
-		arr.list = *core.AppendFloat64(&list, item)
+		arr.list = core.AppendFloat64(list, item)
 
 	case []string:
 		item, ok := element.(string)
 		if !ok {
 			return ErrTypeNotSame
 		}
-		arr.list = *core.AppendString(&list, item)
+		arr.list = core.AppendString(list, item)
 
 	default:
 		return ErrTypeNotsupported

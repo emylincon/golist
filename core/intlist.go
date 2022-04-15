@@ -7,9 +7,9 @@ import (
 
 // AppendInt :
 // implements append
-func AppendInt(array *[]int, element int) *[]int {
-	newArray := append(*array, element)
-	return &newArray
+func AppendInt(array []int, element int) []int {
+	newArray := append(array, element)
+	return newArray
 }
 
 // IndexOfInt :

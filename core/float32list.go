@@ -6,9 +6,9 @@ import (
 )
 
 // AppendFloat32 : implements append
-func AppendFloat32(array *[]float32, element float32) *[]float32 {
-	newArray := append(*array, element)
-	return &newArray
+func AppendFloat32(array []float32, element float32) []float32 {
+	newArray := append(array, element)
+	return newArray
 }
 
 // IndexOfFloat32 : returns index of element. returns -1 if element dont exist

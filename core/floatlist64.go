@@ -8,9 +8,9 @@ import (
 
 // AppendFloat64 :
 // implements append
-func AppendFloat64(array *[]float64, element float64) *[]float64 {
-	newArray := append(*array, element)
-	return &newArray
+func AppendFloat64(array []float64, element float64) []float64 {
+	newArray := append(array, element)
+	return newArray
 }
 
 // IndexOfFloat64 :
