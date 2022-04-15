@@ -940,3 +940,22 @@ func TestInterfaceMethods(t *testing.T) {
 	}
 
 }
+
+func TestEdgeCase(t *testing.T) {
+	s := []string{"1", "2", "3"}
+	list := golist.NewList(s[:2])
+	list.Append("4")
+	expected := []*golist.List{
+		golist.NewList([]string{"1", "2", "3"}),
+		golist.NewList([]string{"1", "2", "4"}),
+	}
+	got := golist.NewList(s)
+
+	if !got.IsEqual(expected[0]) {
+		t.Errorf("[Error TestEdgeCase0] : Got: %v, Expected: %v.\n", got, expected[0])
+	}
+	if !list.IsEqual(expected[1]) {
+		t.Errorf("[Error TestEdgeCase1] : Got: %v, Expected: %v.\n", got, expected[1])
+	}
+
+}

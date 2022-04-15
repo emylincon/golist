@@ -9,9 +9,9 @@ import (
 
 // AppendString  :
 // implements append
-func AppendString(array *[]string, element string) *[]string {
-	newArray := append(*array, element)
-	return &newArray
+func AppendString(array []string, element string) []string {
+	newArray := append(array, element)
+	return newArray
 }
 
 // IndexOfString  :
