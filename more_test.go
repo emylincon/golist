@@ -942,6 +942,7 @@ func TestInterfaceMethods(t *testing.T) {
 }
 
 func TestEdgeCase(t *testing.T) {
+	// edge case test for bug defined in https://github.com/emylincon/golist/issues/132
 	s := []string{"1", "2", "3"}
 	list := golist.NewList(s[:2])
 	list.Append("4")

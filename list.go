@@ -69,6 +69,7 @@ type List struct {
 	list interface{}
 }
 
+// getCopy copys elements from input to new list to avoid running to bug defined in https://github.com/emylincon/golist/issues/132
 func getCopy(list interface{}) interface{} {
 	switch list := list.(type) {
 	case []int:
