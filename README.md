@@ -1,8 +1,8 @@
 ![golist](img/golist.png)
 
 <p align="center">
- <a style="text-decoration:none" href="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" target="_blank">
-     <img src="https://img.shields.io/github/workflow/status/emylincon/golist/Go?style=for-the-badge" alt="Build Status" />
+ <a style="text-decoration:none" href="https://img.shields.io/github/actions/workflow/status/emylincon/golist/go.yml?branch=main&style=for-the-badge" target="_blank">
+     <img src="https://img.shields.io/github/actions/workflow/status/emylincon/golist/go.yml?branch=main&style=for-the-badge" alt="Build Status" />
  </a>
  <a style="text-decoration:none" href="https://img.shields.io/badge/Version-1.4.5-informational?style=flat-square" target="_blank">
      <img src="https://img.shields.io/badge/Version-1.4.5-informational?style=flat-square" alt="Version: 1.4.5" />
